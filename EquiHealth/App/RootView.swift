@@ -14,6 +14,8 @@ enum AppTab: String, Hashable, CaseIterable {
 struct RootView: View {
   @Environment(AppState.self) private var appState
   @Environment(\.modelContext) private var modelContext
+  @Environment(\.scenePhase) private var scenePhase
+  @Environment(ReminderNotificationService.self) private var notifications
   @SceneStorage("selectedTab") private var selectedTab: AppTab = .overview
   @Query private var allHorses: [Horse]
 
@@ -38,7 +40,20 @@ struct RootView: View {
       AppSheetContent(sheet: sheet)
         .interactiveDismissDisabled(sheet == .onboarding)
     }
+    .onReceive(NotificationCenter.default.publisher(for: ModelContext.didSave)) { _ in
+      // F-ERIN-05: re-plan after every change.
+      notifications.scheduleReschedule()
+    }
+    .onChange(of: scenePhase) { _, phase in
+      if phase == .background {
+        Task { await notifications.submitBackgroundRefresh() }
+      }
+    }
+    .onChange(of: appState.showsRemindersOnThisDevice) { notifications.scheduleReschedule() }
+    .onChange(of: appState.notifiesCompetitionWithdrawalEnd) { notifications.scheduleReschedule() }
     .task {
+      await notifications.refreshAuthorizationStatus()
+      await notifications.reschedule()
       appState.migrateLegacyReferenceRanges(of: allHorses, in: modelContext)
       // F-UI-06: onboarding on first start.
       if !appState.hasCompletedOnboarding && allHorses.isEmpty {
@@ -79,6 +94,18 @@ private struct AppSheetContent: View {
     case .newFeedingLog:
       ActiveHorseReader { horse in
         if let horse { FeedingLogFormView(horse: horse, log: nil) }
+      }
+    case .newReminder:
+      ReminderRuleFormView(rule: nil)
+    case .editReminder(let id):
+      ReminderRuleLoader(id: id) { ReminderRuleFormView(rule: $0) }
+    case .treatmentForRule(let id):
+      ReminderRuleLoader(id: id) { rule in
+        if let horse = rule.horse {
+          TreatmentFormView(
+            horse: horse, kind: rule.matchingTreatmentKind ?? .other,
+            vaccinationTarget: rule.matchingVaccinationTarget)
+        }
       }
     case .newHorse:
       HorseFormView(horse: nil)
@@ -125,7 +152,10 @@ private struct CloseButton: ViewModifier {
 }
 
 #Preview {
+  let container = try! EquiModelContainer.make(inMemory: true)
+  let appState = AppState(defaults: UserDefaults(suiteName: "preview")!)
   RootView()
-    .environment(AppState(defaults: UserDefaults(suiteName: "preview")!))
-    .modelContainer(try! EquiModelContainer.make(inMemory: true))
+    .environment(appState)
+    .environment(ReminderNotificationService(container: container, appState: appState))
+    .modelContainer(container)
 }

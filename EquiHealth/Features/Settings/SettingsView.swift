@@ -1,10 +1,54 @@
 import EquiCore
 import SwiftUI
+import UIKit
+import UserNotifications
 
-/// Settings (F-UI-01). Grows with later phases (reminders, export, backup).
+/// Settings (F-UI-01). Grows with later phases (export, backup).
 struct SettingsView: View {
+  @Environment(AppState.self) private var appState
+  @Environment(ReminderNotificationService.self) private var notifications
+  @Environment(\.openURL) private var openURL
+
   var body: some View {
+    @Bindable var appState = appState
     List {
+      Section {
+        Toggle("Erinnerungen auf diesem Gerät", isOn: $appState.showsRemindersOnThisDevice)
+          .accessibilityIdentifier("settings.showsReminders")
+        Toggle("Mitteilung bei Ende der Turnier-Karenzzeit", isOn: $appState.notifiesCompetitionWithdrawalEnd)
+          .accessibilityIdentifier("settings.withdrawalEnd")
+        LabeledContent("Mitteilungen") {
+          Text(statusText)
+        }
+        switch notifications.authorizationStatus {
+        case .notDetermined:
+          Button("Mitteilungen erlauben") {
+            Task { await notifications.requestAuthorization() }
+          }
+          .accessibilityIdentifier("settings.allowNotifications")
+        case .denied:
+          Button("In den iOS-Einstellungen öffnen") {
+            if let url = URL(string: UIApplication.openNotificationSettingsURLString) { openURL(url) }
+          }
+        default:
+          EmptyView()
+        }
+        #if DEBUG
+          if ProcessInfo.processInfo.arguments.contains(LaunchArgument.uiTesting) {
+            Button("Testerinnerung in 5 Sekunden") {
+              Task { await notifications.scheduleTestNotification() }
+            }
+            .accessibilityIdentifier("settings.testNotification")
+          }
+        #endif
+      } header: {
+        Text("Erinnerungen")
+      } footer: {
+        Text(
+          "Gilt nur für dieses Gerät. So vermeidest du doppelte Hinweise, wenn du die App auf iPhone und iPad nutzt."
+        )
+      }
+
       Section("iCloud-Synchronisierung") {
         // SPEC 4.10: shown until `cloudSyncEnabled` is on.
         LabeledContent("Status") {
@@ -20,6 +64,16 @@ struct SettingsView: View {
       }
     }
     .navigationTitle("Einstellungen")
+    .task { await notifications.refreshAuthorizationStatus() }
+  }
+
+  private var statusText: String {
+    switch notifications.authorizationStatus {
+    case .authorized, .provisional, .ephemeral: String(localized: "erlaubt")
+    case .denied: String(localized: "abgelehnt")
+    case .notDetermined: String(localized: "nicht gefragt")
+    @unknown default: String(localized: "unbekannt")
+    }
   }
 
   private static var version: String {

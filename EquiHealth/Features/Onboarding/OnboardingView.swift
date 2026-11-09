@@ -2,15 +2,15 @@ import EquiCore
 import SwiftData
 import SwiftUI
 
-/// First-start onboarding (F-UI-06): create a horse, optionally set a stable.
-/// Includes the liability notice (NF-11).
-// ANNAHME: Der dritte Schritt „Benachrichtigungen erlauben“ kommt mit den Erinnerungen in Phase 4. Q-018.
+/// First-start onboarding in three steps (F-UI-06): create a horse, optionally set a stable,
+/// optionally allow notifications. Includes the liability notice (NF-11).
 struct OnboardingView: View {
   @Environment(\.modelContext) private var modelContext
   @Environment(\.dismiss) private var dismiss
   @Environment(AppState.self) private var appState
+  @Environment(ReminderNotificationService.self) private var notifications
 
-  private enum Step { case horse, stable }
+  private enum Step { case horse, stable, notifications }
 
   @State private var step = Step.horse
   @State private var horseName = ""
@@ -23,9 +23,10 @@ struct OnboardingView: View {
         switch step {
         case .horse: horseStep
         case .stable: stableStep
+        case .notifications: notificationsStep
         }
       }
-      .navigationTitle(step == .horse ? "Willkommen" : "Stall")
+      .navigationTitle(title)
       .toolbar {
         switch step {
         case .horse:
@@ -39,12 +40,20 @@ struct OnboardingView: View {
           }
         case .stable:
           ToolbarItem(placement: .cancellationAction) {
-            Button("Überspringen") { finish(createHorse: true, createStable: false) }
-              .accessibilityIdentifier("onboarding.skip")
+            Button("Überspringen") {
+              stableName = ""
+              step = .notifications
+            }
+            .accessibilityIdentifier("onboarding.skip")
           }
           ToolbarItem(placement: .confirmationAction) {
-            Button("Fertig") { finish(createHorse: true, createStable: true) }
+            Button("Weiter") { step = .notifications }
               .disabled(stableName.nilIfBlank == nil)
+          }
+        case .notifications:
+          ToolbarItem(placement: .confirmationAction) {
+            Button("Fertig") { finish(createHorse: true, createStable: stableName.nilIfBlank != nil) }
+              .accessibilityIdentifier("onboarding.finish")
           }
         }
       }
@@ -68,7 +77,7 @@ struct OnboardingView: View {
       TextField("Name des Pferdes", text: $horseName)
         .accessibilityIdentifier("onboarding.horseName")
     } header: {
-      Text("Schritt 1 von 2: Pferd anlegen")
+      Text("Schritt 1 von 3: Pferd anlegen")
     } footer: {
       Text("Weitere Angaben kannst du später im Pferdeprofil ergänzen.")
     }
@@ -86,9 +95,43 @@ struct OnboardingView: View {
     Section {
       stableSection
     } header: {
-      Text("Schritt 2 von 2: Stall (optional)")
+      Text("Schritt 2 von 3: Stall (optional)")
     } footer: {
       Text("Über den Stall ordnet die App später Wetterdaten zu. Du kannst ihn auch später festlegen.")
+    }
+  }
+
+  private var title: LocalizedStringKey {
+    switch step {
+    case .horse: "Willkommen"
+    case .stable: "Stall"
+    case .notifications: "Erinnerungen"
+    }
+  }
+
+  @ViewBuilder private var notificationsStep: some View {
+    Section {
+      Label {
+        Text("EquiHealth erinnert dich an Impfungen, Hufschmied, Zahnkontrolle und Wurmkur.")
+      } icon: {
+        Image(systemName: "bell.badge").foregroundStyle(.tint)
+      }
+      switch notifications.authorizationStatus {
+      case .notDetermined:
+        Button("Mitteilungen erlauben") {
+          Task { await notifications.requestAuthorization() }
+        }
+        .accessibilityIdentifier("onboarding.allowNotifications")
+      case .denied:
+        Text("Mitteilungen sind abgelehnt. Du kannst sie später in den iOS-Einstellungen erlauben.")
+          .foregroundStyle(.secondary)
+      default:
+        Label("Mitteilungen sind erlaubt", systemImage: "checkmark.circle")
+      }
+    } header: {
+      Text("Schritt 3 von 3: Mitteilungen (optional)")
+    } footer: {
+      Text("Du kannst das jederzeit in den Einstellungen ändern.")
     }
   }
 

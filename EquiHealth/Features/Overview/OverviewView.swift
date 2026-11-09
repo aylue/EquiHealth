@@ -3,7 +3,7 @@ import SwiftUI
 
 /// "Übersicht" tab, like "Summary" in Apple Health: pinned measurements with a mini chart.
 /// Shows ongoing symptoms (F-GESUND-03) and running withdrawal periods (F-BEH-09) on top.
-/// Due dates and training follow in later phases.
+/// Also shows reminders due within 30 days. Training follows in a later phase.
 struct OverviewView: View {
   @Environment(AppState.self) private var appState
   @State private var showsPinEditor = false
@@ -17,6 +17,19 @@ struct OverviewView: View {
               Section("Laufende Symptome") {
                 ForEach(horse.ongoingSymptoms) { symptom in
                   OngoingSymptomRow(symptom: symptom)
+                }
+              }
+            }
+            let upcoming = upcomingReminders(of: horse)
+            if !upcoming.isEmpty {
+              Section("Demnächst fällig") {
+                ForEach(upcoming) { rule in
+                  Button {
+                    appState.sheet = .editReminder(rule.id)
+                  } label: {
+                    ReminderRow(rule: rule, showsHorse: false)
+                  }
+                  .foregroundStyle(.primary)
                 }
               }
             }
@@ -52,6 +65,20 @@ struct OverviewView: View {
         PinEditor()
       }
     }
+  }
+}
+
+extension OverviewView {
+  /// Overdue reminders and those due within 30 days, soonest first, at most three.
+  fileprivate func upcomingReminders(of horse: Horse) -> [ReminderRule] {
+    let limit = Calendar.current.date(byAdding: .day, value: 30, to: .now) ?? .now
+    return (horse.reminderRules ?? [])
+      .filter(\.isActive)
+      .compactMap { rule in rule.nextDueDate().map { (rule, $0) } }
+      .filter { $0.1 <= limit }
+      .sorted { $0.1 < $1.1 }
+      .prefix(3)
+      .map(\.0)
   }
 }
 

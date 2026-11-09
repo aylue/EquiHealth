@@ -44,6 +44,19 @@ struct TreatmentDetailView: View {
         }
       }
 
+      let rules = (treatment.horse?.reminderRules ?? []).filter { $0.isFulfilled(by: treatment) }
+      if !rules.isEmpty {
+        Section {
+          ForEach(rules) { rule in
+            ReminderRow(rule: rule, showsHorse: false)
+          }
+        } header: {
+          Text("Erinnerungen")
+        } footer: {
+          Text("Die nächste Fälligkeit wird aus der letzten passenden Behandlung berechnet.")
+        }
+      }
+
       let symptoms = (treatment.symptoms ?? []).sorted { $0.startDate > $1.startDate }
       if treatment.condition != nil || !symptoms.isEmpty {
         Section("Verknüpft mit") {
@@ -160,24 +173,39 @@ struct TreatmentsListView: View {
   }
 }
 
-/// Last vaccination per disease (F-BEH-04).
-// ANNAHME: Die nächste Fälligkeit pro Krankheit kommt mit den Erinnerungsregeln in Phase 4. Q-026.
+/// Last vaccination and next due date per disease (F-BEH-04).
 struct VaccinationOverviewView: View {
+  @Environment(AppState.self) private var appState
   let horse: Horse
 
   var body: some View {
     let last = horse.lastVaccinations()
+    let rules = (horse.reminderRules ?? []).filter { $0.isActive && $0.matchingVaccinationTarget != nil }
     List {
       Section {
         ForEach(VaccinationTarget.allCases.filter { $0 != .other }, id: \.self) { target in
-          LabeledContent(target.title) {
-            Text(last[target].map { $0.formatted(date: .abbreviated, time: .omitted) } ?? "–")
+          let next = rules.filter { $0.matchingVaccinationTarget == target }.compactMap { $0.nextDueDate() }.min()
+          VStack(alignment: .leading, spacing: 4) {
+            Text(target.title).font(.headline)
+            LabeledContent("Letzte Impfung") {
+              Text(last[target].map { $0.formatted(date: .abbreviated, time: .omitted) } ?? "–")
+            }
+            LabeledContent("Nächste Fälligkeit") {
+              if let next {
+                Text(next.formatted(date: .abbreviated, time: .omitted))
+                  .foregroundStyle(next < Calendar.current.startOfDay(for: .now) ? Color.red : Color.primary)
+              } else {
+                Text("keine Erinnerung")
+              }
+            }
           }
+          .accessibilityElement(children: .combine)
         }
-      } header: {
-        Text("Letzte Impfung")
       } footer: {
-        Text("Die nächste Fälligkeit erscheint, sobald Erinnerungen eingerichtet sind.")
+        Text("Die nächste Fälligkeit stammt aus deinen Erinnerungen unter „Termine“.")
+      }
+      Section {
+        Button("Impf-Erinnerung anlegen", systemImage: "bell.badge") { appState.sheet = .newReminder }
       }
     }
     .navigationTitle("Impfübersicht")

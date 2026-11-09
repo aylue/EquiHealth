@@ -24,7 +24,12 @@ struct TreatmentFormView: View {
   @State private var editingMedication: MedicationDraft?
   @State private var showsNewContact = false
 
-  init(horse: Horse, treatment: Treatment? = nil, kind: TreatmentKind = .veterinarian) {
+  /// - Parameter vaccinationTarget: prefills a vaccine against this disease for new vaccinations
+  ///   (reminder action "Erledigt", F-ERIN-06).
+  init(
+    horse: Horse, treatment: Treatment? = nil, kind: TreatmentKind = .veterinarian,
+    vaccinationTarget: VaccinationTarget? = nil
+  ) {
     self.horse = horse
     self.treatment = treatment
     _kind = State(initialValue: treatment?.kind ?? kind)
@@ -34,8 +39,13 @@ struct TreatmentFormView: View {
     _descriptionText = State(initialValue: treatment?.descriptionText ?? "")
     _costText = State(initialValue: treatment?.cost.map { $0.formatted(.number.precision(.fractionLength(2))) } ?? "")
     _conditionID = State(initialValue: treatment?.condition?.id)
-    _medications = State(
-      initialValue: (treatment?.medications ?? []).sorted { $0.createdAt < $1.createdAt }.map(MedicationDraft.init))
+    var drafts = (treatment?.medications ?? []).sorted { $0.createdAt < $1.createdAt }.map(MedicationDraft.init)
+    if treatment == nil, kind == .vaccination, let vaccinationTarget {
+      var vaccine = MedicationDraft()
+      vaccine.vaccinationTargets = [vaccinationTarget]
+      drafts.append(vaccine)
+    }
+    _medications = State(initialValue: drafts)
     _attachments = State(initialValue: (treatment?.attachments ?? []).compactMap(AttachmentDraft.init))
   }
 
@@ -126,7 +136,7 @@ struct TreatmentFormView: View {
         }
         ToolbarItem(placement: .confirmationAction) {
           Button("Sichern") { save() }
-            .disabled(kind == .other && customKindName.nilIfBlank == nil)
+            .disabled((kind == .other && customKindName.nilIfBlank == nil) || !medications.allSatisfy(\.isValid))
             .accessibilityIdentifier("save")
         }
       }
@@ -175,6 +185,10 @@ struct TreatmentFormView: View {
 
     AttachmentDraft.apply(attachments, existing: target.attachments ?? [], in: modelContext) {
       $0.treatment = target
+    }
+    // F-BEH-06: a fulfilled rule starts a new interval; a postponed reminder no longer applies.
+    for rule in horse.reminderRules ?? [] where rule.isFulfilled(by: target) {
+      rule.snoozedUntil = nil
     }
     target.touch()
     try? modelContext.save()

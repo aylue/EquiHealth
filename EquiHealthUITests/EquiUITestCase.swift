@@ -14,13 +14,17 @@ class EquiUITestCase: XCTestCase {
     app.launch()
   }
 
-  /// Creates the first horse through the onboarding and skips the stable step.
+  /// Creates the first horse through the onboarding, skips the stable step and finishes without
+  /// asking for notification permission.
   func completeOnboarding(horseName: String) {
     let name = app.textFields["onboarding.horseName"]
     XCTAssertTrue(name.waitForExistence(timeout: 30))
     enter(horseName, into: name)
     app.buttons["onboarding.next"].tap()
     app.buttons["onboarding.skip"].tap()
+    let finish = app.buttons["onboarding.finish"]
+    XCTAssertTrue(finish.waitForExistence(timeout: 5))
+    finish.tap()
     XCTAssertTrue(horseSwitcher(named: horseName).waitForExistence(timeout: 10))
   }
 

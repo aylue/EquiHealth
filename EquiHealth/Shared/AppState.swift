@@ -22,6 +22,16 @@ final class AppState {
     didSet { defaults.set(pinnedMeasurementTypes.map(\.rawValue), forKey: Keys.pinnedTypes) }
   }
 
+  /// Whether this device shows reminder notifications (F-ERIN-07). Per device, never synced.
+  var showsRemindersOnThisDevice: Bool {
+    didSet { defaults.set(showsRemindersOnThisDevice, forKey: Keys.showsReminders) }
+  }
+
+  /// Optional notification when a competition withdrawal ends (F-BEH-11). Per device.
+  var notifiesCompetitionWithdrawalEnd: Bool {
+    didSet { defaults.set(notifiesCompetitionWithdrawalEnd, forKey: Keys.notifiesWithdrawalEnd) }
+  }
+
   /// Sheet presented above the tab view.
   var sheet: AppSheet?
 
@@ -29,6 +39,8 @@ final class AppState {
     self.defaults = defaults
     activeHorseID = defaults.string(forKey: Keys.activeHorseID).flatMap(UUID.init(uuidString:))
     hasCompletedOnboarding = defaults.bool(forKey: Keys.onboardingCompleted)
+    showsRemindersOnThisDevice = defaults.object(forKey: Keys.showsReminders) as? Bool ?? true
+    notifiesCompetitionWithdrawalEnd = defaults.bool(forKey: Keys.notifiesWithdrawalEnd)
     if let raw = defaults.stringArray(forKey: Keys.pinnedTypes) {
       pinnedMeasurementTypes = raw.compactMap(MeasurementType.init(rawValue:))
     } else {
@@ -62,6 +74,8 @@ final class AppState {
     static let activeHorseID = "activeHorseID"
     static let onboardingCompleted = "onboardingCompleted"
     static let pinnedTypes = "pinnedMeasurementTypes"
+    static let showsReminders = "showsRemindersOnThisDevice"
+    static let notifiesWithdrawalEnd = "notifiesCompetitionWithdrawalEnd"
     static func legacyReferenceRange(_ type: MeasurementType, _ horseID: UUID) -> String {
       "referenceRange.\(horseID.uuidString).\(type.rawValue)"
     }
@@ -76,6 +90,10 @@ enum AppSheet: Identifiable, Hashable {
   case newCondition
   case newTreatment
   case newFeedingLog
+  case newReminder
+  case editReminder(UUID)
+  /// Treatment entry prefilled for a reminder rule ("Erledigt", F-ERIN-06).
+  case treatmentForRule(UUID)
   case newHorse
   case horseProfile
   case horseManagement
@@ -93,6 +111,9 @@ enum AppSheet: Identifiable, Hashable {
     case .newCondition: "newCondition"
     case .newTreatment: "newTreatment"
     case .newFeedingLog: "newFeedingLog"
+    case .newReminder: "newReminder"
+    case .editReminder(let id): "editReminder.\(id.uuidString)"
+    case .treatmentForRule(let id): "treatmentForRule.\(id.uuidString)"
     case .newHorse: "newHorse"
     case .horseProfile: "horseProfile"
     case .horseManagement: "horseManagement"

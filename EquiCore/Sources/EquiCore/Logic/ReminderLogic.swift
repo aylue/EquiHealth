@@ -88,6 +88,18 @@ public struct PlannedNotification: Equatable, Sendable {
   public let horseID: UUID?
   /// Due date for reminders, end date for withdrawals.
   public let referenceDate: Date
+
+  public init(
+    identifier: String, fireDate: Date, kind: PlannedNotificationKind, sourceID: UUID, horseID: UUID?,
+    referenceDate: Date
+  ) {
+    self.identifier = identifier
+    self.fireDate = fireDate
+    self.kind = kind
+    self.sourceID = sourceID
+    self.horseID = horseID
+    self.referenceDate = referenceDate
+  }
 }
 
 /// Plans local notifications. iOS keeps at most 64 pending notifications per app, so only the

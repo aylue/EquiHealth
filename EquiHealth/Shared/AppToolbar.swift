@@ -69,6 +69,7 @@ private struct AppToolbar: ViewModifier {
       Button("Behandlung", systemImage: "stethoscope") { appState.sheet = .newTreatment }
       Button("Fütterung", systemImage: "leaf") { appState.sheet = .newFeedingLog }
       Button("Krankheit", systemImage: "heart.text.clipboard") { appState.sheet = .newCondition }
+      Button("Erinnerung", systemImage: "bell.badge") { appState.sheet = .newReminder }
     } label: {
       Label("Hinzufügen", systemImage: "plus")
     }

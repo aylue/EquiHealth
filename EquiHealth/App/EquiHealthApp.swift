@@ -1,11 +1,14 @@
 import EquiCore
 import SwiftData
 import SwiftUI
+import UserNotifications
 
 @main
 struct EquiHealthApp: App {
   private let modelContainer: ModelContainer
   @State private var appState: AppState
+  @State private var notificationService: ReminderNotificationService
+  private let notificationRouter: NotificationRouter
 
   init() {
     let isUITesting = ProcessInfo.processInfo.arguments.contains(LaunchArgument.uiTesting)
@@ -23,14 +26,26 @@ struct EquiHealthApp: App {
     } else {
       defaults = .standard
     }
-    _appState = State(initialValue: AppState(defaults: defaults))
+    let appState = AppState(defaults: defaults)
+    let service = ReminderNotificationService(container: modelContainer, appState: appState)
+    _appState = State(initialValue: appState)
+    _notificationService = State(initialValue: service)
+    notificationRouter = NotificationRouter(appState: appState, service: service)
+    UNUserNotificationCenter.current().delegate = notificationRouter
+    service.registerCategories()
   }
 
   var body: some Scene {
     WindowGroup {
       RootView()
         .environment(appState)
+        .environment(notificationService)
     }
     .modelContainer(modelContainer)
+    .backgroundTask(.appRefresh(NotificationIdentifiers.refreshTask)) {
+      // F-ERIN-05: keep the next 64 notifications scheduled even if the app is not opened.
+      await notificationService.reschedule()
+      await notificationService.submitBackgroundRefresh()
+    }
   }
 }
