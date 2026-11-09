@@ -91,3 +91,11 @@ extension Horse {
       .sorted { $0.updatedAt > $1.updatedAt }
   }
 }
+
+extension StableAssignment {
+  /// Start date used when the horse stood at the stable already before it was recorded
+  /// ("Beginn unbekannt", Q-042). 1 January 2001.
+  public static let unknownStart = Date(timeIntervalSinceReferenceDate: 0)
+
+  public var hasUnknownStart: Bool { validFrom <= Self.unknownStart }
+}

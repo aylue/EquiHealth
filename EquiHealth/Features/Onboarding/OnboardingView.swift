@@ -143,7 +143,9 @@ struct OnboardingView: View {
         let stable = Stable(name: stableName)
         stable.locality = stableLocality.nilIfBlank
         modelContext.insert(stable)
-        horse.move(to: stable, on: Calendar.current.startOfDay(for: .now), in: modelContext)
+        // ANNAHME: Der Stall aus dem Onboarding gilt seit unbekanntem Beginn, damit auch ältere Symptome
+        // Wetterdaten bekommen (Q-042).
+        horse.move(to: stable, on: StableAssignment.unknownStart, in: modelContext)
       }
       try? modelContext.save()
       appState.activeHorseID = horse.id

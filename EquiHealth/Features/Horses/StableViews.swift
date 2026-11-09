@@ -1,3 +1,4 @@
+import CoreLocation
 import EquiCore
 import SwiftData
 import SwiftUI
@@ -30,6 +31,11 @@ struct StablesView: View {
             let horses = currentHorses(of: stable)
             if let locality = stable.locality {
               Text(locality).font(.subheadline).foregroundStyle(.secondary)
+            }
+            if stable.latitude == nil {
+              Label("Kein Standort für Wetterdaten", systemImage: "location.slash")
+                .font(.caption)
+                .foregroundStyle(.secondary)
             }
             if !horses.isEmpty {
               Text(horses.joined(separator: ", ")).font(.caption).foregroundStyle(.secondary)
@@ -95,12 +101,16 @@ struct StableFormView: View {
 
   @State private var name: String
   @State private var locality: String
+  @State private var coordinate: CLLocationCoordinate2D?
 
   init(stable: Stable?, onCreate: ((Stable) -> Void)? = nil) {
     self.stable = stable
     self.onCreate = onCreate
     _name = State(initialValue: stable?.name ?? "")
     _locality = State(initialValue: stable?.locality ?? "")
+    if let latitude = stable?.latitude, let longitude = stable?.longitude {
+      _coordinate = State(initialValue: CLLocationCoordinate2D(latitude: latitude, longitude: longitude))
+    }
   }
 
   var body: some View {
@@ -110,10 +120,8 @@ struct StableFormView: View {
           TextField("Name", text: $name)
             .accessibilityIdentifier("stable.name")
           TextField("Ort", text: $locality)
-        } footer: {
-          // ANNAHME: Koordinaten (CoreLocation/MapKit-Suche) kommen mit dem Wetter in Phase 5. Q-017.
-          Text("Der genaue Standort für Wetterdaten wird in einer späteren Version ergänzt.")
         }
+        StableLocationSection(coordinate: $coordinate, locality: $locality)
       }
       .navigationTitle(stable == nil ? "Neuer Stall" : "Stall bearbeiten")
       .navigationBarTitleDisplayMode(.inline)
@@ -132,16 +140,14 @@ struct StableFormView: View {
 
   private func save() {
     guard let trimmed = name.nilIfBlank else { return }
-    if let stable {
-      stable.name = trimmed
-      stable.locality = locality.nilIfBlank
-      stable.touch()
-    } else {
-      let new = Stable(name: trimmed)
-      new.locality = locality.nilIfBlank
-      modelContext.insert(new)
-      onCreate?(new)
-    }
+    let target = stable ?? Stable(name: trimmed)
+    if stable == nil { modelContext.insert(target) }
+    target.name = trimmed
+    target.locality = locality.nilIfBlank
+    target.latitude = coordinate?.latitude
+    target.longitude = coordinate?.longitude
+    target.touch()
+    if stable == nil { onCreate?(target) }
     try? modelContext.save()
     dismiss()
   }
@@ -157,6 +163,10 @@ struct StableAssignmentForm: View {
   @State private var selectedStableID: UUID?
   @State private var date = Date.now
   @State private var showsNewStable = false
+  /// First assignment of a horse: the horse may have stood there before it was recorded (Q-042).
+  @State private var startIsUnknown = true
+
+  private var isFirstAssignment: Bool { (horse.stableAssignments ?? []).isEmpty }
 
   var body: some View {
     NavigationStack {
@@ -175,10 +185,17 @@ struct StableAssignmentForm: View {
           Button("Neuen Stall anlegen", systemImage: "plus") { showsNewStable = true }
         }
         Section {
-          DatePicker("Ab", selection: $date, displayedComponents: .date)
+          if isFirstAssignment {
+            Toggle("Beginn unbekannt", isOn: $startIsUnknown.animation())
+          }
+          if !isFirstAssignment || !startIsUnknown {
+            DatePicker("Ab", selection: $date, displayedComponents: .date)
+          }
         } footer: {
           if horse.stableAssignment() != nil {
             Text("Die bisherige Zuordnung endet an diesem Tag.")
+          } else if isFirstAssignment && startIsUnknown {
+            Text("Das Pferd stand schon vor heute dort. Wetterdaten älterer Einträge nutzen dann diesen Stall.")
           }
         }
       }
@@ -201,7 +218,9 @@ struct StableAssignmentForm: View {
 
   private func save() {
     guard let stable = stables.first(where: { $0.id == selectedStableID }) else { return }
-    horse.move(to: stable, on: Calendar.current.startOfDay(for: date), in: modelContext)
+    let start =
+      isFirstAssignment && startIsUnknown ? StableAssignment.unknownStart : Calendar.current.startOfDay(for: date)
+    horse.move(to: stable, on: start, in: modelContext)
     try? modelContext.save()
     dismiss()
   }

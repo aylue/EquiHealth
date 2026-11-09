@@ -98,7 +98,11 @@ struct HorseProfileView: View {
     Section("Stall") {
       if let current = horse.stableAssignment(), let stable = current.stable {
         LabeledContent {
-          Text("seit \(current.validFrom.formatted(date: .abbreviated, time: .omitted))")
+          if current.hasUnknownStart {
+            Text("seit unbekannt")
+          } else {
+            Text("seit \(current.validFrom.formatted(date: .abbreviated, time: .omitted))")
+          }
         } label: {
           Label(stable.name, systemImage: "house")
         }
@@ -114,9 +118,13 @@ struct HorseProfileView: View {
         DisclosureGroup("Frühere Ställe") {
           ForEach(history) { assignment in
             LabeledContent(assignment.stable?.name ?? String(localized: "Gelöschter Stall")) {
-              Text(
-                (assignment.validFrom..<(assignment.validUntil ?? .now)).formatted(
-                  .interval.day().month(.abbreviated).year()))
+              if assignment.hasUnknownStart {
+                Text("bis \((assignment.validUntil ?? .now).formatted(date: .abbreviated, time: .omitted))")
+              } else {
+                Text(
+                  (assignment.validFrom..<(assignment.validUntil ?? .now)).formatted(
+                    .interval.day().month(.abbreviated).year()))
+              }
             }
           }
         }
