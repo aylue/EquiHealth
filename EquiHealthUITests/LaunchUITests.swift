@@ -1,19 +1,7 @@
 import XCTest
 
 /// UI tests of the core flows (NF-10).
-@MainActor
-final class LaunchUITests: XCTestCase {
-  private var app: XCUIApplication!
-
-  /// Starts the app with an empty in-memory store and German locale.
-  /// `XCUIApplication` is created here (on the main actor), not in the test case initializer.
-  private func launch() {
-    continueAfterFailure = false
-    app = XCUIApplication()
-    app.launchArguments += ["-uiTesting", "-AppleLanguages", "(de)", "-AppleLocale", "de_DE"]
-    app.launch()
-  }
-
+final class LaunchUITests: EquiUITestCase {
   /// Phase 0: the app starts with the tab structure; onboarding appears on first start (F-UI-06).
   func testLaunchShowsOnboardingAndTabs() throws {
     launch()
@@ -30,12 +18,7 @@ final class LaunchUITests: XCTestCase {
   func testTwoHorsesWithWeightAndTemperature() throws {
     launch()
     // Horse 1 via onboarding (NF-10 "Pferd anlegen").
-    let onboardingName = app.textFields["onboarding.horseName"]
-    XCTAssertTrue(onboardingName.waitForExistence(timeout: 20))
-    enter("Luna", into: onboardingName)
-    app.buttons["onboarding.next"].tap()
-    app.buttons["onboarding.skip"].tap()
-    XCTAssertTrue(horseSwitcher(named: "Luna").waitForExistence(timeout: 10))
+    completeOnboarding(horseName: "Luna")
 
     // NF-10 "Messwert eintragen".
     addMeasurement("Gewicht", value: "540")
@@ -73,7 +56,7 @@ final class LaunchUITests: XCTestCase {
     app.buttons["Referenzbereich festlegen"].tap()
     let toggle = app.switches["Referenzbereich anzeigen"]
     XCTAssertTrue(toggle.waitForExistence(timeout: 5))
-    toggle.switches.firstMatch.tap()
+    turnOn(toggle)
     let lower = app.textFields["reference.lower"]
     XCTAssertTrue(lower.waitForExistence(timeout: 5))
     enter("500", into: lower)
@@ -83,45 +66,6 @@ final class LaunchUITests: XCTestCase {
     XCTAssertTrue(text(containing: "Dein Bereich").waitForExistence(timeout: 5))
     XCTAssertTrue(app.buttons["Referenzbereich bearbeiten"].exists)
 
-    let screenshot = XCTAttachment(screenshot: app.screenshot())
-    screenshot.name = "Gewicht-Detail mit Referenzband"
-    screenshot.lifetime = .keepAlways
-    add(screenshot)
-  }
-
-  // MARK: Helpers
-
-  /// Taps a text field, waits until it has keyboard focus (retrying the tap once) and types.
-  private func enter(_ text: String, into field: XCUIElement) {
-    XCTAssertTrue(field.waitForExistence(timeout: 5))
-    let focused = NSPredicate(format: "hasKeyboardFocus == true")
-    field.tap()
-    if XCTWaiter.wait(for: [XCTNSPredicateExpectation(predicate: focused, object: field)], timeout: 3) != .completed {
-      field.tap()
-      XCTAssertEqual(
-        XCTWaiter.wait(for: [XCTNSPredicateExpectation(predicate: focused, object: field)], timeout: 5), .completed,
-        "Feld bekommt keinen Tastaturfokus")
-    }
-    field.typeText(text)
-  }
-
-  private func horseSwitcher(named name: String) -> XCUIElement {
-    app.buttons.matching(NSPredicate(format: "identifier == 'horseSwitcher' AND label CONTAINS %@", name))
-      .firstMatch
-  }
-
-  private func text(containing fragment: String) -> XCUIElement {
-    app.descendants(matching: .any).matching(NSPredicate(format: "label CONTAINS %@", fragment)).firstMatch
-  }
-
-  private func addMeasurement(_ type: String, value: String) {
-    app.buttons["addMenu"].tap()
-    app.buttons["Messwert"].tap()
-    app.buttons[type].tap()
-    let field = app.textFields["measurement.value"]
-    XCTAssertTrue(field.waitForExistence(timeout: 5))
-    enter(value, into: field)
-    app.buttons["save"].tap()
-    XCTAssertTrue(field.waitForNonExistence(timeout: 5), "Sheet für \(type) schließt nicht")
+    attachScreenshot("Gewicht-Detail mit Referenzband")
   }
 }

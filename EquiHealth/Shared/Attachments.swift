@@ -92,6 +92,18 @@ struct AttachmentEditorSection: View {
         Label("Fotos hinzufügen", systemImage: "photo.badge.plus")
       }
       .accessibilityIdentifier("attachments.addPhotos")
+      #if DEBUG
+        if ProcessInfo.processInfo.arguments.contains(LaunchArgument.uiTesting) {
+          // UI tests cannot drive the out-of-process photo picker reliably; this adds a generated
+          // image through the same draft path instead.
+          Button("Testfoto hinzufügen", systemImage: "photo") {
+            if let data = Self.generatedTestPhoto() {
+              drafts.append(AttachmentDraft(data: data, contentType: .jpeg))
+            }
+          }
+          .accessibilityIdentifier("attachments.addTestPhoto")
+        }
+      #endif
       if allowsDocuments {
         Button("PDF hinzufügen", systemImage: "doc.badge.plus") { showsFileImporter = true }
       }
@@ -126,6 +138,20 @@ struct AttachmentEditorSection: View {
   }
 }
 
+#if DEBUG
+  extension AttachmentEditorSection {
+    /// Solid-colour JPEG used by UI tests.
+    static func generatedTestPhoto() -> Data? {
+      let renderer = UIGraphicsImageRenderer(size: CGSize(width: 400, height: 300))
+      let image = renderer.image { context in
+        UIColor.systemTeal.setFill()
+        context.fill(CGRect(x: 0, y: 0, width: 400, height: 300))
+      }
+      return image.jpegData(compressionQuality: 0.8)
+    }
+  }
+#endif
+
 /// Square preview of an image or document.
 struct AttachmentThumbnail: View {
   let data: Data
@@ -151,6 +177,7 @@ struct AttachmentThumbnail: View {
     .clipShape(.rect(cornerRadius: 8))
     .accessibilityElement()
     .accessibilityLabel(Text(isImage ? "Foto" : "Dokument \(title)"))
+    .accessibilityIdentifier("attachment.thumbnail")
   }
 }
 
