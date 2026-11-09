@@ -3,8 +3,10 @@ import SwiftUI
 
 /// Timeline of symptoms, conditions and treatments per horse, filterable by kind (F-GESUND-06).
 struct HealthTimelineView: View {
+  @Environment(WeatherService.self) private var weather
   let horse: Horse
   @State private var kinds = Set(TimelineKind.allCases)
+  @State private var weatherLookup = WeatherService.Lookup()
 
   var body: some View {
     let items = horse.timeline(kinds: kinds)
@@ -18,14 +20,29 @@ struct HealthTimelineView: View {
           description: Text("Symptome, Krankheiten und Behandlungen erscheinen hier chronologisch."))
       }
       ForEach(days, id: \.key) { day, entries in
-        Section(day.formatted(date: .complete, time: .omitted)) {
+        Section {
           ForEach(entries) { item in
             row(for: item)
           }
+        } header: {
+          HStack {
+            Text(day.formatted(date: .complete, time: .omitted))
+            Spacer()
+            WeatherInlineLabel(state: weatherLookup.states[day])
+          }
+        }
+      }
+      if weatherLookup.states.values.contains(where: { if case .weather = $0 { true } else { false } }) {
+        Section {
+        } footer: {
+          Text(WeatherService.attribution)
         }
       }
     }
     .navigationTitle("Zeitleiste")
+    .task(id: days.map(\.key)) {
+      weatherLookup = await weather.lookup(horse: horse, days: days.map(\.key))
+    }
     .toolbar {
       ToolbarItem(placement: .primaryAction) {
         Menu {

@@ -2,8 +2,8 @@ import EquiCore
 import SwiftData
 import SwiftUI
 
-/// Detail of one symptom (F-GESUND-01, F-GESUND-03).
-// ANNAHME: Die Wetteranzeige am Tag des Beginns und den drei Tagen davor (F-GESUND-05) folgt in Phase 5.
+/// Detail of one symptom with the weather on its start day and the three days before
+/// (F-GESUND-01, F-GESUND-03, F-GESUND-05).
 struct SymptomDetailView: View {
   @Environment(\.modelContext) private var modelContext
   @Bindable var symptom: SymptomEntry
@@ -36,6 +36,13 @@ struct SymptomDetailView: View {
         Section("Details") {
           ForEach(lines, id: \.self) { Text($0) }
         }
+      }
+
+      if let horse = symptom.horse {
+        WeatherDaysSection(
+          horse: horse,
+          days: (0...3).compactMap { Calendar.current.date(byAdding: .day, value: -$0, to: symptom.startDate) },
+          title: "Wetter am Beginn und den 3 Tagen davor")
       }
 
       if symptom.condition != nil || symptom.treatment != nil {

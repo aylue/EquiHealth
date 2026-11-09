@@ -62,6 +62,17 @@ struct SettingsView: View {
       Section("Über") {
         LabeledContent("Version", value: Self.version)
       }
+      Section {
+        Text(WeatherService.attribution)
+        Link("Bright Sky (brightsky.dev)", destination: URL(string: "https://brightsky.dev")!)
+        Link("Deutscher Wetterdienst – Open Data", destination: URL(string: "https://www.dwd.de/opendata")!)
+      } header: {
+        Text("Impressum und Quellen")
+      } footer: {
+        Text(
+          "Wetterdaten stammen aus den offenen Daten des Deutschen Wetterdienstes und werden über Bright Sky abgerufen. Dabei werden nur auf 2 Nachkommastellen gerundete Stall-Koordinaten übertragen."
+        )
+      }
     }
     .navigationTitle("Einstellungen")
     .task { await notifications.refreshAuthorizationStatus() }

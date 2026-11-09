@@ -18,6 +18,8 @@ struct MeasurementDetailView: View {
   @State private var selectedDate: Date?
   @State private var editing: BodyMeasurement?
   @State private var showsReferenceEditor = false
+  /// F-MESS-05: air temperature below the body temperature chart.
+  @AppStorage("showsAirTemperature") private var showsAirTemperature = false
 
   init(horse: Horse, type: MeasurementType) {
     self.horse = horse
@@ -72,6 +74,20 @@ struct MeasurementDetailView: View {
           legend
         }
         .padding(.vertical, 4)
+      }
+
+      if type == .bodyTemperature {
+        Section {
+          Toggle("Lufttemperatur einblenden", isOn: $showsAirTemperature.animation())
+            .accessibilityIdentifier("measurement.airTemperature")
+          if showsAirTemperature {
+            AirTemperatureChart(horse: horse, domain: domain)
+          }
+        } footer: {
+          if showsAirTemperature {
+            Text("Tagesmittel und Spanne am Stall des jeweiligen Tages. \(WeatherService.attribution)")
+          }
+        }
       }
 
       Section {

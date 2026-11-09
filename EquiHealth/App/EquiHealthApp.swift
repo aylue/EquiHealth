@@ -8,6 +8,7 @@ struct EquiHealthApp: App {
   private let modelContainer: ModelContainer
   @State private var appState: AppState
   @State private var notificationService: ReminderNotificationService
+  @State private var weatherService: WeatherService
   private let notificationRouter: NotificationRouter
 
   init() {
@@ -30,9 +31,21 @@ struct EquiHealthApp: App {
     let service = ReminderNotificationService(container: modelContainer, appState: appState)
     _appState = State(initialValue: appState)
     _notificationService = State(initialValue: service)
+    _weatherService = State(
+      initialValue: WeatherService(container: modelContainer, provider: Self.weatherProvider(isUITesting: isUITesting)))
     notificationRouter = NotificationRouter(appState: appState, service: service)
     UNUserNotificationCenter.current().delegate = notificationRouter
     service.registerCategories()
+  }
+
+  /// Bright Sky in normal use; a deterministic stub in UI tests, so they never hit the network.
+  private static func weatherProvider(isUITesting: Bool) -> any WeatherProvider {
+    #if DEBUG
+      if isUITesting {
+        return StubWeatherProvider(fails: ProcessInfo.processInfo.arguments.contains("-weatherOffline"))
+      }
+    #endif
+    return BrightSkyProvider()
   }
 
   var body: some Scene {
@@ -40,6 +53,7 @@ struct EquiHealthApp: App {
       RootView()
         .environment(appState)
         .environment(notificationService)
+        .environment(weatherService)
     }
     .modelContainer(modelContainer)
     .backgroundTask(.appRefresh(NotificationIdentifiers.refreshTask)) {
