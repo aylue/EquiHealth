@@ -67,8 +67,8 @@ public typealias ReferenceRangeSetting = EquiSchemaV3.ReferenceRangeSetting
 
 /// Common bookkeeping fields of every entity (SPEC section 3, F-TEIL-02).
 public protocol EquiRecord: PersistentModel {
-  var id: UUID { get }
-  var createdAt: Date { get }
+  var id: UUID { get set }
+  var createdAt: Date { get set }
   var updatedAt: Date { get set }
   /// Display name of the creator; unused until sharing exists (F-TEIL-02).
   var createdBy: String? { get set }
