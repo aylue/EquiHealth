@@ -6,7 +6,8 @@ public struct WeatherLookupResult: Sendable {
   public var days: [DailyWeather]
   /// Set when fetching failed; cached data in `days` is still usable.
   public var error: WeatherError?
-  /// Number of network requests made for this lookup (0 = served from cache).
+  /// Number of network requests made for this lookup (0 = served from cache). After a failure the
+  /// remaining requests are skipped.
   public var fetchCount: Int
 }
 
@@ -35,10 +36,12 @@ public actor WeatherRepository {
 
     var failure: WeatherError?
     var fetchCount = 0
-    if let fetchStart = stale.first, let fetchLast = stale.last,
-      let fetchEnd = calendar.date(byAdding: .day, value: 1, to: fetchLast)
-    {
-      fetchCount = 1
+    let chunks = Self.chunks(of: stale, calendar: calendar)
+    for chunk in chunks {
+      guard let fetchStart = chunk.first, let fetchLast = chunk.last,
+        let fetchEnd = calendar.date(byAdding: .day, value: 1, to: fetchLast)
+      else { continue }
+      fetchCount += 1
       do {
         let response = try await provider.hourlyWeather(
           latitude: lat, longitude: lon, from: fetchStart, to: fetchEnd, timeZone: calendar.timeZone)
@@ -46,13 +49,30 @@ public actor WeatherRepository {
         for daily in fetched where daily.day >= fetchStart && daily.day < fetchEnd {
           cached[daily.day] = store(daily, providerID: provider.id, fetchedAt: now, existing: cached[daily.day])
         }
-        try? modelContext.save()
       } catch {
         failure = (error as? WeatherError) ?? .network
+        break  // offline: do not try the remaining chunks
       }
     }
+    if !chunks.isEmpty { try? modelContext.save() }
     let result = wanted.compactMap { cached[$0] }.map(DailyWeather.init)
     return WeatherLookupResult(days: result, error: failure, fetchCount: fetchCount)
+  }
+
+  /// Groups days into runs of consecutive days, at most `maxDays` long; one request per run.
+  static func chunks(of days: [Date], maxDays: Int = 31, calendar: Calendar) -> [[Date]] {
+    var result: [[Date]] = []
+    for day in days.sorted() {
+      if var current = result.last, let previous = current.last, current.count < maxDays,
+        calendar.date(byAdding: .day, value: 1, to: previous) == day
+      {
+        current.append(day)
+        result[result.count - 1] = current
+      } else {
+        result.append([day])
+      }
+    }
+    return result
   }
 
   private func isFresh(_ entry: WeatherDay, now: Date, calendar: Calendar) -> Bool {

@@ -191,6 +191,20 @@ struct WeatherTests {
     #expect(nothingCached.error == .network)
   }
 
+  @Test("Verstreute Tage werden in zusammenhängende Blöcke von höchstens 31 Tagen aufgeteilt")
+  func scatteredDaysAreChunked() async throws {
+    let repository = try makeRepository()
+    let provider = MockWeatherProvider()
+    let spring = (0..<3).map { calendar.date(byAdding: .day, value: $0, to: date(2025, 3, 1))! }
+    let summer = (0..<40).map { calendar.date(byAdding: .day, value: $0, to: date(2025, 7, 1))! }
+    let result = await repository.weather(
+      for: spring + summer, latitude: 51.96, longitude: 7.63, provider: provider, now: date(2026, 11, 9),
+      calendar: calendar)
+    #expect(result.fetchCount == 3, "März (3 Tage), Juli (31 Tage), August (9 Tage)")
+    #expect(result.days.count == 43)
+    #expect(provider.requests.map { calendar.dateComponents([.day], from: $0.start, to: $0.end).day } == [3, 31, 9])
+  }
+
   @Test("Wetter-Cache liegt im lokalen Store, nicht im synchronisierten")
   func weatherDayIsLocalOnly() {
     #expect(CurrentSchema.localOnlyModels.map { "\($0)" } == ["\(WeatherDay.self)"])
