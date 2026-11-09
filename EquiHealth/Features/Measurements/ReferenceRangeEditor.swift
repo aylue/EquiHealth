@@ -1,9 +1,10 @@
 import EquiCore
+import SwiftData
 import SwiftUI
 
-/// Edit the user's own reference range of a measurement type (F-MESS-04).
+/// Edit the user's own reference range of a measurement type for one horse (F-MESS-04, Q-015).
 struct ReferenceRangeEditor: View {
-  @Environment(AppState.self) private var appState
+  @Environment(\.modelContext) private var modelContext
   @Environment(\.dismiss) private var dismiss
 
   let horse: Horse
@@ -41,7 +42,8 @@ struct ReferenceRangeEditor: View {
         }
         ToolbarItem(placement: .confirmationAction) {
           Button("Sichern") {
-            appState.setReferenceRange(isEnabled ? range : nil, for: type, horseID: horse.id)
+            horse.setReferenceRange(isEnabled ? range : nil, for: type, in: modelContext)
+            try? modelContext.save()
             dismiss()
           }
           .disabled(isEnabled && range == nil)
@@ -49,7 +51,7 @@ struct ReferenceRangeEditor: View {
         }
       }
       .onAppear {
-        guard let existing = appState.referenceRange(for: type, horseID: horse.id) else { return }
+        guard let existing = horse.referenceRange(for: type) else { return }
         isEnabled = true
         lowerText = type.inputText(existing.lower)
         upperText = type.inputText(existing.upper)

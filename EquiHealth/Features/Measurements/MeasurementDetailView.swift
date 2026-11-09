@@ -30,7 +30,7 @@ struct MeasurementDetailView: View {
   }
 
   private var referenceRange: ReferenceRange? {
-    appState.referenceRange(for: type, horseID: horse.id)
+    horse.referenceRange(for: type)
   }
 
   private var domain: DateInterval {

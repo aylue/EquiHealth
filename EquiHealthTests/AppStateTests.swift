@@ -1,5 +1,6 @@
 import EquiCore
 import Foundation
+import SwiftData
 import Testing
 
 @testable import EquiHealth
@@ -22,21 +23,29 @@ struct AppStateTests {
     #expect(AppState(defaults: defaults).activeHorseID == id)
   }
 
-  @Test("F-MESS-04: Referenzbereich pro Pferd und Messtyp speichern und entfernen")
-  func referenceRangesPersistPerHorse() {
+  @Test("Q-015: Alte Referenzbereiche aus UserDefaults werden einmalig ins Datenmodell übernommen")
+  func legacyReferenceRangesAreMigrated() throws {
     let defaults = freshDefaults()
-    let luna = UUID()
-    let max = UUID()
-    let state = AppState(defaults: defaults)
-    state.setReferenceRange(ReferenceRange(lower: 500, upper: 560), for: .weight, horseID: luna)
+    let context = ModelContext(try EquiModelContainer.make(inMemory: true))
+    let luna = Horse(name: "Luna")
+    let max = Horse(name: "Max")
+    context.insert(luna)
+    context.insert(max)
+    max.setReferenceRange(ReferenceRange(lower: 600, upper: 650), for: .weight, in: context)
+    try context.save()
 
-    let reloaded = AppState(defaults: defaults)
-    #expect(reloaded.referenceRange(for: .weight, horseID: luna) == ReferenceRange(lower: 500, upper: 560))
-    #expect(reloaded.referenceRange(for: .weight, horseID: max) == nil)
-    #expect(reloaded.referenceRange(for: .bodyTemperature, horseID: luna) == nil)
+    let encoder = JSONEncoder()
+    let lunaKey = "referenceRange.\(luna.id.uuidString).weight"
+    let maxKey = "referenceRange.\(max.id.uuidString).weight"
+    defaults.set(try encoder.encode(ReferenceRange(lower: 500, upper: 560)), forKey: lunaKey)
+    defaults.set(try encoder.encode(ReferenceRange(lower: 1, upper: 2)), forKey: maxKey)
 
-    reloaded.setReferenceRange(nil, for: .weight, horseID: luna)
-    #expect(AppState(defaults: defaults).referenceRange(for: .weight, horseID: luna) == nil)
+    AppState(defaults: defaults).migrateLegacyReferenceRanges(of: [luna, max], in: context)
+
+    #expect(luna.referenceRange(for: .weight) == ReferenceRange(lower: 500, upper: 560))
+    #expect(max.referenceRange(for: .weight) == ReferenceRange(lower: 600, upper: 650), "Datenmodell hat Vorrang")
+    #expect(defaults.data(forKey: lunaKey) == nil)
+    #expect(defaults.data(forKey: maxKey) == nil)
   }
 
   @Test("Übersicht: Gewicht und Temperatur sind standardmäßig angeheftet, Änderungen bleiben erhalten")

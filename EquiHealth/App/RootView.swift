@@ -13,6 +13,7 @@ enum AppTab: String, Hashable, CaseIterable {
 /// Main navigation: tab bar on iPhone, sidebar on iPad (`.sidebarAdaptable`).
 struct RootView: View {
   @Environment(AppState.self) private var appState
+  @Environment(\.modelContext) private var modelContext
   @SceneStorage("selectedTab") private var selectedTab: AppTab = .overview
   @Query private var allHorses: [Horse]
 
@@ -38,6 +39,7 @@ struct RootView: View {
         .interactiveDismissDisabled(sheet == .onboarding)
     }
     .task {
+      appState.migrateLegacyReferenceRanges(of: allHorses, in: modelContext)
       // F-UI-06: onboarding on first start.
       if !appState.hasCompletedOnboarding && allHorses.isEmpty {
         appState.sheet = .onboarding

@@ -1,6 +1,7 @@
 import EquiCore
 import Foundation
 import Observation
+import SwiftData
 
 /// App-wide UI state that survives restarts (F-PFERD-02) plus the currently presented sheet.
 @Observable
@@ -24,9 +25,6 @@ final class AppState {
   /// Sheet presented above the tab view.
   var sheet: AppSheet?
 
-  /// Bumped on every reference range change so that views observing ranges refresh.
-  private var referenceRangeRevision = 0
-
   init(defaults: UserDefaults = .standard) {
     self.defaults = defaults
     activeHorseID = defaults.string(forKey: Keys.activeHorseID).flatMap(UUID.init(uuidString:))
@@ -38,31 +36,33 @@ final class AppState {
     }
   }
 
-  // MARK: Reference ranges (F-MESS-04)
+  // MARK: Legacy reference ranges (Q-015)
 
-  // ANNAHME: Referenzbereiche sind Geräte-Einstellungen pro Pferd und Messtyp (UserDefaults),
-  // kein Teil des synchronisierten Datenmodells. Siehe OPEN_QUESTIONS.md (Q-015).
-  func referenceRange(for type: MeasurementType, horseID: UUID) -> ReferenceRange? {
-    _ = referenceRangeRevision
-    guard let data = defaults.data(forKey: Keys.referenceRange(type, horseID)) else { return nil }
-    return try? JSONDecoder().decode(ReferenceRange.self, from: data)
-  }
-
-  func setReferenceRange(_ range: ReferenceRange?, for type: MeasurementType, horseID: UUID) {
-    let key = Keys.referenceRange(type, horseID)
-    if let range, let data = try? JSONEncoder().encode(range) {
-      defaults.set(data, forKey: key)
-    } else {
-      defaults.removeObject(forKey: key)
+  /// One-time import of reference ranges that builds before schema V2 kept in UserDefaults.
+  /// Existing values in the data model win; the old keys are removed afterwards.
+  func migrateLegacyReferenceRanges(of horses: [Horse], in context: ModelContext) {
+    var changed = false
+    for horse in horses {
+      for type in MeasurementType.allCases {
+        let key = Keys.legacyReferenceRange(type, horse.id)
+        guard let data = defaults.data(forKey: key) else { continue }
+        if horse.referenceRange(for: type) == nil,
+          let range = try? JSONDecoder().decode(ReferenceRange.self, from: data)
+        {
+          horse.setReferenceRange(range, for: type, in: context)
+          changed = true
+        }
+        defaults.removeObject(forKey: key)
+      }
     }
-    referenceRangeRevision += 1
+    if changed { try? context.save() }
   }
 
   private enum Keys {
     static let activeHorseID = "activeHorseID"
     static let onboardingCompleted = "onboardingCompleted"
     static let pinnedTypes = "pinnedMeasurementTypes"
-    static func referenceRange(_ type: MeasurementType, _ horseID: UUID) -> String {
+    static func legacyReferenceRange(_ type: MeasurementType, _ horseID: UUID) -> String {
       "referenceRange.\(horseID.uuidString).\(type.rawValue)"
     }
   }

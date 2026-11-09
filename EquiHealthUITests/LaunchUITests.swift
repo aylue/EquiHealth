@@ -32,8 +32,7 @@ final class LaunchUITests: XCTestCase {
     // Horse 1 via onboarding (NF-10 "Pferd anlegen").
     let onboardingName = app.textFields["onboarding.horseName"]
     XCTAssertTrue(onboardingName.waitForExistence(timeout: 20))
-    onboardingName.tap()
-    onboardingName.typeText("Luna")
+    enter("Luna", into: onboardingName)
     app.buttons["onboarding.next"].tap()
     app.buttons["onboarding.skip"].tap()
     XCTAssertTrue(horseSwitcher(named: "Luna").waitForExistence(timeout: 10))
@@ -48,8 +47,7 @@ final class LaunchUITests: XCTestCase {
     app.buttons["addHorse"].tap()
     let horseName = app.textFields["horse.name"]
     XCTAssertTrue(horseName.waitForExistence(timeout: 5))
-    horseName.tap()
-    horseName.typeText("Max")
+    enter("Max", into: horseName)
     app.buttons["save"].tap()
     app.buttons["closeSheet"].tap()
     XCTAssertTrue(horseSwitcher(named: "Max").waitForExistence(timeout: 5), "Neues Pferd wird aktiv")
@@ -78,11 +76,9 @@ final class LaunchUITests: XCTestCase {
     toggle.switches.firstMatch.tap()
     let lower = app.textFields["reference.lower"]
     XCTAssertTrue(lower.waitForExistence(timeout: 5))
-    lower.tap()
-    lower.typeText("500")
+    enter("500", into: lower)
     let upper = app.textFields["reference.upper"]
-    upper.tap()
-    upper.typeText("560")
+    enter("560", into: upper)
     app.buttons["save"].tap()
     XCTAssertTrue(text(containing: "Dein Bereich").waitForExistence(timeout: 5))
     XCTAssertTrue(app.buttons["Referenzbereich bearbeiten"].exists)
@@ -94,6 +90,20 @@ final class LaunchUITests: XCTestCase {
   }
 
   // MARK: Helpers
+
+  /// Taps a text field, waits until it has keyboard focus (retrying the tap once) and types.
+  private func enter(_ text: String, into field: XCUIElement) {
+    XCTAssertTrue(field.waitForExistence(timeout: 5))
+    let focused = NSPredicate(format: "hasKeyboardFocus == true")
+    field.tap()
+    if XCTWaiter.wait(for: [XCTNSPredicateExpectation(predicate: focused, object: field)], timeout: 3) != .completed {
+      field.tap()
+      XCTAssertEqual(
+        XCTWaiter.wait(for: [XCTNSPredicateExpectation(predicate: focused, object: field)], timeout: 5), .completed,
+        "Feld bekommt keinen Tastaturfokus")
+    }
+    field.typeText(text)
+  }
 
   private func horseSwitcher(named name: String) -> XCUIElement {
     app.buttons.matching(NSPredicate(format: "identifier == 'horseSwitcher' AND label CONTAINS %@", name))
@@ -110,8 +120,7 @@ final class LaunchUITests: XCTestCase {
     app.buttons[type].tap()
     let field = app.textFields["measurement.value"]
     XCTAssertTrue(field.waitForExistence(timeout: 5))
-    field.tap()
-    field.typeText(value)
+    enter(value, into: field)
     app.buttons["save"].tap()
     XCTAssertTrue(field.waitForNonExistence(timeout: 5), "Sheet für \(type) schließt nicht")
   }
