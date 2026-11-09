@@ -46,7 +46,7 @@ Xcode-Projekt, Swift Package `EquiCore` mit SwiftData-Schema V1 (CloudKit-konfor
 
 ## Nächster Schritt
 
-Phase 3 – Fütterung (4.3).
+Phase 3 – Fütterung (4.3). Danach bleibt die Volltextsuche für Phase 9 vorgemerkt (Q-029).
 
 ## Bekannte Probleme
 
