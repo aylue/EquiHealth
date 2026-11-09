@@ -4,7 +4,7 @@ Stand: 9. November 2026
 
 ## Aktuelle Phase
 
-**Phase 0 – Projektgerüst: umgesetzt, wartet auf Freigabe.** Einschränkung: siehe „Bekannte Probleme“.
+**Phase 0 – Projektgerüst: abgeschlossen, wartet auf Freigabe.** Toolchain: Xcode 27.2, Swift 6.4.2, Deployment-Target iOS 27.0. iPad vorerst ausgesetzt (Q-014).
 
 ## Erledigt (Phase 0)
 
@@ -20,16 +20,16 @@ Stand: 9. November 2026
 - Entitlements für iCloud und App Group in `Entitlements/`, **nicht** eingebunden (F-ARCH-07); `ENABLE_CLOUDKIT.md` als Platzhalter (vollständig in Phase 7).
 - `.swift-format` (Zeilenlänge 120), Lint ohne Befund.
 
-## Prüfergebnisse Phase 0
+## Prüfergebnisse Phase 0 (Xcode 27.2)
 
 | Prüfung | Ergebnis |
 | --- | --- |
-| Build iPhone 17 Pro (Simulator) | ✅ ohne Compiler-Warnungen |
-| Build iPad Pro 11-inch M5 (Simulator) | ✅ ohne Compiler-Warnungen |
+| Build iPhone 18 Pro (Simulator, iOS 27.2) | ✅ ohne Compiler-Warnungen |
+| Build iPad | ⏸ vorerst ausgesetzt (Q-014); mit Xcode 26.1.1 lief er ohne Warnungen |
 | `swift test --package-path EquiCore` | ✅ 13/13 grün, inkl. CloudKit-Regeltest |
-| `xcodebuild test` (App-Unit-Tests, UI-Test) | ❌ nicht ausführbar – Testrunner verbindet sich nicht (Q-013) |
-| App-Start iPhone-/iPad-Simulator mit leerer Tab-Struktur | ✅ manuell per `simctl` geprüft |
-| App-Start auf echtem Gerät (Personal Team) | ⏳ durch Nutzer zu prüfen (Q-012) |
+| App-Unit-Tests (`EquiHealthTests`) | ✅ 2/2 grün |
+| UI-Test App-Start mit leerer Tab-Struktur | ✅ grün |
+| App-Start auf echtem Gerät (Personal Team) | ⏳ musst du selbst prüfen (Q-012) |
 | `swift format lint` | ✅ |
 
 Hinweis: Das Build-Log enthält die Zeile `appintentsmetadataprocessor … warning: Metadata extraction skipped`. Das ist eine Tool-Meldung, keine Compiler-Warnung; sie verschwindet, sobald App Intents genutzt werden (F-UI-09).
@@ -40,5 +40,5 @@ Phase 1 – Pferde und Messwerte (SPEC 4.1, 4.2, Grundgerüst von 5).
 
 ## Bekannte Probleme
 
-- Installiert ist Xcode 26.1.1 / Swift 6.2.1 statt Xcode 27 / Swift 6.4; Deployment-Target daher iOS 26.0 (Q-001).
-- XCTest-Läufe im Simulator hängen mit dieser Xcode-Version auf macOS 27.2 (Q-013).
+- Der erste Testlauf nach einem Simulator-Kaltstart braucht mehrere Minuten. Bei einem Timeout im Zweifel nur die UI-Tests mit `-only-testing:EquiHealthUITests test-without-building` erneut starten.
+- Der Test auf einem echten Gerät steht noch aus (Q-012).
