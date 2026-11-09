@@ -32,6 +32,11 @@ final class AppState {
     didSet { defaults.set(notifiesCompetitionWithdrawalEnd, forKey: Keys.notifiesWithdrawalEnd) }
   }
 
+  /// When the last backup was saved on this device (F-BACKUP-05).
+  var lastBackupDate: Date? {
+    didSet { defaults.set(lastBackupDate, forKey: Keys.lastBackup) }
+  }
+
   /// Sheet presented above the tab view.
   var sheet: AppSheet?
 
@@ -41,6 +46,7 @@ final class AppState {
     hasCompletedOnboarding = defaults.bool(forKey: Keys.onboardingCompleted)
     showsRemindersOnThisDevice = defaults.object(forKey: Keys.showsReminders) as? Bool ?? true
     notifiesCompetitionWithdrawalEnd = defaults.bool(forKey: Keys.notifiesWithdrawalEnd)
+    lastBackupDate = defaults.object(forKey: Keys.lastBackup) as? Date
     if let raw = defaults.stringArray(forKey: Keys.pinnedTypes) {
       pinnedMeasurementTypes = raw.compactMap(MeasurementType.init(rawValue:))
     } else {
@@ -76,6 +82,7 @@ final class AppState {
     static let pinnedTypes = "pinnedMeasurementTypes"
     static let showsReminders = "showsRemindersOnThisDevice"
     static let notifiesWithdrawalEnd = "notifiesCompetitionWithdrawalEnd"
+    static let lastBackup = "lastBackupDate"
     static func legacyReferenceRange(_ type: MeasurementType, _ horseID: UUID) -> String {
       "referenceRange.\(horseID.uuidString).\(type.rawValue)"
     }

@@ -49,6 +49,29 @@ struct SettingsView: View {
         )
       }
 
+      Section {
+        NavigationLink {
+          CSVExportView()
+        } label: {
+          Label("CSV-Export", systemImage: "tablecells")
+        }
+        .accessibilityIdentifier("settings.csvExport")
+        NavigationLink {
+          BackupView()
+        } label: {
+          LabeledContent {
+            Text(
+              appState.lastBackupDate.map { $0.formatted(date: .abbreviated, time: .omitted) }
+                ?? String(localized: "noch keins"))
+          } label: {
+            Label("Backup", systemImage: "externaldrive")
+          }
+        }
+        .accessibilityIdentifier("settings.backup")
+      } header: {
+        Text("Daten")
+      }
+
       Section("iCloud-Synchronisierung") {
         // SPEC 4.10: shown until `cloudSyncEnabled` is on.
         LabeledContent("Status") {

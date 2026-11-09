@@ -10,6 +10,26 @@
 	<array>
 		<string>de.aylu.EquiHealth.reminderRefresh</string>
 	</array>
+	<key>UTExportedTypeDeclarations</key>
+	<array>
+		<dict>
+			<key>UTTypeIdentifier</key>
+			<string>de.aylu.equihealth.backup</string>
+			<key>UTTypeDescription</key>
+			<string>EquiHealth-Backup</string>
+			<key>UTTypeConformsTo</key>
+			<array>
+				<string>com.apple.package</string>
+			</array>
+			<key>UTTypeTagSpecification</key>
+			<dict>
+				<key>public.filename-extension</key>
+				<array>
+					<string>equibackup</string>
+				</array>
+			</dict>
+		</dict>
+	</array>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>fetch</string>
