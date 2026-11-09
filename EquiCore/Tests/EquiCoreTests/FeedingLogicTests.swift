@@ -136,3 +136,62 @@ struct FeedingLogicTests {
     #expect(kg(9, .mineral) == nil, "Messbecher sind nicht in kg umrechenbar")
   }
 }
+
+@Suite("Abweichungen vom Futterplan (F-FUTTER-04, F-FUTTER-05, Q-033)")
+struct FeedingDeviationTests {
+  private var calendar: Calendar {
+    var calendar = Calendar(identifier: .gregorian)
+    calendar.timeZone = TimeZone(identifier: "Europe/Berlin")!
+    return calendar
+  }
+
+  private func date(_ y: Int, _ m: Int, _ d: Int, _ h: Int = 12) -> Date {
+    calendar.date(from: DateComponents(year: y, month: m, day: d, hour: h))!
+  }
+
+  @Test("Position für einen Tag auslassen oder mit anderer Menge füttern, wieder zurücksetzen")
+  func deviations() throws {
+    let context = ModelContext(try EquiModelContainer.make(inMemory: true))
+    let horse = Horse(name: "Luna")
+    let hay = Feed(name: "Heu", category: .roughage)
+    let oats = Feed(name: "Hafer", category: .concentrate)
+    context.insert(horse)
+    context.insert(hay)
+    context.insert(oats)
+    horse.applyFeedingPlan(
+      [
+        FeedingPlanLine(feedID: hay.id, amount: 8, unit: .kilogram, meal: .adLibitum),
+        FeedingPlanLine(feedID: oats.id, amount: 500, unit: .gram, meal: .morning),
+      ], from: date(2026, 11, 1), feeds: [hay, oats], in: context, calendar: calendar)
+    try context.save()
+
+    let day = date(2026, 11, 9, 7)
+    let entries = horse.feedingDay(day, calendar: calendar)
+    let hayItem = try #require(entries.first { $0.planItem.feed === hay }?.planItem)
+    let oatsItem = try #require(entries.first { $0.planItem.feed === oats }?.planItem)
+
+    horse.setFeedingDeviation(for: oatsItem, on: day, amount: nil, unit: .gram, in: context, calendar: calendar)
+    horse.setFeedingDeviation(for: hayItem, on: day, amount: 4, unit: .kilogram, in: context, calendar: calendar)
+    horse.setFeedingDeviation(for: hayItem, on: day, amount: 5, unit: .kilogram, in: context, calendar: calendar)
+    context.insert(FeedingLog(horse: horse, feed: oats, amount: 200, unit: .gram, timestamp: date(2026, 11, 9, 18)))
+    try context.save()
+
+    let changed = horse.feedingDay(day, calendar: calendar)
+    #expect(changed.first { $0.planItem === oatsItem }?.isOmitted == true)
+    #expect(changed.first { $0.planItem === oatsItem }?.effectiveAmount == 0)
+    #expect(changed.first { $0.planItem === hayItem }?.effectiveAmount == 5, "Zweite Änderung ersetzt die erste")
+    #expect(horse.extraFeedingLogs(onDayOf: day, calendar: calendar).count == 1)
+    #expect(try context.fetchCount(FetchDescriptor<FeedingLog>()) == 3)
+
+    let totals = horse.dailyFeedTotals(from: day, through: day, calendar: calendar)
+    #expect(totals.first { $0.category == .roughage }?.kilograms == 5)
+    #expect(totals.first { $0.category == .concentrate }?.kilograms == 0.2, "Nur die Zusatzgabe zählt")
+
+    // Other days are not affected.
+    #expect(horse.feedingDay(date(2026, 11, 10), calendar: calendar).allSatisfy { $0.deviation == nil })
+
+    horse.clearFeedingDeviation(for: hayItem, on: day, in: context, calendar: calendar)
+    try context.save()
+    #expect(horse.feedingDay(day, calendar: calendar).first { $0.planItem === hayItem }?.effectiveAmount == 8)
+  }
+}

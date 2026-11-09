@@ -1,7 +1,7 @@
 import Foundation
 import SwiftData
 
-extension EquiSchemaV2 {
+extension EquiSchemaV3 {
   /// A location used for weather lookups (F-WETTER-02). Not owned by a single user (F-TEIL-01).
   @Model
   public final class Stable: EquiRecord {

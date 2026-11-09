@@ -28,6 +28,27 @@ public struct DailyFeedTotal: Equatable, Sendable {
   public let kilograms: Double
 }
 
+/// A plan position on one day with its deviation, if any (F-FUTTER-05, Q-033).
+public struct FeedingDayEntry: Identifiable {
+  public let planItem: FeedingPlanItem
+  /// Replacement or omission recorded for this position on that day.
+  public let deviation: FeedingLog?
+
+  public var id: UUID { planItem.id }
+
+  public var isOmitted: Bool { deviation?.kind == .omission }
+
+  /// Amount actually fed: the plan amount, the replacement amount, or 0 when left out.
+  public var effectiveAmount: Double {
+    guard let deviation else { return planItem.amount }
+    return deviation.kind == .omission ? 0 : deviation.amount
+  }
+
+  public var effectiveUnit: FeedUnit {
+    deviation.map { $0.kind == .omission ? planItem.unit : $0.unit } ?? planItem.unit
+  }
+}
+
 extension FeedUnit {
   /// Factor to kilograms for mass units; `nil` for units that cannot be converted
   /// (liter, scoop, flake – Q-004).
@@ -76,6 +97,52 @@ extension Horse {
       .sorted { $0.timestamp < $1.timestamp }
   }
 
+  /// Additional feedings on the calendar day of `day` (kind `.extra`, F-FUTTER-04).
+  public func extraFeedingLogs(onDayOf day: Date, calendar: Calendar = .current) -> [FeedingLog] {
+    feedingLogs(onDayOf: day, calendar: calendar).filter { $0.kind == .extra }
+  }
+
+  /// Plan positions of the calendar day of `day` with their deviations (F-FUTTER-05, Q-033).
+  /// The plan valid at noon of that day is used.
+  public func feedingDay(_ day: Date, calendar: Calendar = .current) -> [FeedingDayEntry] {
+    let start = calendar.startOfDay(for: day)
+    let noon = calendar.date(byAdding: .hour, value: 12, to: start) ?? start
+    let deviations = feedingLogs(onDayOf: day, calendar: calendar).filter { $0.kind != .extra }
+    return feedingPlan(at: noon).map { item in
+      let match =
+        deviations
+        .filter { $0.feed?.id == item.feed?.id && $0.mealRaw == item.mealRaw }
+        .max { $0.updatedAt < $1.updatedAt }
+      return FeedingDayEntry(planItem: item, deviation: match)
+    }
+  }
+
+  /// Records that `item` was fed with `amount` (`nil` = left out) on the day of `day` (Q-033).
+  /// Replaces an earlier deviation of the same position on that day.
+  public func setFeedingDeviation(
+    for item: FeedingPlanItem, on day: Date, amount: Double?, unit: FeedUnit, in context: ModelContext,
+    calendar: Calendar = .current
+  ) {
+    clearFeedingDeviation(for: item, on: day, in: context, calendar: calendar)
+    let start = calendar.startOfDay(for: day)
+    let noon = calendar.date(byAdding: .hour, value: 12, to: start) ?? start
+    let log = FeedingLog(horse: self, feed: item.feed, amount: amount ?? 0, unit: unit, timestamp: noon)
+    log.kind = amount == nil ? .omission : .replacement
+    log.meal = item.meal
+    context.insert(log)
+    touch()
+  }
+
+  /// Removes every deviation of `item` on the day of `day`, so the plan applies again (Q-033).
+  public func clearFeedingDeviation(
+    for item: FeedingPlanItem, on day: Date, in context: ModelContext, calendar: Calendar = .current
+  ) {
+    for log in feedingLogs(onDayOf: day, calendar: calendar)
+    where log.kind != .extra && log.feed?.id == item.feed?.id && log.mealRaw == item.mealRaw {
+      context.delete(log)
+    }
+  }
+
   /// Start dates of all plan versions, newest first (F-FUTTER-03).
   public var feedingPlanVersionDates: [Date] {
     Array(Set((feedingPlanItems ?? []).map(\.validFrom))).sorted(by: >)
@@ -115,7 +182,8 @@ extension Horse {
     touch()
   }
 
-  /// Daily kilograms per feed category from plan and additional feedings (F-FUTTER-06).
+  /// Daily kilograms per feed category from the plan (with that day's deviations) and additional
+  /// feedings (F-FUTTER-06, Q-033).
   /// Amounts in units that cannot be converted to kilograms are left out (Q-004).
   public func dailyFeedTotals(
     from startDate: Date, through endDate: Date, calendar: Calendar = .current
@@ -125,11 +193,11 @@ extension Horse {
     let last = calendar.startOfDay(for: endDate)
     while day <= last {
       var perCategory: [FeedCategory: Double] = [:]
-      for item in feedingPlan(at: day) {
-        guard let factor = item.unit.kilogramsPerUnit, let feed = item.feed else { continue }
-        perCategory[feed.category, default: 0] += item.amount * factor
+      for entry in feedingDay(day, calendar: calendar) {
+        guard let factor = entry.effectiveUnit.kilogramsPerUnit, let feed = entry.planItem.feed else { continue }
+        perCategory[feed.category, default: 0] += entry.effectiveAmount * factor
       }
-      for log in feedingLogs(onDayOf: day, calendar: calendar) {
+      for log in extraFeedingLogs(onDayOf: day, calendar: calendar) {
         guard let factor = log.unit.kilogramsPerUnit, let feed = log.feed else { continue }
         perCategory[feed.category, default: 0] += log.amount * factor
       }

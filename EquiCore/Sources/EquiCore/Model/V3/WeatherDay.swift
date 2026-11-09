@@ -1,7 +1,7 @@
 import Foundation
 import SwiftData
 
-extension EquiSchemaV2 {
+extension EquiSchemaV3 {
   /// Locally cached daily weather (F-WETTER-03). Lives in its own local store and is never synced.
   @Model
   public final class WeatherDay: EquiRecord {

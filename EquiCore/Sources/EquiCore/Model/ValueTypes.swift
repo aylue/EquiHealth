@@ -67,6 +67,16 @@ public enum FeedUnit: String, CaseIterable, Codable, Sendable {
   case flake
 }
 
+/// Kind of a feeding log entry (F-FUTTER-04, Q-033).
+public enum FeedingLogKind: String, CaseIterable, Codable, Sendable {
+  /// Additional or one-off feeding on top of the plan.
+  case extra
+  /// A plan position was fed with a different amount that day (`FeedingLog.amount`).
+  case replacement
+  /// A plan position was left out that day.
+  case omission
+}
+
 /// Meal slot of a feeding plan item.
 public enum Meal: String, CaseIterable, Codable, Sendable {
   case morning

@@ -1,7 +1,7 @@
 import Foundation
 import SwiftData
 
-extension EquiSchemaV2 {
+extension EquiSchemaV3 {
   /// A single measured value (SPEC entity `Measurement`, F-MESS-01).
   // ANNAHME: Swift-Klasse heißt `BodyMeasurement`, damit sie `Foundation.Measurement` nicht
   // verdeckt, das für die Anzeige gebraucht wird (F-ARCH-04). Siehe OPEN_QUESTIONS.md.

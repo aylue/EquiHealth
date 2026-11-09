@@ -1,7 +1,7 @@
 import Foundation
 import SwiftData
 
-extension EquiSchemaV2 {
+extension EquiSchemaV3 {
   /// A managed horse. Root of all horse-related records (F-TEIL-01); deleting it deletes them (F-PFERD-01).
   @Model
   public final class Horse: EquiRecord {

@@ -6,16 +6,20 @@ import Testing
 
 @Suite("Schema-Versionen und Migration (F-ARCH-08, NF-10)")
 struct MigrationTests {
-  @Test("F-ARCH-08: V2 ist eine rein additive Erweiterung von V1")
-  func v2IsAdditive() throws {
-    let v1 = Schema(versionedSchema: EquiSchemaV1.self)
-    let v2 = Schema(versionedSchema: EquiSchemaV2.self)
-    for oldEntity in v1.entities {
+  /// All schema versions in migration order.
+  static let versions: [any VersionedSchema.Type] = [EquiSchemaV1.self, EquiSchemaV2.self, EquiSchemaV3.self]
+
+  @Test(
+    "F-ARCH-08: Jede Schemaversion ist eine rein additive Erweiterung der vorherigen", arguments: 1..<versions.count)
+  func versionIsAdditive(index: Int) throws {
+    let old = Schema(versionedSchema: Self.versions[index - 1])
+    let new = Schema(versionedSchema: Self.versions[index])
+    for oldEntity in old.entities {
       let newEntity = try #require(
-        v2.entities.first { $0.name == oldEntity.name }, "Entität \(oldEntity.name) fehlt in V2")
+        new.entities.first { $0.name == oldEntity.name }, "Entität \(oldEntity.name) fehlt in V\(index + 1)")
       for attribute in oldEntity.attributes {
         let match = newEntity.attributes.first { $0.name == attribute.name }
-        #expect(match != nil, "\(oldEntity.name).\(attribute.name) fehlt in V2")
+        #expect(match != nil, "\(oldEntity.name).\(attribute.name) fehlt")
         #expect(match?.valueType == attribute.valueType, "\(oldEntity.name).\(attribute.name) hat neuen Typ")
         #expect(match?.isOptional == attribute.isOptional, "\(oldEntity.name).\(attribute.name) Optionalität geändert")
       }
@@ -26,9 +30,15 @@ struct MigrationTests {
     }
   }
 
-  @Test("F-ARCH-08: Auch das eingefrorene Schema V1 ist CloudKit-konform")
-  func v1IsCloudKitCompliant() {
-    for entity in Schema(versionedSchema: EquiSchemaV1.self).entities {
+  @Test("Migrationsplan kennt alle Versionen in Reihenfolge")
+  func migrationPlanListsAllVersions() {
+    #expect(EquiMigrationPlan.schemas.map { "\($0)" } == Self.versions.map { "\($0)" })
+    #expect(EquiMigrationPlan.stages.count == Self.versions.count - 1)
+  }
+
+  @Test("F-ARCH-08: Auch eingefrorene Schemaversionen sind CloudKit-konform", arguments: 0..<versions.count)
+  func frozenVersionsAreCloudKitCompliant(index: Int) {
+    for entity in Schema(versionedSchema: Self.versions[index]).entities {
       for attribute in entity.attributes {
         #expect(attribute.isOptional || attribute.defaultValue != nil, "\(entity.name).\(attribute.name)")
         #expect(!attribute.isUnique)
@@ -39,7 +49,7 @@ struct MigrationTests {
     }
   }
 
-  @Test("Ein Store mit Schema V1 wird beim Öffnen auf V2 migriert, Daten bleiben erhalten")
+  @Test("Ein Store mit Schema V1 wird beim Öffnen auf die aktuelle Version migriert, Daten bleiben erhalten")
   func migratesV1StoreOnDisk() throws {
     let directory = FileManager.default.temporaryDirectory.appending(path: "EquiMigration-\(UUID().uuidString)")
     try FileManager.default.createDirectory(at: directory, withIntermediateDirectories: true)
