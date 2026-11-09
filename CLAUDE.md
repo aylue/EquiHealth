@@ -48,17 +48,17 @@ Native iPhone-/iPad-App (SwiftUI, SwiftData) zum Erfassen von Gesundheitsdaten v
 
 ## Befehle
 
-In Phase 0 mit den tatsächlichen Scheme- und Simulator-Namen ergänzen (`xcrun simctl list devices available`):
+Scheme `EquiHealth`, Simulatoren aus Xcode 26.1.1 (siehe `OPEN_QUESTIONS.md` Q-001):
 
 ```bash
 # Build iPhone
-xcodebuild -scheme EquiHealth -destination 'platform=iOS Simulator,name=<iPhone-Simulator>' build
+xcodebuild -scheme EquiHealth -destination 'platform=iOS Simulator,name=iPhone 17 Pro' -derivedDataPath build/DerivedData build
 
 # Build iPad
-xcodebuild -scheme EquiHealth -destination 'platform=iOS Simulator,name=<iPad-Simulator>' build
+xcodebuild -scheme EquiHealth -destination 'platform=iOS Simulator,name=iPad Pro 11-inch (M5)' -derivedDataPath build/DerivedData build
 
 # Tests (App und EquiCore)
-xcodebuild -scheme EquiHealth -destination 'platform=iOS Simulator,name=<iPhone-Simulator>' test
+xcodebuild -scheme EquiHealth -destination 'platform=iOS Simulator,name=iPhone 17 Pro' -derivedDataPath build/DerivedData test
 swift test --package-path EquiCore
 
 # Formatierung prüfen

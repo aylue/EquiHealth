@@ -1,0 +1,116 @@
+{
+  "sourceLanguage": "de",
+  "strings": {
+    "Durchsuche Notizen, Symptome, Behandlungen und Medikamente.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Search notes, symptoms, treatments and medications."
+          }
+        }
+      }
+    },
+    "Durchsuchen": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Browse"
+          }
+        }
+      }
+    },
+    "Fällige Impfungen, Hufschmied- und Zahntermine erscheinen hier.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Upcoming vaccinations, farrier and dental appointments will appear here."
+          }
+        }
+      }
+    },
+    "Hier erscheinen Messwerte, Fütterung, Gesundheit und Behandlungen.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Measurements, feeding, health and treatments will appear here."
+          }
+        }
+      }
+    },
+    "Keine Termine": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No Appointments"
+          }
+        }
+      }
+    },
+    "Lege ein Pferd an, um Messwerte, Fütterung und Gesundheit zu erfassen.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Add a horse to record measurements, feeding and health."
+          }
+        }
+      }
+    },
+    "Noch keine Kategorien": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No Categories Yet"
+          }
+        }
+      }
+    },
+    "Noch keine Pferde": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No Horses Yet"
+          }
+        }
+      }
+    },
+    "Suche": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Search"
+          }
+        }
+      }
+    },
+    "Termine": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Appointments"
+          }
+        }
+      }
+    },
+    "Übersicht": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Summary"
+          }
+        }
+      }
+    }
+  },
+  "version": "1.0"
+}
