@@ -75,11 +75,13 @@ enum AppSheet: Identifiable, Hashable {
   case newSymptom
   case newCondition
   case newTreatment
+  case newFeedingLog
   case newHorse
   case horseProfile
   case horseManagement
   case stables
   case contacts
+  case feeds
   case settings
   case onboarding
 
@@ -90,11 +92,13 @@ enum AppSheet: Identifiable, Hashable {
     case .newSymptom: "newSymptom"
     case .newCondition: "newCondition"
     case .newTreatment: "newTreatment"
+    case .newFeedingLog: "newFeedingLog"
     case .newHorse: "newHorse"
     case .horseProfile: "horseProfile"
     case .horseManagement: "horseManagement"
     case .stables: "stables"
     case .contacts: "contacts"
+    case .feeds: "feeds"
     case .settings: "settings"
     case .onboarding: "onboarding"
     }

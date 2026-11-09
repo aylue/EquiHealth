@@ -2,7 +2,7 @@ import EquiCore
 import SwiftUI
 
 /// "Durchsuchen" tab: health categories with colour and SF Symbol (SPEC section 5).
-/// Fütterung and Training follow in later phases.
+/// Training follows in a later phase.
 struct BrowseView: View {
   var body: some View {
     NavigationStack {
@@ -20,6 +20,9 @@ struct BrowseView: View {
                 }
               }
               .accessibilityIdentifier("category.measurements")
+              categoryLink("Fütterung", systemImage: "leaf", color: .categoryFeeding, id: "feeding") {
+                FeedingOverviewView(horse: horse)
+              }
               categoryLink(
                 "Symptome und Krankheiten", systemImage: "cross.case", color: .categorySymptoms, id: "health"
               ) {

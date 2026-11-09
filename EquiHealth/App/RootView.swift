@@ -76,6 +76,10 @@ private struct AppSheetContent: View {
       ActiveHorseReader { horse in
         if let horse { TreatmentFormView(horse: horse) }
       }
+    case .newFeedingLog:
+      ActiveHorseReader { horse in
+        if let horse { FeedingLogFormView(horse: horse, log: nil) }
+      }
     case .newHorse:
       HorseFormView(horse: nil)
     case .horseProfile:
@@ -90,6 +94,8 @@ private struct AppSheetContent: View {
       NavigationStack { StablesView().closeButton() }
     case .contacts:
       NavigationStack { ContactsView().closeButton() }
+    case .feeds:
+      NavigationStack { FeedsView().closeButton() }
     case .settings:
       NavigationStack { SettingsView().closeButton() }
     case .onboarding:

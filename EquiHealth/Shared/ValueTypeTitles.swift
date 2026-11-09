@@ -191,3 +191,66 @@ extension TimelineKind {
     }
   }
 }
+
+extension FeedCategory {
+  nonisolated var title: String {
+    switch self {
+    case .roughage: String(localized: "Raufutter")
+    case .concentrate: String(localized: "Kraftfutter")
+    case .mineral: String(localized: "Mineralfutter")
+    case .supplement: String(localized: "Ergänzungsfutter")
+    case .succulent: String(localized: "Saftfutter")
+    case .other: String(localized: "Sonstiges")
+    }
+  }
+
+  nonisolated var systemImage: String {
+    switch self {
+    case .roughage: "leaf"
+    case .concentrate: "circle.grid.cross"
+    case .mineral: "cube"
+    case .supplement: "plus.circle"
+    case .succulent: "carrot"
+    case .other: "ellipsis.circle"
+    }
+  }
+}
+
+extension FeedUnit {
+  /// Short unit label for amounts, e.g. "8 kg" or "2 Scheiben".
+  nonisolated var symbol: String {
+    switch self {
+    case .kilogram: String(localized: "kg")
+    case .gram: String(localized: "g")
+    case .liter: String(localized: "l")
+    case .scoop: String(localized: "Messbecher")
+    case .flake: String(localized: "Scheiben")
+    }
+  }
+
+  nonisolated var title: String {
+    switch self {
+    case .kilogram: String(localized: "Kilogramm")
+    case .gram: String(localized: "Gramm")
+    case .liter: String(localized: "Liter")
+    case .scoop: String(localized: "Messbecher")
+    case .flake: String(localized: "Scheiben")
+    }
+  }
+
+  /// "8 kg", "0,5 l", "2 Scheiben".
+  nonisolated func format(_ amount: Double) -> String {
+    "\(amount.formatted(.number.precision(.fractionLength(0...2)))) \(symbol)"
+  }
+}
+
+extension Meal {
+  nonisolated var title: String {
+    switch self {
+    case .morning: String(localized: "Morgens")
+    case .noon: String(localized: "Mittags")
+    case .evening: String(localized: "Abends")
+    case .adLibitum: String(localized: "Ad libitum")
+    }
+  }
+}

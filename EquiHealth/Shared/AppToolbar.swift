@@ -67,6 +67,7 @@ private struct AppToolbar: ViewModifier {
       Divider()
       Button("Symptom", systemImage: "cross.case") { appState.sheet = .newSymptom }
       Button("Behandlung", systemImage: "stethoscope") { appState.sheet = .newTreatment }
+      Button("Fütterung", systemImage: "leaf") { appState.sheet = .newFeedingLog }
       Button("Krankheit", systemImage: "heart.text.clipboard") { appState.sheet = .newCondition }
     } label: {
       Label("Hinzufügen", systemImage: "plus")
@@ -82,6 +83,7 @@ private struct AppToolbar: ViewModifier {
       Button("Pferdeverwaltung", systemImage: "list.bullet") { appState.sheet = .horseManagement }
       Button("Ställe", systemImage: "house") { appState.sheet = .stables }
       Button("Kontakte", systemImage: "person.crop.rectangle.stack") { appState.sheet = .contacts }
+      Button("Futtermittel", systemImage: "leaf") { appState.sheet = .feeds }
       Divider()
       Button("Einstellungen", systemImage: "gear") { appState.sheet = .settings }
     } label: {
