@@ -93,11 +93,16 @@ class EquiUITestCase: XCTestCase {
     app.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.05)).tap()
   }
 
-  /// Scrolls the frontmost list until `element` is hittable.
+  /// Scrolls the frontmost list until `element` is hittable: first down, then back up.
   func scrollTo(_ element: XCUIElement, maxSwipes: Int = 8) {
     var swipes = 0
     while !(element.exists && element.isHittable) && swipes < maxSwipes {
       app.swipeUp(velocity: .slow)
+      swipes += 1
+    }
+    swipes = 0
+    while !(element.exists && element.isHittable) && swipes < maxSwipes * 2 {
+      app.swipeDown(velocity: .slow)
       swipes += 1
     }
     XCTAssertTrue(element.waitForExistence(timeout: 3), "Element nicht gefunden: \(element)")

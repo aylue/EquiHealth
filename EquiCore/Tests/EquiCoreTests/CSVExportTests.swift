@@ -120,3 +120,50 @@ struct CSVExportTests {
     #expect(csv.contains(";Lünä;bodyTemperature;37,6;°C;2026-11-09T08:00:00+01:00;"))
   }
 }
+
+/// Writes sample CSV files for a manual check in Excel and Numbers when `EQUI_CSV_SAMPLE_DIR` is set
+/// (Phase 6 acceptance). Without the variable this test does nothing.
+@Suite("CSV-Beispieldateien")
+struct CSVSampleFiles {
+  @Test("Beispieldateien für Excel/Numbers schreiben")
+  func writeSamples() async throws {
+    guard let path = ProcessInfo.processInfo.environment["EQUI_CSV_SAMPLE_DIR"] else { return }
+    let container = try EquiModelContainer.make(inMemory: true)
+    let context = ModelContext(container)
+    let horse = Horse(name: "Lünä „Süße“")
+    horse.breed = "Deutsches Reitpony"
+    horse.sex = .mare
+    horse.notes = "Frisst gern Äpfel; mag keine \"Möhren\"\nZweite Zeile, mit Komma"
+    horse.birthDate = Date(timeIntervalSince1970: 1_400_000_000)
+    context.insert(horse)
+    let now = Date(timeIntervalSince1970: 1_794_300_000)
+    context.insert(BodyMeasurement(horse: horse, type: .weight, value: 540.5, timestamp: now, method: .scale))
+    context.insert(
+      BodyMeasurement(horse: horse, type: .bodyTemperature, value: 37.8, timestamp: now, method: .thermometer))
+    let hay = Feed(name: "Heu (1. Schnitt)", category: .roughage, defaultUnit: .kilogram)
+    context.insert(hay)
+    horse.applyFeedingPlan(
+      [FeedingPlanLine(feedID: hay.id, amount: 8.25, unit: .kilogram, meal: .adLibitum)], from: now, feeds: [hay],
+      in: context)
+    let treatment = Treatment(horse: horse, kind: .veterinarian, date: now)
+    treatment.descriptionText = "Kolik-Untersuchung; Rektale Untersuchung, \"unauffällig\""
+    treatment.cost = 120.5
+    context.insert(treatment)
+    let medication = Medication(treatment: treatment, productName: "Flunixin")
+    medication.dose = 12.5
+    medication.doseUnit = "ml"
+    medication.foodWithdrawalDays = 5
+    context.insert(medication)
+    try context.save()
+
+    for format in CSVFormat.allCases {
+      let folder = URL(filePath: path).appending(path: format.rawValue)
+      try FileManager.default.createDirectory(at: folder, withIntermediateDirectories: true)
+      let files = try await CSVExporter(modelContainer: container).makeFiles(
+        horseIDs: [horse.id], areas: Set(CSVArea.allCases), interval: nil, format: format)
+      for file in files {
+        try file.data.write(to: folder.appending(path: file.name))
+      }
+    }
+  }
+}

@@ -68,9 +68,14 @@ final class WeatherUITests: EquiUITestCase {
     openAddMenu("Symptom")
     pickPastDate(monthsBack: 12, day: 15, in: app.datePickers["symptom.start"])
     app.buttons["save"].tap()
+    XCTAssertTrue(app.buttons["save"].waitForNonExistence(timeout: 5), "Symptom-Formular schließt")
     let row = app.buttons.matching(NSPredicate(format: "label CONTAINS 'Husten'")).firstMatch
     XCTAssertTrue(row.waitForExistence(timeout: 5))
+    let weatherHeader = app.staticTexts["Wetter am Beginn und den 3 Tagen davor"]
     row.coordinate(withNormalizedOffset: CGVector(dx: 0.2, dy: 0.5)).tap()
-    XCTAssertTrue(app.staticTexts["Wetter am Beginn und den 3 Tagen davor"].waitForExistence(timeout: 10))
+    if !weatherHeader.waitForExistence(timeout: 5) {
+      row.coordinate(withNormalizedOffset: CGVector(dx: 0.2, dy: 0.5)).tap()
+    }
+    XCTAssertTrue(weatherHeader.waitForExistence(timeout: 10))
   }
 }

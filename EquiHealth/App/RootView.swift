@@ -1,3 +1,4 @@
+import Combine
 import EquiCore
 import SwiftData
 import SwiftUI
@@ -40,7 +41,8 @@ struct RootView: View {
       AppSheetContent(sheet: sheet)
         .interactiveDismissDisabled(sheet == .onboarding)
     }
-    .onReceive(NotificationCenter.default.publisher(for: ModelContext.didSave)) { _ in
+    // Saves of background contexts (weather cache, backup restore) arrive off the main thread.
+    .onReceive(NotificationCenter.default.publisher(for: ModelContext.didSave).receive(on: DispatchQueue.main)) { _ in
       // F-ERIN-05: re-plan after every change.
       notifications.scheduleReschedule()
     }

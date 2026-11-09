@@ -4,7 +4,7 @@ Stand: 10. November 2026 · Toolchain: Xcode 27.2, Swift 6.4.2, Deployment-Targe
 
 ## Aktuelle Phase
 
-**Phase 5 – Wetter: abgeschlossen, wartet auf Freigabe.**
+**Phase 6 – Export und Backup: abgeschlossen, wartet auf Freigabe.**
 
 ## Erledigt
 
@@ -54,7 +54,7 @@ Xcode-Projekt, Swift Package `EquiCore` mit SwiftData-Schema V1 (CloudKit-konfor
 - **Behoben während der Abnahme:** Die App stürzte beim Antippen einer Mitteilungsaktion ab, weil der Abschluss-Handler nicht auf dem Main Thread lief. Außerdem öffnete sich das Vorlagen-Menü im Formular nicht zuverlässig; es ist jetzt eine sichtbare Liste.
 - **Logik in EquiCore:** `ReminderRule.nextDueDate`, `.isFulfilled(by:)`, `IntervalUnit.add`, `ReminderPlanner.plan` (64er-Limit).
 
-### Phase 5 – Wetter
+### Phase 5 – Wetter ✅ (freigegeben)
 
 - **Bright Sky (4.7):** `WeatherProvider`-Protokoll (F-ARCH-03), `BrightSkyProvider` als einziger Netzwerkzugriff der App. Stundenwerte werden zu Tageswerten verdichtet: Temperatur min/mittel/max, Niederschlagssumme, mittlere Luftfeuchte, maximale Böe, vorherrschende Wetterlage, Station (F-WETTER-01). Koordinaten werden auf 2 Nachkommastellen gerundet (NF-01).
 - **Standort:** Für Wetter gilt der Stall, an dem das Pferd am jeweiligen Tag stand. Ohne Stall erscheint „Stall hinterlegen“, ohne Standort ein eigener Hinweis (F-WETTER-02). Den Stall-Standort setzt man über den aktuellen Standort (einmalig), die Ortssuche oder Koordinaten (Q-017, Q-044). Die erste Stallzuordnung kann einen unbekannten Beginn haben (Q-042).
@@ -64,29 +64,40 @@ Xcode-Projekt, Swift Package `EquiCore` mit SwiftData-Schema V1 (CloudKit-konfor
 - **Offline/Fehler:** Es werden zwischengespeicherte Daten gezeigt, sonst ein dezenter Hinweis. Kein Dialog, kein Absturz (F-WETTER-06).
 - **Nicht umgesetzt:** zweiter Anbieter (F-WETTER-07, KANN, Q-046).
 
-## Prüfergebnisse Phase 5 (iPhone 18 Pro, iOS 27.2)
+### Phase 6 – Export und Backup
+
+- **CSV-Export (4.8):** neun Dateien (Pferde, Messwerte, Fütterung mit Plan und Abweichungen, Symptome, Krankheiten, Behandlungen, Medikamente mit Warte-/Karenzzeit-Enddaten, Erinnerungen, Trainingseinheiten) (F-CSV-01, F-BEH-12). Filter nach Pferden, Zeitraum und Bereichen (F-CSV-02, Q-049). Formate „Excel (Deutsch)“ (Semikolon, Dezimalkomma) und „Standard“ (Komma, Dezimalpunkt), beide UTF-8 mit BOM, CRLF, ISO 8601 (F-CSV-03). Gesichert wird in einen Ordner über `fileExporter` (alle Dateien) oder über das Teilen-Menü (F-CSV-04). Maskierung nach RFC 4180 (F-CSV-05). Erreichbar unter Einstellungen › Daten › CSV-Export.
+- **Backup (4.9):** `.equibackup`-Paket mit `backup.json` plus Fotos, Anhängen und Routen (F-BACKUP-01). Das Format mit `schemaVersion`, `appVersion` und `exportedAt` liegt in EquiCore und ist in `BACKUP_FORMAT.md` dokumentiert (F-BACKUP-02).
+- **Wiederherstellen:** Vorschau, dann Zusammenführen (UUID entscheidet, nichts doppelt) oder Ersetzen (F-BACKUP-03). Ältere Schemaversionen lassen sich importieren (F-BACKUP-04). Der Import ist transaktional, ganz oder gar nicht (NF-06). „Letztes Backup“ steht in den Einstellungen (F-BACKUP-05).
+- **Nicht auf dem Main Actor:** CSV-Export und Backup laufen in eigenen `ModelActor`s (NF-05).
+
+## Prüfergebnisse Phase 6 (iPhone 18 Pro, iOS 27.2)
 
 | Prüfung | Ergebnis |
 | --- | --- |
 | Build iPhone | ✅ ohne Compiler-Warnungen |
 | Build iPad | ⏸ ausgesetzt (Q-014) |
-| `swift test --package-path EquiCore` | ✅ 62 Tests grün (u. a. Abnahmefall: Symptom vom letzten Jahr → 4 Tageswerte mit 1 Anfrage, zweiter Aufruf 0 Anfragen aus dem Cache; offline → Cache plus Fehlerhinweis ohne Ausnahme; Rundung; Bright-Sky-Anfrage und JSON) |
-| App-Unit-Tests | ✅ 13 Tests grün (u. a. Stall pro Tag, Umzug zwischen zwei Ställen, offline) |
-| UI-Test Abnahme Phase 5: Stall mit Standort in Münster, Husten vom 15.11.2025 → 4 Tageswerte mit Quellenangabe, Wetterzeile in der Zeitleiste | ✅ |
-| UI-Test offline: dezenter Hinweis, kein Dialog | ✅ |
-| UI-Tests Phase 0–4 | ✅ |
-| Ansichten visuell geprüft (Screenshots aus dem UI-Test) | ✅ |
+| `swift test --package-path EquiCore` | ✅ 76 Tests grün (u. a. RFC-4180-Maskierung, beide Formate mit BOM/CRLF, Filter; Backup-Roundtrip über alle 16 Entitäten mit Datei-Paket; Zusammenführen ohne Dubletten; Ersetzen; Import Schemaversion 1; Ablehnung ohne Datenänderung) |
+| App-Unit-Tests | ✅ 13 Tests grün |
+| UI-Test Export (NF-10): CSV in beiden Formaten (9 Dateien), Backup erstellen | ✅ |
+| UI-Tests Phase 0–5 | ✅ |
+| CSV mit unabhängigem Parser geprüft (Spaltenzahl, Umlaute, Maskierung, Dezimaltrennzeichen) | ✅ |
+| CSV in Numbers geöffnet (beide Formate: Spalten, Umlaute, Zeilenumbruch in Zelle) | ✅ |
+| CSV in Excel geöffnet | ⏳ Excel nicht installiert (Q-053) |
 | `swift format lint` | ✅ |
+
+Behoben während der Prüfung: `ModelContext.didSave` von Hintergrund-Kontexten (Wetter-Cache, Backup) wurde ohne Umweg über den Main Thread an die Oberfläche weitergereicht (Laufzeitwarnung „Publishing changes from background threads“).
 
 ## Nächster Schritt
 
-Phase 6 – Export und Backup (4.8, 4.9). Die Volltextsuche bleibt für Phase 9 vorgemerkt (Q-029).
+Phase 7 – iCloud-Sync und Teilen vorbereiten (4.10, 4.12) mit vollständiger `ENABLE_CLOUDKIT.md`. Die Volltextsuche bleibt für Phase 9 vorgemerkt (Q-029).
 
 ## Bekannte Probleme
 
 - Im Gesamtlauf blieb ein UI-Test einmal beim ersten Antippen hängen. Es gab keine fehlgeschlagene Prüfung, und das Ergebnispaket war unvollständig („result: unknown“). Bei der Wiederholung war er grün. Ursache ist die Simulator-Infrastruktur, nicht die App. Abhilfe: betroffene Testklasse mit `-only-testing:` wiederholen.
 - Der erste App-Start nach dem Kaltstart eines Simulators dauert sehr lange. Ein Testlauf direkt danach kann mit „Test crashed with signal kill before establishing connection“ scheitern. Abhilfe: Simulator vorher booten (`xcrun simctl boot "iPhone 18 Pro"`) oder den Lauf wiederholen.
-- Die UI-Tests dauern zusammen rund 15 bis 22 Minuten.
+- Die UI-Tests dauern zusammen rund 18 bis 25 Minuten.
+- CSV-Beispieldateien für eine Prüfung in Excel/Numbers erzeugt `EQUI_CSV_SAMPLE_DIR=build/csv-samples swift test --package-path EquiCore --filter CSVSampleFiles`.
 - UI-Tests nutzen nie das Netz: Mit `-uiTesting` liefert ein fester Test-Anbieter das Wetter, mit `-weatherOffline` scheitert er absichtlich (Q-047).
 - Der Erinnerungs-Test braucht die Mitteilungsfreigabe im Simulator. Beim ersten Lauf bestätigt er den Systemdialog selbst; danach bleibt die Freigabe im Simulator gespeichert. Texteingaben warten auf den Tastaturfokus, Schalter werden nach dem Umlegen geprüft.
 - Die Fotoauswahl des Systems läuft in einem eigenen Prozess und lässt sich im UI-Test nicht zuverlässig bedienen. Nur in Debug-Builds mit `-uiTesting` gibt es deshalb den Knopf „Testfoto hinzufügen“; er nutzt denselben Speicherweg wie echte Fotos.
