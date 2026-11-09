@@ -1,7 +1,7 @@
 import XCTest
 
 /// Phase 3 acceptance: create a plan, change it, the day view shows the old plan for a day
-/// before the change (F-FUTTER-01 to -05).
+/// before the change; plan positions can be changed or left out for one day (F-FUTTER-01 to -05, Q-033).
 final class FeedingUITests: EquiUITestCase {
   func testPlanChangeKeepsOldPlanForEarlierDays() throws {
     launch()
@@ -57,12 +57,25 @@ final class FeedingUITests: EquiUITestCase {
     enter("1,5", into: app.textFields["log.amount"])
     app.buttons["save"].tap()
     XCTAssertTrue(text(containing: "1,5 kg").waitForExistence(timeout: 5))
+    // Leave out the plan position today, then record a different amount instead (Q-033).
+    let entry = app.buttons["day.entry"].firstMatch
+    entry.tap()
+    app.buttons["Heute auslassen"].tap()
+    XCTAssertTrue(text(containing: "heute ausgelassen").waitForExistence(timeout: 5))
+    entry.tap()
+    app.buttons["Andere Menge"].tap()
+    replaceText("5", in: app.textFields["deviation.amount"])
+    app.buttons["deviation.save"].tap()
+    XCTAssertTrue(text(containing: "Plan: 8 kg").waitForExistence(timeout: 5))
+    XCTAssertFalse(text(containing: "heute ausgelassen").exists)
+    XCTAssertTrue(text(containing: "6,5 kg").exists, "Tagesmenge = 5 kg statt 8 kg plus 1,5 kg Zusatzgabe")
     attachScreenshot("Fütterung heute")
 
     app.buttons["day.next"].tap()
     XCTAssertTrue(text(containing: "9 kg").waitForExistence(timeout: 5))
     XCTAssertFalse(text(containing: "8 kg").exists)
     XCTAssertFalse(text(containing: "1,5 kg").exists, "Zusatzgabe gehört nur zu ihrem Tag")
+    XCTAssertFalse(text(containing: "Plan: ").exists, "Abweichung gilt nur für ihren Tag")
     attachScreenshot("Fütterung morgen")
 
     app.buttons["day.previous"].tap()

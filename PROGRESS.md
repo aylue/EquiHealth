@@ -36,10 +36,11 @@ Xcode-Projekt, Swift Package `EquiCore` mit SwiftData-Schema V1 (CloudKit-konfor
 - **Futtermittel (4.3):** Stammdaten für alle Pferde mit Kategorie, Hersteller und Standardeinheit; anlegen, bearbeiten, archivieren. Erreichbar über Profil › Futtermittel und Durchsuchen › Fütterung (F-FUTTER-01).
 - **Futterplan:** pro Mahlzeit (morgens, mittags, abends, ad libitum) Futtermittel, Menge und Einheit (kg, g, Liter, Messbecher, Scheiben) (F-FUTTER-02).
 - **Planversionen:** Jede Änderung gilt ab einem wählbaren Datum und legt eine neue Version an. Unveränderte Positionen laufen weiter. Die Versionsliste und ein Hinweis auf künftig geltende Pläne sind sichtbar (F-FUTTER-03).
-- **Abweichungen und Zusatzgaben:** über „+“ › Fütterung oder direkt in der Tagesansicht (F-FUTTER-04).
+- **Abweichungen und Zusatzgaben:** Zusatzgaben über „+“ › Fütterung oder in der Tagesansicht. Planpositionen lassen sich dort für einen Tag auslassen oder mit anderer Menge erfassen (Tippen oder Wischen an der Position); die Tagesmenge zählt die tatsächliche Menge (F-FUTTER-04, Q-033).
 - **Fütterung an Tag X:** Plan des Tages, Zusatzgaben und Tagesmenge pro Kategorie; Tage mit Pfeilen oder Datumsauswahl wechseln (F-FUTTER-05).
 - **Tagesmengen im Verlauf:** gestapeltes Balkendiagramm in kg pro Kategorie über 30 Tage, 90 Tage oder 1 Jahr (F-FUTTER-06).
-- **Logik in EquiCore:** `Horse.feedingPlan(at:)`, `.applyFeedingPlan(_:from:feeds:in:)`, `.feedingLogs(onDayOf:)`, `.feedingPlanVersionDates`, `.dailyFeedTotals(from:through:)`.
+- **Schema V3 (Q-033):** `FeedingLog.kindRaw` und `.mealRaw`. V2 ist eingefroren (`Model/V2`), das aktuelle Modell liegt in `Model/V3`, die Migration läuft V1→V2→V3. Tests prüfen jede Versionsstufe auf „nur additiv“ und CloudKit-Konformität.
+- **Logik in EquiCore:** `Horse.feedingDay(_:)`, `.setFeedingDeviation`, `.clearFeedingDeviation`, `.extraFeedingLogs(onDayOf:)`, `Horse.feedingPlan(at:)`, `.applyFeedingPlan(_:from:feeds:in:)`, `.feedingLogs(onDayOf:)`, `.feedingPlanVersionDates`, `.dailyFeedTotals(from:through:)`.
 
 ## Prüfergebnisse Phase 3 (iPhone 18 Pro, iOS 27.2)
 
@@ -47,9 +48,9 @@ Xcode-Projekt, Swift Package `EquiCore` mit SwiftData-Schema V1 (CloudKit-konfor
 | --- | --- |
 | Build iPhone | ✅ ohne Compiler-Warnungen |
 | Build iPad | ⏸ ausgesetzt (Q-014) |
-| `swift test --package-path EquiCore` | ✅ 42 Tests grün |
+| `swift test --package-path EquiCore` | ✅ 44 Tests grün (inkl. Migration V1→V2→V3) |
 | App-Unit-Tests | ✅ 7 Tests grün |
-| UI-Test Abnahme Phase 3: Plan anlegen, ab morgen ändern; heute (vor der Änderung) alter Plan, morgen neuer Plan, gestern kein Plan; Zusatzgabe nur an ihrem Tag | ✅ |
+| UI-Test Abnahme Phase 3: Plan anlegen, ab morgen ändern; heute (vor der Änderung) alter Plan, morgen neuer Plan, gestern kein Plan; Zusatzgabe und Abweichung (auslassen, andere Menge) nur an ihrem Tag | ✅ |
 | UI-Tests Phase 0–2 | ✅ (der Messwerte-Test brauchte einen zweiten Lauf, siehe „Bekannte Probleme“) |
 | Ansichten visuell geprüft (Screenshots aus dem UI-Test) | ✅ |
 | `swift format lint` | ✅ |
@@ -69,4 +70,5 @@ Phase 4 – Erinnerungen (4.6), inklusive der dafür vorgemerkten Punkte aus Pha
 
 ## Hinweise
 
-- Neue Schemaversion anlegen: Ordner `Model/V2` nach `Model/V3` kopieren, die Kopie anpassen, `V2` einfrieren (Dateisuffix `V2`, Kommentar FROZEN), `CurrentSchema` umstellen, Stage in `EquiMigrationPlan` ergänzen, Additiv-Test erweitern.
+- Neue Schemaversion anlegen (zuletzt V3): Ordner `Model/V3` nach `Model/V4` kopieren, die Kopie anpassen, `V3` einfrieren (Dateisuffix `V3`, Kommentar FROZEN), Typaliase und `CurrentSchema` in die neue Schemadatei verschieben, Stage in `EquiMigrationPlan` ergänzen, `MigrationTests.versions` erweitern.
+- Der Mac hatte zwischenzeitlich keinen freien Speicher mehr. Builds und UI-Tests brauchen mehrere GB. `build/` im Projekt lässt sich jederzeit löschen.
