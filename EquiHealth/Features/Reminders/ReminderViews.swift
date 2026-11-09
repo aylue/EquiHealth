@@ -151,14 +151,23 @@ struct ReminderRuleFormView: View {
       Form {
         if rule == nil {
           Section {
-            Menu {
-              ForEach(ReminderTemplate.all) { template in
-                Button(template.title, systemImage: template.kind.systemImage) { apply(template) }
+            ForEach(ReminderTemplate.all) { template in
+              Button {
+                apply(template)
+              } label: {
+                HStack {
+                  Label(template.title, systemImage: template.kind.systemImage)
+                  Spacer()
+                  if kind == template.kind {
+                    Image(systemName: "checkmark").foregroundStyle(.tint).accessibilityLabel("ausgewählt")
+                  }
+                }
               }
-            } label: {
-              Label("Vorlage wählen", systemImage: "list.star")
+              .foregroundStyle(.primary)
+              .accessibilityIdentifier("reminder.template.\(template.kind.rawValue)")
             }
-            .accessibilityIdentifier("reminder.template")
+          } header: {
+            Text("Vorlage")
           } footer: {
             Text("Vorlagen enthalten nur Startwerte. Passe Intervall und Vorlauf an dein Pferd an.")
           }

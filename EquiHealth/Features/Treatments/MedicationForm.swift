@@ -70,7 +70,15 @@ struct MedicationDraft: Identifiable, Equatable {
     return (.none, "", .now)
   }
 
-  var isValid: Bool { productName.nilIfBlank != nil }
+  /// A vaccine with at least one disease may stay unnamed (reminder action "Erledigt").
+  var isValid: Bool { productName.nilIfBlank != nil || !vaccinationTargets.isEmpty }
+
+  /// Name shown and stored when no product name was entered.
+  var displayName: String {
+    if let name = productName.nilIfBlank { return name }
+    guard !vaccinationTargets.isEmpty else { return "" }
+    return String(localized: "Impfstoff (\(vaccinationTargets.map(\.title).formatted(.list(type: .and))))")
+  }
 
   private func days(_ text: String) -> Int? {
     DecimalInput.parse(text).map { Int($0.rounded()) }.flatMap { $0 >= 0 ? $0 : nil }
@@ -96,7 +104,7 @@ struct MedicationDraft: Identifiable, Equatable {
 
   /// Writes the draft into `medication`.
   func apply(to medication: Medication, isVaccination: Bool) {
-    medication.productName = productName.trimmingCharacters(in: .whitespacesAndNewlines)
+    medication.productName = displayName
     medication.activeIngredient = activeIngredient.nilIfBlank
     medication.dose = DecimalInput.parse(doseText)
     medication.doseUnit = doseUnit.nilIfBlank

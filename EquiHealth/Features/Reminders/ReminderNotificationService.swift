@@ -176,18 +176,26 @@ final class NotificationRouter: NSObject, UNUserNotificationCenterDelegate {
   }
 
   nonisolated func userNotificationCenter(
-    _ center: UNUserNotificationCenter, willPresent notification: UNNotification
-  ) async -> UNNotificationPresentationOptions {
-    [.banner, .list, .sound]
+    _ center: UNUserNotificationCenter, willPresent notification: UNNotification,
+    withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void
+  ) {
+    completionHandler([.banner, .list, .sound])
   }
 
+  /// UIKit requires the completion handler on the main thread; the `async` variant of this method
+  /// resumes on a background thread and crashes, so the handler variant is used.
   nonisolated func userNotificationCenter(
-    _ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse
-  ) async {
+    _ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse,
+    withCompletionHandler completionHandler: @escaping () -> Void
+  ) {
     let action = response.actionIdentifier
     let ruleID = (response.notification.request.content.userInfo[NotificationIdentifiers.ruleIDKey] as? String)
       .flatMap(UUID.init(uuidString:))
-    await handle(action: action, ruleID: ruleID)
+    nonisolated(unsafe) let completion = completionHandler
+    Task { @MainActor in
+      await self.handle(action: action, ruleID: ruleID)
+      completion()
+    }
   }
 
   /// "Erledigt" and a tap open the prefilled treatment entry; "In 1 Woche erinnern" postpones.

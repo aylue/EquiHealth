@@ -4,7 +4,7 @@ Stand: 9. November 2026 · Toolchain: Xcode 27.2, Swift 6.4.2, Deployment-Target
 
 ## Aktuelle Phase
 
-**Phase 3 – Fütterung: abgeschlossen, wartet auf Freigabe.**
+**Phase 4 – Erinnerungen: abgeschlossen, wartet auf Freigabe.**
 
 ## Erledigt
 
@@ -31,7 +31,7 @@ Xcode-Projekt, Swift Package `EquiCore` mit SwiftData-Schema V1 (CloudKit-konfor
 - **Menüs:** „+“ › Symptom, Behandlung, Krankheit; Profil › Kontakte; Durchsuchen › Symptome und Krankheiten, Behandlungen, Medikamente, Zeitleiste.
 - **Logik in EquiCore:** `WithdrawalCalculator`, `Medication.withdrawalEnd`, `Horse.activeWithdrawals`, `.ongoingSymptoms`, `.chronicConditions`, `.timeline`, `.lastVaccinations`.
 
-### Phase 3 – Fütterung
+### Phase 3 – Fütterung ✅ (freigegeben)
 
 - **Futtermittel (4.3):** Stammdaten für alle Pferde mit Kategorie, Hersteller und Standardeinheit; anlegen, bearbeiten, archivieren. Erreichbar über Profil › Futtermittel und Durchsuchen › Fütterung (F-FUTTER-01).
 - **Futterplan:** pro Mahlzeit (morgens, mittags, abends, ad libitum) Futtermittel, Menge und Einheit (kg, g, Liter, Messbecher, Scheiben) (F-FUTTER-02).
@@ -42,28 +42,41 @@ Xcode-Projekt, Swift Package `EquiCore` mit SwiftData-Schema V1 (CloudKit-konfor
 - **Schema V3 (Q-033):** `FeedingLog.kindRaw` und `.mealRaw`. V2 ist eingefroren (`Model/V2`), das aktuelle Modell liegt in `Model/V3`, die Migration läuft V1→V2→V3. Tests prüfen jede Versionsstufe auf „nur additiv“ und CloudKit-Konformität.
 - **Logik in EquiCore:** `Horse.feedingDay(_:)`, `.setFeedingDeviation`, `.clearFeedingDeviation`, `.extraFeedingLogs(onDayOf:)`, `Horse.feedingPlan(at:)`, `.applyFeedingPlan(_:from:feeds:in:)`, `.feedingLogs(onDayOf:)`, `.feedingPlanVersionDates`, `.dailyFeedTotals(from:through:)`.
 
-## Prüfergebnisse Phase 3 (iPhone 18 Pro, iOS 27.2)
+### Phase 4 – Erinnerungen
+
+- **Regeln (4.6):** pro Pferd mit frei wählbarem Intervall (Tage, Wochen, Monate, Jahre), Vorlaufzeit, Uhrzeit, erstem Termin und Aktiv-Schalter (F-ERIN-01, -02). Vorlagen für Influenza, Tetanus, Herpes, Zahnkontrolle, Hufschmied und Wurmkur liefern nur Startwerte (F-ERIN-03, Q-037). Erreichbar über „+“ › Erinnerung und den Tab „Termine“.
+- **Fälligkeit:** letzte passende Behandlung + Intervall, sonst der erste Termin. Bei Impf-Regeln zählt nur ein Impfstoff gegen die jeweilige Krankheit (Q-038).
+- **Termine-Tab:** alle Pferde, gruppiert in überfällig (rot mit Symbol), diesen Monat, später, ohne Termin und pausiert. Wischen › „Erledigt“ öffnet die vorbefüllte Behandlungs-Eingabe (F-ERIN-04). Die Übersicht zeigt „Demnächst fällig“ für das aktive Pferd (30 Tage).
+- **Mitteilungen:** lokale Benachrichtigungen mit Vorlauf und am Fälligkeitstag. Es werden höchstens 64 geplant, die frühesten zuerst. Neu geplant wird beim Start, nach jeder Änderung, beim Wechsel in den Hintergrund und per `BGAppRefreshTask` (F-ERIN-05, Q-040). Die Aktionen „Erledigt“ (öffnet die Eingabe mit Art und Impfstoff vorbelegt) und „In 1 Woche erinnern“ funktionieren (F-ERIN-06, Q-039). Pro Gerät abschaltbar (F-ERIN-07).
+- **Aus Phase 2 nachgeholt:** nächste Fälligkeit in der Impfübersicht (F-BEH-04), neu berechnete Fälligkeit im Behandlungsdetail (F-BEH-06), optionale Mitteilung bei Ende der Turnier-Karenzzeit (F-BEH-11).
+- **Onboarding:** jetzt 3 Schritte, der dritte fragt optional nach Mitteilungen (F-UI-06).
+- **Einstellungen:** Erinnerungen auf diesem Gerät, Karenzzeit-Mitteilung, Status der Mitteilungsfreigabe mit Erlauben bzw. Link in die iOS-Einstellungen.
+- **Behoben während der Abnahme:** Die App stürzte beim Antippen einer Mitteilungsaktion ab, weil der Abschluss-Handler nicht auf dem Main Thread lief. Außerdem öffnete sich das Vorlagen-Menü im Formular nicht zuverlässig; es ist jetzt eine sichtbare Liste.
+- **Logik in EquiCore:** `ReminderRule.nextDueDate`, `.isFulfilled(by:)`, `IntervalUnit.add`, `ReminderPlanner.plan` (64er-Limit).
+
+## Prüfergebnisse Phase 4 (iPhone 18 Pro, iOS 27.2)
 
 | Prüfung | Ergebnis |
 | --- | --- |
 | Build iPhone | ✅ ohne Compiler-Warnungen |
 | Build iPad | ⏸ ausgesetzt (Q-014) |
-| `swift test --package-path EquiCore` | ✅ 44 Tests grün (inkl. Migration V1→V2→V3) |
-| App-Unit-Tests | ✅ 7 Tests grün |
-| UI-Test Abnahme Phase 3: Plan anlegen, ab morgen ändern; heute (vor der Änderung) alter Plan, morgen neuer Plan, gestern kein Plan; Zusatzgabe und Abweichung (auslassen, andere Menge) nur an ihrem Tag | ✅ |
-| UI-Tests Phase 0–2 | ✅ (der Messwerte-Test brauchte einen zweiten Lauf, siehe „Bekannte Probleme“) |
+| `swift test --package-path EquiCore` | ✅ 52 Tests grün (u. a. Abnahmefall Influenza: Impfung 9.11.2026 → fällig 9.5.2027, Vorlauf 25.4.2027 9:00; 64er-Limit; Verschieben) |
+| App-Unit-Tests | ✅ 11 Tests grün (u. a. Mitteilungsaktionen „Erledigt“ und „In 1 Woche erinnern“) |
+| UI-Test Abnahme Phase 4: Regel aus Vorlage „Influenza, 6 Monate, 14 Tage Vorlauf“, Impfung erfassen → richtiges Fälligkeitsdatum; echte Mitteilung erscheint mit beiden Aktionen; „Erledigt“ öffnet die vorbefüllte Eingabe, die sich mit einem Tipp speichern lässt | ✅ |
+| UI-Tests Phase 0–3 | ✅ |
 | Ansichten visuell geprüft (Screenshots aus dem UI-Test) | ✅ |
 | `swift format lint` | ✅ |
 
 ## Nächster Schritt
 
-Phase 4 – Erinnerungen (4.6), inklusive der dafür vorgemerkten Punkte aus Phase 2 (Q-026) und des Onboarding-Schritts „Benachrichtigungen“ (Q-018). Die Volltextsuche bleibt für Phase 9 vorgemerkt (Q-029).
+Phase 5 – Wetter (4.7), inklusive Stall-Standort (Q-017), Wetter im Symptom-Detail (Q-025) und Lufttemperatur im Temperaturdiagramm (Q-019). Die Volltextsuche bleibt für Phase 9 vorgemerkt (Q-029).
 
 ## Bekannte Probleme
 
 - Im Gesamtlauf blieb ein UI-Test einmal beim ersten Antippen hängen. Es gab keine fehlgeschlagene Prüfung, und das Ergebnispaket war unvollständig („result: unknown“). Bei der Wiederholung war er grün. Ursache ist die Simulator-Infrastruktur, nicht die App. Abhilfe: betroffene Testklasse mit `-only-testing:` wiederholen.
 - Der erste App-Start nach dem Kaltstart eines Simulators dauert sehr lange. Ein Testlauf direkt danach kann mit „Test crashed with signal kill before establishing connection“ scheitern. Abhilfe: Simulator vorher booten (`xcrun simctl boot "iPhone 18 Pro"`) oder den Lauf wiederholen.
-- Die UI-Tests dauern zusammen rund 12 bis 15 Minuten. Texteingaben warten auf den Tastaturfokus, Schalter werden nach dem Umlegen geprüft.
+- Die UI-Tests dauern zusammen rund 12 bis 18 Minuten.
+- Der Erinnerungs-Test braucht die Mitteilungsfreigabe im Simulator. Beim ersten Lauf bestätigt er den Systemdialog selbst; danach bleibt die Freigabe im Simulator gespeichert. Texteingaben warten auf den Tastaturfokus, Schalter werden nach dem Umlegen geprüft.
 - Die Fotoauswahl des Systems läuft in einem eigenen Prozess und lässt sich im UI-Test nicht zuverlässig bedienen. Nur in Debug-Builds mit `-uiTesting` gibt es deshalb den Knopf „Testfoto hinzufügen“; er nutzt denselben Speicherweg wie echte Fotos.
 - Für den Fototest liegt ein Testbild in der Simulator-Mediathek (`xcrun simctl addmedia`). Für den aktuellen UI-Test ist es nicht mehr nötig.
 - Der Test auf einem echten Gerät steht noch aus (Q-012).

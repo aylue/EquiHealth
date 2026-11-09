@@ -90,7 +90,11 @@ struct TreatmentFormView: View {
               editingMedication = draft
             } label: {
               VStack(alignment: .leading) {
-                Text(draft.productName).foregroundStyle(.primary)
+                Text(draft.displayName.isEmpty ? String(localized: "Präparat eintragen") : draft.displayName)
+                  .foregroundStyle(draft.displayName.isEmpty ? Color.accentColor : Color.primary)
+                if draft.productName.nilIfBlank == nil && !draft.vaccinationTargets.isEmpty {
+                  Text("Präparat und Charge optional ergänzen").font(.caption).foregroundStyle(.secondary)
+                }
                 ForEach(WithdrawalKind.allCases, id: \.self) { withdrawal in
                   if let end = draft.withdrawalEnd(withdrawal, treatmentDate: date) {
                     Text("\(withdrawal.title) bis \(end.formatted(date: .abbreviated, time: .omitted))")
@@ -177,7 +181,7 @@ struct TreatmentFormView: View {
       if let existingID = draft.existingID, let match = existing.first(where: { $0.id == existingID }) {
         medication = match
       } else {
-        medication = Medication(treatment: target, productName: draft.productName)
+        medication = Medication(treatment: target, productName: draft.displayName)
         modelContext.insert(medication)
       }
       draft.apply(to: medication, isVaccination: kind == .vaccination)

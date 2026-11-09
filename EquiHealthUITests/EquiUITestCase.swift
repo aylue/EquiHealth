@@ -98,6 +98,18 @@ class EquiUITestCase: XCTestCase {
     XCTAssertEqual(toggle.value as? String, "1", "Schalter \(toggle) ist nicht eingeschaltet")
   }
 
+  /// Opens `menu` and taps `item`; taps the menu again if it did not open (e.g. during a sheet animation).
+  func tapMenuItem(_ item: String, in menu: XCUIElement) {
+    XCTAssertTrue(menu.waitForExistence(timeout: 5))
+    menu.tap()
+    let button = app.buttons[item].firstMatch
+    if !button.waitForExistence(timeout: 3) {
+      menu.tap()
+    }
+    XCTAssertTrue(button.waitForExistence(timeout: 5), "Menüeintrag \(item) fehlt")
+    button.tap()
+  }
+
   /// Selects `option` in a menu-style picker.
   func choose(_ option: String, in picker: XCUIElement) {
     scrollTo(picker)
@@ -117,10 +129,7 @@ class EquiUITestCase: XCTestCase {
   }
 
   func openAddMenu(_ item: String) {
-    app.buttons["addMenu"].tap()
-    let button = app.buttons[item]
-    XCTAssertTrue(button.waitForExistence(timeout: 5))
-    button.tap()
+    tapMenuItem(item, in: app.buttons["addMenu"])
   }
 
   func addMeasurement(_ type: String, value: String) {
