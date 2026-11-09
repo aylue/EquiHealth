@@ -142,29 +142,24 @@ struct MeasurementDetailView: View {
   @ViewBuilder private var legend: some View {
     if visible.contains(where: \.isEstimated) || referenceRange != nil {
       HStack(spacing: 16) {
-        Label {
-          Text("gemessen")
-        } icon: {
-          PointSymbol(isEstimated: false, isOutOfRange: false)
-        }
+        legendItem("gemessen", PointSymbol(isEstimated: false, isOutOfRange: false))
         if visible.contains(where: \.isEstimated) {
-          Label {
-            Text("geschätzt")
-          } icon: {
-            PointSymbol(isEstimated: true, isOutOfRange: false)
-          }
+          legendItem("geschätzt", PointSymbol(isEstimated: true, isOutOfRange: false))
         }
         if referenceRange != nil {
-          Label {
-            Text("außerhalb")
-          } icon: {
-            PointSymbol(isEstimated: false, isOutOfRange: true)
-          }
+          legendItem("außerhalb", PointSymbol(isEstimated: false, isOutOfRange: true))
         }
       }
       .font(.caption)
       .foregroundStyle(.secondary)
       .accessibilityHidden(true)
+    }
+  }
+
+  private func legendItem(_ title: LocalizedStringKey, _ symbol: PointSymbol) -> some View {
+    HStack(spacing: 4) {
+      symbol
+      Text(title)
     }
   }
 

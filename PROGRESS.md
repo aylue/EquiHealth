@@ -1,44 +1,44 @@
 # Fortschritt
 
-Stand: 9. November 2026
+Stand: 9. November 2026 · Toolchain: Xcode 27.2, Swift 6.4.2, Deployment-Target iOS 27.0 · iPad vorerst ausgesetzt (Q-014)
 
 ## Aktuelle Phase
 
-**Phase 0 – Projektgerüst: abgeschlossen, wartet auf Freigabe.** Toolchain: Xcode 27.2, Swift 6.4.2, Deployment-Target iOS 27.0. iPad vorerst ausgesetzt (Q-014).
+**Phase 1 – Pferde und Messwerte: abgeschlossen, wartet auf Freigabe.**
 
-## Erledigt (Phase 0)
+## Erledigt
 
-- Xcode-Projekt `EquiHealth.xcodeproj` (Universal App iPhone/iPad, Ordner-synchronisierte Gruppen), geteiltes Scheme `EquiHealth` mit Unit- und UI-Test-Target.
-- Swift Package `EquiCore` (F-ARCH-01):
-  - `FeatureFlags` – alle vier Flags `false` (F-ARCH-06).
-  - SwiftData-Schema `EquiSchemaV1` mit allen 16 Entitäten aus SPEC Abschnitt 3, CloudKit-konform (F-ARCH-08), `EquiMigrationPlan`.
-  - `EquiModelContainer`: Hauptstore lokal (`cloudKitDatabase: .none`), Wetter-Cache in eigenem, immer lokalem Store.
-  - Vorbereitungsfelder `createdBy`/`lastModifiedBy` an allen Entitäten (F-TEIL-02), Pferd als Wurzel (F-TEIL-01).
-  - `TrainingInterface` (Version, URL-Schemes) und `TrainingRoutePoint`.
-- App: leere Tab-Struktur Übersicht / Durchsuchen / Termine / Suche mit `.sidebarAdaptable` und `ContentUnavailableView`.
-- String Catalog (Deutsch, Englisch vorbereitet), Asset-Katalog mit Akzentfarbe, `PrivacyInfo.xcprivacy` (NF-02).
-- Entitlements für iCloud und App Group in `Entitlements/`, **nicht** eingebunden (F-ARCH-07); `ENABLE_CLOUDKIT.md` als Platzhalter (vollständig in Phase 7).
-- `.swift-format` (Zeilenlänge 120), Lint ohne Befund.
+### Phase 0 – Projektgerüst ✅ (freigegeben)
 
-## Prüfergebnisse Phase 0 (Xcode 27.2)
+Xcode-Projekt, Swift Package `EquiCore` mit SwiftData-Schema V1 (CloudKit-konform, 16 Entitäten), `FeatureFlags` (alle `false`), lokaler Store plus eigener Wetter-Store, nicht eingebundene Entitlements, Privacy Manifest, String Catalog.
+
+### Phase 1 – Pferde und Messwerte
+
+- **Pferde (4.1):** anlegen, bearbeiten (inkl. Foto, Equidenpass-Status), archivieren, wiederherstellen, endgültig löschen mit Bestätigung (F-PFERD-01). Das aktive Pferd wechselt über das Menü in der Navigationsleiste, die Auswahl bleibt über einen Neustart erhalten (F-PFERD-02). Profilseite mit berechnetem Alter, aktuellem Stall und jüngsten Werten (F-PFERD-03). Ställe verwalten, Stall zuordnen, Umzug beendet die alte Zuordnung (F-PFERD-04). Reihenfolge per Drag-and-drop (F-PFERD-05).
+- **Messwerte (4.2):** alle neun Messtypen, Schnelleingabe über „+“ › Messwert › Typ (F-MESS-01, -02, -06). Detailansicht mit Swift-Charts-Diagramm, Zeiträumen T/W/M/6M/J/Alle, Auswahl-Geste für Einzelwerte und Liste mit Bearbeiten und Wischen zum Löschen (F-MESS-03). Eigener Referenzbereich pro Pferd und Messtyp als Band; Werte außerhalb sind rot, größer und in der Liste mit Warnsymbol markiert (F-MESS-04). Gewichtsschätzung mit Skizze und Hinweis zur Genauigkeit (F-MESS-07, -08, -10). Geschätzte Werte erscheinen als hohle Punkte und mit dem Zusatz „geschätzt“ (F-MESS-09).
+- **Grundgerüst UI (5):** Pferde-Umschalter, „+“-Menü und Profil-Menü (F-UI-01, -02), Übersicht mit angehefteten Messwerten samt Mini-Diagramm (anpassbar), Durchsuchen › Messwerte, leere Zustände (F-UI-05), Onboarding (F-UI-06), Einstellungen mit Sync-Status „Noch nicht verfügbar“ und Haftungshinweis (NF-11).
+- **Logik in EquiCore:** `WeightEstimation`, `ChartTimeRange`, `ReferenceRange`, `HorseAge`, `DecimalInput`, `ActiveHorseSelection`, `Horse.move(to:on:in:)`.
+
+## Prüfergebnisse Phase 1 (iPhone 18 Pro, iOS 27.2)
 
 | Prüfung | Ergebnis |
 | --- | --- |
-| Build iPhone 18 Pro (Simulator, iOS 27.2) | ✅ ohne Compiler-Warnungen |
-| Build iPad | ⏸ vorerst ausgesetzt (Q-014); mit Xcode 26.1.1 lief er ohne Warnungen |
-| `swift test --package-path EquiCore` | ✅ 13/13 grün, inkl. CloudKit-Regeltest |
-| App-Unit-Tests (`EquiHealthTests`) | ✅ 2/2 grün |
-| UI-Test App-Start mit leerer Tab-Struktur | ✅ grün |
-| App-Start auf echtem Gerät (Personal Team) | ⏳ musst du selbst prüfen (Q-012) |
+| Build iPhone | ✅ ohne Compiler-Warnungen |
+| Build iPad | ⏸ ausgesetzt (Q-014) |
+| `swift test --package-path EquiCore` | ✅ 25 Tests grün |
+| App-Unit-Tests | ✅ 7 Tests grün |
+| UI-Test „App-Start und Onboarding“ | ✅ |
+| UI-Test Abnahme: 2 Pferde, umschalten, je Gewicht und Temperatur, Diagramm mit Zeiträumen und Referenzband | ✅ |
+| Diagramm visuell geprüft (Screenshot aus dem UI-Test) | ✅ |
 | `swift format lint` | ✅ |
-
-Hinweis: Das Build-Log enthält die Zeile `appintentsmetadataprocessor … warning: Metadata extraction skipped`. Das ist eine Tool-Meldung, keine Compiler-Warnung; sie verschwindet, sobald App Intents genutzt werden (F-UI-09).
 
 ## Nächster Schritt
 
-Phase 1 – Pferde und Messwerte (SPEC 4.1, 4.2, Grundgerüst von 5).
+Phase 2 – Gesundheit (4.4, 4.5): Symptome, Krankheiten, Behandlungen, Medikamente, Kontakte, Zeitleiste.
 
 ## Bekannte Probleme
 
-- Der erste Testlauf nach einem Simulator-Kaltstart braucht mehrere Minuten. Bei einem Timeout im Zweifel nur die UI-Tests mit `-only-testing:EquiHealthUITests test-without-building` erneut starten.
+- Der erste App-Start nach dem Kaltstart eines Simulators dauert sehr lange. Ein Testlauf direkt danach kann mit „Test crashed with signal kill before establishing connection“ scheitern. Abhilfe: Simulator vorher booten (`xcrun simctl boot "iPhone 18 Pro"`) oder den Lauf wiederholen.
+- Der UI-Abnahmetest dauert rund 90–110 Sekunden.
 - Der Test auf einem echten Gerät steht noch aus (Q-012).
+- Offene Entscheidung: Speicherort der Referenzbereiche (Q-015).

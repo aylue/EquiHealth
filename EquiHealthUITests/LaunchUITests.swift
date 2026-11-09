@@ -86,6 +86,11 @@ final class LaunchUITests: XCTestCase {
     app.buttons["save"].tap()
     XCTAssertTrue(text(containing: "Dein Bereich").waitForExistence(timeout: 5))
     XCTAssertTrue(app.buttons["Referenzbereich bearbeiten"].exists)
+
+    let screenshot = XCTAttachment(screenshot: app.screenshot())
+    screenshot.name = "Gewicht-Detail mit Referenzband"
+    screenshot.lifetime = .keepAlways
+    add(screenshot)
   }
 
   // MARK: Helpers
