@@ -79,7 +79,7 @@ struct HealthLogicTests {
     let colic = SymptomEntry(horse: horse, category: .colic, severity: .severe, startDate: date(2026, 11, 5))
     let ended = SymptomEntry(horse: horse, category: .lameness, severity: .moderate, startDate: date(2026, 10, 1))
     ended.endDate = date(2026, 10, 3)
-    [cough, colic, ended].forEach { context.insert($0) }
+    for symptom in [cough, colic, ended] { context.insert(symptom) }
     context.insert(Condition(horse: horse, name: "Equines Asthma", isChronic: true))
     let healed = Condition(horse: horse, name: "Sommerekzem", isChronic: true)
     healed.healedAt = date(2026, 9, 1)

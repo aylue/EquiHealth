@@ -2,7 +2,8 @@ import EquiCore
 import SwiftUI
 
 /// "Übersicht" tab, like "Summary" in Apple Health: pinned measurements with a mini chart.
-/// Ongoing symptoms, due dates and training follow in later phases.
+/// Shows ongoing symptoms (F-GESUND-03) and running withdrawal periods (F-BEH-09) on top.
+/// Due dates and training follow in later phases.
 struct OverviewView: View {
   @Environment(AppState.self) private var appState
   @State private var showsPinEditor = false
@@ -12,6 +13,18 @@ struct OverviewView: View {
       ActiveHorseReader { horse in
         if let horse {
           List {
+            if !horse.ongoingSymptoms.isEmpty {
+              Section("Laufende Symptome") {
+                ForEach(horse.ongoingSymptoms) { symptom in
+                  OngoingSymptomRow(symptom: symptom)
+                }
+              }
+            }
+            if !horse.activeWithdrawals().isEmpty {
+              Section("Warte- und Karenzzeiten") {
+                WithdrawalNoticeRows(horse: horse)
+              }
+            }
             Section("Angeheftet") {
               if appState.pinnedMeasurementTypes.isEmpty {
                 Text("Keine Messwerte angeheftet").foregroundStyle(.secondary)

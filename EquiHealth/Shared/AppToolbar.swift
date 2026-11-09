@@ -64,6 +64,10 @@ private struct AppToolbar: ViewModifier {
         }
       }
       Button("Gewicht schätzen", systemImage: "function") { appState.sheet = .estimateWeight }
+      Divider()
+      Button("Symptom", systemImage: "cross.case") { appState.sheet = .newSymptom }
+      Button("Behandlung", systemImage: "stethoscope") { appState.sheet = .newTreatment }
+      Button("Krankheit", systemImage: "heart.text.clipboard") { appState.sheet = .newCondition }
     } label: {
       Label("Hinzufügen", systemImage: "plus")
     }
@@ -77,6 +81,7 @@ private struct AppToolbar: ViewModifier {
         .disabled(activeHorse == nil)
       Button("Pferdeverwaltung", systemImage: "list.bullet") { appState.sheet = .horseManagement }
       Button("Ställe", systemImage: "house") { appState.sheet = .stables }
+      Button("Kontakte", systemImage: "person.crop.rectangle.stack") { appState.sheet = .contacts }
       Divider()
       Button("Einstellungen", systemImage: "gear") { appState.sheet = .settings }
     } label: {

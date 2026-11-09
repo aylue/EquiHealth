@@ -72,10 +72,14 @@ final class AppState {
 enum AppSheet: Identifiable, Hashable {
   case newMeasurement(MeasurementType)
   case estimateWeight
+  case newSymptom
+  case newCondition
+  case newTreatment
   case newHorse
   case horseProfile
   case horseManagement
   case stables
+  case contacts
   case settings
   case onboarding
 
@@ -83,10 +87,14 @@ enum AppSheet: Identifiable, Hashable {
     switch self {
     case .newMeasurement(let type): "newMeasurement.\(type.rawValue)"
     case .estimateWeight: "estimateWeight"
+    case .newSymptom: "newSymptom"
+    case .newCondition: "newCondition"
+    case .newTreatment: "newTreatment"
     case .newHorse: "newHorse"
     case .horseProfile: "horseProfile"
     case .horseManagement: "horseManagement"
     case .stables: "stables"
+    case .contacts: "contacts"
     case .settings: "settings"
     case .onboarding: "onboarding"
     }

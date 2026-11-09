@@ -64,6 +64,18 @@ private struct AppSheetContent: View {
           NavigationStack { WeightEstimationView(horse: horse, isRoot: true) }
         }
       }
+    case .newSymptom:
+      ActiveHorseReader { horse in
+        if let horse { SymptomFormView(horse: horse) }
+      }
+    case .newCondition:
+      ActiveHorseReader { horse in
+        if let horse { ConditionFormView(horse: horse) }
+      }
+    case .newTreatment:
+      ActiveHorseReader { horse in
+        if let horse { TreatmentFormView(horse: horse) }
+      }
     case .newHorse:
       HorseFormView(horse: nil)
     case .horseProfile:
@@ -76,6 +88,8 @@ private struct AppSheetContent: View {
       NavigationStack { HorseManagementView().closeButton() }
     case .stables:
       NavigationStack { StablesView().closeButton() }
+    case .contacts:
+      NavigationStack { ContactsView().closeButton() }
     case .settings:
       NavigationStack { SettingsView().closeButton() }
     case .onboarding:

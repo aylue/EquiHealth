@@ -26,6 +26,24 @@ struct HorseProfileView: View {
       }
       .listRowBackground(Color.clear)
 
+      if !horse.activeWithdrawals().isEmpty {
+        Section("Warte- und Karenzzeiten") {
+          WithdrawalNoticeRows(horse: horse)
+        }
+      }
+
+      if !horse.chronicConditions.isEmpty {
+        Section("Chronische Erkrankungen") {
+          ForEach(horse.chronicConditions) { condition in
+            NavigationLink {
+              ConditionDetailView(condition: condition)
+            } label: {
+              ConditionRow(condition: condition)
+            }
+          }
+        }
+      }
+
       Section("Stammdaten") {
         if let birthDate = horse.birthDate {
           if let age = HorseAge.components(birthDate: birthDate) {
@@ -46,6 +64,14 @@ struct HorseProfileView: View {
 
       stableSection
       latestValuesSection
+
+      Section {
+        NavigationLink {
+          HealthTimelineView(horse: horse)
+        } label: {
+          Label("Zeitleiste", systemImage: "list.bullet.below.rectangle")
+        }
+      }
 
       if !horse.notes.isEmpty {
         Section("Notizen") {
