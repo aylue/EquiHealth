@@ -1,116 +1,654 @@
 {
-  "sourceLanguage": "de",
-  "strings": {
-    "Durchsuche Notizen, Symptome, Behandlungen und Medikamente.": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Search notes, symptoms, treatments and medications."
+  "sourceLanguage" : "de",
+  "strings" : {
+    "–" : {
+
+    },
+    "„%@“ löschen" : {
+
+    },
+    "**Brustumfang:** Gurtumfang direkt hinter dem Widerrist – nicht der Bauchumfang." : {
+
+    },
+    "**Körperlänge:** vom Buggelenk bis zum Sitzbeinhöcker." : {
+
+    },
+    "%@ /min" : {
+
+    },
+    "%@ bis %@" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@ bis %2$@"
           }
         }
       }
     },
-    "Durchsuchen": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Browse"
+    "%@ hinzufügen" : {
+
+    },
+    "0" : {
+
+    },
+    "6M" : {
+      "comment" : "Chart range: six months"
+    },
+    "Ab" : {
+
+    },
+    "Abbrechen" : {
+
+    },
+    "Abzeichen" : {
+
+    },
+    "Aktiv" : {
+
+    },
+    "Aktives Pferd: %@" : {
+
+    },
+    "Alle" : {
+      "comment" : "Chart range: all"
+    },
+    "Alle Einträge" : {
+
+    },
+    "Alle Messwerte und Einträge dieses Pferdes werden ebenfalls gelöscht. Das lässt sich nicht rückgängig machen." : {
+
+    },
+    "Alle Zuordnungen von Pferden zu diesem Stall werden ebenfalls gelöscht." : {
+
+    },
+    "Alter" : {
+
+    },
+    "Angeheftet" : {
+
+    },
+    "Angeheftete Werte bearbeiten" : {
+
+    },
+    "Archivieren" : {
+
+    },
+    "Archiviert" : {
+
+    },
+    "Archivierte Pferde erscheinen nicht im Pferde-Umschalter. Ihre Daten bleiben erhalten." : {
+
+    },
+    "Atemfrequenz" : {
+
+    },
+    "Atemzüge/min" : {
+
+    },
+    "Aus Brustumfang und Körperlänge." : {
+
+    },
+    "außerhalb" : {
+
+    },
+    "außerhalb des Referenzbereichs" : {
+
+    },
+    "Auswahl" : {
+
+    },
+    "Bauchumfang" : {
+
+    },
+    "Bearbeiten" : {
+
+    },
+    "Beginn" : {
+
+    },
+    "Bitte wählen" : {
+
+    },
+    "Body Condition Score" : {
+
+    },
+    "Brustumfang" : {
+
+    },
+    "Chipnummer" : {
+
+    },
+    "cm" : {
+
+    },
+    "Dein Bereich: %@ – %@" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Dein Bereich: %1$@ – %2$@"
           }
         }
       }
     },
-    "Fällige Impfungen, Hufschmied- und Zahntermine erscheinen hier.": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Upcoming vaccinations, farrier and dental appointments will appear here."
+    "Der Bereich ist deine eigene Einstellung, zum Beispiel nach Absprache mit deinem Tierarzt. Die App gibt keine Grenzwerte vor." : {
+
+    },
+    "Der genaue Standort für Wetterdaten wird in einer späteren Version ergänzt." : {
+
+    },
+    "Diagramm %@" : {
+
+    },
+    "Die App ersetzt keine tierärztliche Beratung. Referenzbereiche und Wartezeiten sind deine eigenen Eingaben." : {
+
+    },
+    "Die bisherige Zuordnung endet an diesem Tag." : {
+
+    },
+    "Durchsuche Notizen, Symptome, Behandlungen und Medikamente." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Search notes, symptoms, treatments and medications."
           }
         }
       }
     },
-    "Hier erscheinen Messwerte, Fütterung, Gesundheit und Behandlungen.": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Measurements, feeding, health and treatments will appear here."
+    "Durchsuchen" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Browse"
           }
         }
       }
     },
-    "Keine Termine": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "No Appointments"
+    "Einstellungen" : {
+
+    },
+    "Ende" : {
+
+    },
+    "Equidenpass" : {
+
+    },
+    "EquiHealth ist das Gesundheitstagebuch für deine Pferde: Messwerte, Fütterung, Symptome und Termine an einem Ort." : {
+
+    },
+    "Erstes Pferd anlegen" : {
+
+    },
+    "Fällige Impfungen, Hufschmied- und Zahntermine erscheinen hier." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Upcoming vaccinations, farrier and dental appointments will appear here."
           }
         }
       }
     },
-    "Lege ein Pferd an, um Messwerte, Fütterung und Gesundheit zu erfassen.": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Add a horse to record measurements, feeding and health."
+    "Farbe" : {
+
+    },
+    "Fertig" : {
+
+    },
+    "Foto ändern" : {
+
+    },
+    "Foto auswählen" : {
+
+    },
+    "Foto entfernen" : {
+
+    },
+    "Frühere Ställe" : {
+
+    },
+    "Geburtsdatum" : {
+
+    },
+    "Geburtsdatum bekannt" : {
+
+    },
+    "Gelöschter Stall" : {
+
+    },
+    "gemessen" : {
+
+    },
+    "geschätzt" : {
+
+    },
+    "Geschätztes Gewicht" : {
+
+    },
+    "Geschlecht" : {
+
+    },
+    "Gewicht" : {
+
+    },
+    "Gewicht ≈ Brustumfang² × Körperlänge ÷ 11.880. Bei Fohlen, Ponys und sehr schweren Rassen ist die Formel ungenauer." : {
+
+    },
+    "Gewicht ohne Waage schätzen" : {
+
+    },
+    "Gewicht schätzen" : {
+
+    },
+    "Hengst" : {
+
+    },
+    "Hier erscheinen Messwerte, Fütterung, Gesundheit und Behandlungen." : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Measurements, feeding, health and treatments will appear here."
           }
         }
       }
     },
-    "Noch keine Kategorien": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "No Categories Yet"
+    "Hinweis" : {
+
+    },
+    "Hinzufügen" : {
+
+    },
+    "iCloud-Synchronisierung" : {
+
+    },
+    "J" : {
+      "comment" : "Chart range: year"
+    },
+    "Ja" : {
+
+    },
+    "Jahr" : {
+
+    },
+    "Jüngste Werte" : {
+
+    },
+    "Jüngster Wert im Zeitraum" : {
+
+    },
+    "Kategorien" : {
+
+    },
+    "Kein Stall zugeordnet" : {
+
+    },
+    "Keine Angabe" : {
+
+    },
+    "Keine Daten" : {
+
+    },
+    "Keine Messwerte angeheftet" : {
+
+    },
+    "Keine Ställe" : {
+
+    },
+    "Keine Termine" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No Appointments"
           }
         }
       }
     },
-    "Noch keine Pferde": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "No Horses Yet"
+    "Keine Werte in diesem Zeitraum" : {
+
+    },
+    "Körperlänge" : {
+
+    },
+    "Körpertemperatur" : {
+
+    },
+    "Lege ein Pferd an, um Messwerte, Fütterung und Gesundheit zu erfassen." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Add a horse to record measurements, feeding and health."
           }
         }
       }
     },
-    "Suche": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Search"
+    "Letzter Wert" : {
+
+    },
+    "Löschen" : {
+
+    },
+    "M" : {
+      "comment" : "Chart range: month"
+    },
+    "Maßband" : {
+
+    },
+    "Maße" : {
+
+    },
+    "Maße ebenfalls speichern" : {
+
+    },
+    "Messwert" : {
+
+    },
+    "Messwert bearbeiten" : {
+
+    },
+    "Messwert erfassen" : {
+
+    },
+    "Messwerte" : {
+
+    },
+    "Methode" : {
+
+    },
+    "Monat" : {
+
+    },
+    "Name" : {
+
+    },
+    "Name des Pferdes" : {
+
+    },
+    "Name des Stalls" : {
+
+    },
+    "Nein" : {
+
+    },
+    "Neuen Stall anlegen" : {
+
+    },
+    "Neuer Stall" : {
+
+    },
+    "Neues Pferd" : {
+
+    },
+    "Noch keine Einträge" : {
+
+    },
+    "Noch keine Kategorien" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No Categories Yet"
           }
         }
       }
     },
-    "Termine": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Appointments"
+    "Noch keine Messwerte" : {
+
+    },
+    "Noch keine Pferde" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No Horses Yet"
           }
         }
       }
     },
-    "Übersicht": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Summary"
+    "Noch keine Ställe angelegt." : {
+
+    },
+    "Noch nicht verfügbar" : {
+
+    },
+    "Notiz" : {
+
+    },
+    "Notizen" : {
+
+    },
+    "Obergrenze" : {
+
+    },
+    "Ort" : {
+
+    },
+    "Pferd" : {
+
+    },
+    "Pferd bearbeiten" : {
+
+    },
+    "Pferd endgültig löschen?" : {
+
+    },
+    "Pferd hinzufügen" : {
+
+    },
+    "Pferde" : {
+
+    },
+    "Pferde verwalten" : {
+
+    },
+    "Pferdeprofil" : {
+
+    },
+    "Pferdeverwaltung" : {
+
+    },
+    "Profil" : {
+
+    },
+    "Puls" : {
+
+    },
+    "Rasse" : {
+
+    },
+    "Referenzbereich" : {
+
+    },
+    "Referenzbereich anzeigen" : {
+
+    },
+    "Referenzbereich bearbeiten" : {
+
+    },
+    "Referenzbereich festlegen" : {
+
+    },
+    "Rufname" : {
+
+    },
+    "Schätzformel" : {
+
+    },
+    "Schlachttier" : {
+
+    },
+    "Schläge/min" : {
+
+    },
+    "Schritt 1 von 2: Pferd anlegen" : {
+
+    },
+    "Schritt 2 von 2: Stall (optional)" : {
+
+    },
+    "Sechs Monate" : {
+
+    },
+    "seit %@" : {
+
+    },
+    "Sichern" : {
+
+    },
+    "Skizze: Der Brustumfang wird direkt hinter dem Widerrist rund um den Körper gemessen, die Körperlänge vom Buggelenk bis zum Sitzbeinhöcker." : {
+
+    },
+    "Sonstige" : {
+
+    },
+    "Später" : {
+
+    },
+    "Stall" : {
+
+    },
+    "Stall anlegen" : {
+
+    },
+    "Stall bearbeiten" : {
+
+    },
+    "Stall hinzufügen" : {
+
+    },
+    "Stall löschen?" : {
+
+    },
+    "Stall zuordnen" : {
+
+    },
+    "Ställe" : {
+
+    },
+    "Ställe bestimmen später den Ort für Wetterdaten." : {
+
+    },
+    "Stammdaten" : {
+
+    },
+    "Status" : {
+
+    },
+    "Status laut Equidenpass. Bei Schlachttieren hebt die App Lebensmittel-Wartezeiten hervor." : {
+
+    },
+    "Stockmaß" : {
+
+    },
+    "Stute" : {
+
+    },
+    "Suche" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Search"
           }
         }
       }
+    },
+    "T" : {
+      "comment" : "Chart range: day"
+    },
+    "Tag" : {
+
+    },
+    "Termine" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Appointments"
+          }
+        }
+      }
+    },
+    "Thermometer" : {
+
+    },
+    "Über" : {
+
+    },
+    "Über den Stall ordnet die App später Wetterdaten zu. Du kannst ihn auch später festlegen." : {
+
+    },
+    "Übersicht" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Summary"
+          }
+        }
+      }
+    },
+    "Überspringen" : {
+
+    },
+    "UELN" : {
+
+    },
+    "Umzug" : {
+
+    },
+    "Umzug erfassen" : {
+
+    },
+    "Untergrenze" : {
+
+    },
+    "Version" : {
+
+    },
+    "W" : {
+      "comment" : "Chart range: week"
+    },
+    "Waage" : {
+
+    },
+    "Wallach" : {
+
+    },
+    "Wechselt das angezeigte Pferd" : {
+
+    },
+    "Weiter" : {
+
+    },
+    "Weitere Angaben kannst du später im Pferdeprofil ergänzen." : {
+
+    },
+    "Wert" : {
+
+    },
+    "Wiederherstellen" : {
+
+    },
+    "Willkommen" : {
+
+    },
+    "Woche" : {
+
+    },
+    "Zeitpunkt" : {
+
+    },
+    "Zeitraum" : {
+
     }
   },
-  "version": "1.0"
+  "version" : "1.0"
 }

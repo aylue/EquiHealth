@@ -11,7 +11,9 @@ public enum HorseSex: String, CaseIterable, Codable, Sendable {
 }
 
 /// Kind of a body measurement (F-MESS-01, F-MESS-06).
-public enum MeasurementType: String, CaseIterable, Codable, Sendable {
+public enum MeasurementType: String, CaseIterable, Codable, Sendable, Identifiable {
+  public var id: String { rawValue }
+
   case weight
   case heightAtWithers
   case bellyGirth

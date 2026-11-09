@@ -4,9 +4,7 @@ import SwiftUI
 
 /// Display information for measurement types. Values are stored in SI units (F-ARCH-04) and
 /// formatted with `Foundation.Measurement`.
-extension MeasurementType: @retroactive Identifiable {
-  public var id: String { rawValue }
-
+extension MeasurementType {
   var title: String {
     switch self {
     case .weight: String(localized: "Gewicht")
