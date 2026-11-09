@@ -7,19 +7,20 @@ import Testing
 /// Verifies the CloudKit rules for the data model (SPEC section 2, F-ARCH-08).
 @Suite("CloudKit-Konformität des Schemas (F-ARCH-08)")
 struct CloudKitComplianceTests {
-  private let schema = Schema(versionedSchema: EquiSchemaV1.self)
+  /// The current schema; older versions are covered by `MigrationTests`.
+  private let schema = Schema(versionedSchema: CurrentSchema.self)
 
   /// Binary attributes that are intentionally small and therefore kept inline.
   private let inlineBinaryAttributes: Set<String> = ["SymptomEntry.detailsData"]
 
-  @Test("Schema V1 enthält alle Entitäten aus SPEC Abschnitt 3")
+  @Test("Aktuelles Schema enthält alle Entitäten aus SPEC Abschnitt 3 plus ReferenceRangeSetting")
   func schemaContainsAllEntities() {
     let names = Set(schema.entities.map(\.name))
     #expect(
       names == [
         "Horse", "Stable", "StableAssignment", "BodyMeasurement", "Feed", "FeedingPlanItem",
         "FeedingLog", "SymptomEntry", "Condition", "Treatment", "Medication", "Contact",
-        "ReminderRule", "Attachment", "WeatherDay", "TrainingSession",
+        "ReminderRule", "Attachment", "WeatherDay", "TrainingSession", "ReferenceRangeSetting",
       ])
   }
 

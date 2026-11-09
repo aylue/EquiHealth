@@ -1,7 +1,7 @@
 import Foundation
 import SwiftData
 
-extension EquiSchemaV1 {
+extension EquiSchemaV2 {
   /// An appointment or treatment (F-BEH-01, F-BEH-02).
   @Model
   public final class Treatment: EquiRecord {

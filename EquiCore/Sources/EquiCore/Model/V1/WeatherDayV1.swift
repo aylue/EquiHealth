@@ -1,3 +1,4 @@
+// FROZEN: schema version 1.0.0. Never change this file; it is needed to migrate old stores (EquiMigrationPlan).
 import Foundation
 import SwiftData
 

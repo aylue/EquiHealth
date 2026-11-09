@@ -1,7 +1,7 @@
 import Foundation
 import SwiftData
 
-extension EquiSchemaV1 {
+extension EquiSchemaV2 {
   /// Feed master data shared by all horses (F-FUTTER-01).
   @Model
   public final class Feed: EquiRecord {

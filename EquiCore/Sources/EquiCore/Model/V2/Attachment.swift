@@ -1,7 +1,7 @@
 import Foundation
 import SwiftData
 
-extension EquiSchemaV1 {
+extension EquiSchemaV2 {
   /// A photo or PDF (finding, invoice, passport page). Belongs to a symptom, a treatment or
   /// directly to a horse.
   @Model

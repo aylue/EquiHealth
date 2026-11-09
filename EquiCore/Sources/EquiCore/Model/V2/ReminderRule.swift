@@ -1,7 +1,7 @@
 import Foundation
 import SwiftData
 
-extension EquiSchemaV1 {
+extension EquiSchemaV2 {
   /// A recurring due date (F-ERIN-01, F-ERIN-02). Next due = last matching treatment + interval,
   /// otherwise `startDate` (SPEC section 3).
   @Model

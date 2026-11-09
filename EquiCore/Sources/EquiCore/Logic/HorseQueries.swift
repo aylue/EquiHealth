@@ -57,3 +57,37 @@ extension MeasurementType {
     }
   }
 }
+
+extension Horse {
+  /// User-defined reference range of `type` (F-MESS-04). With several entries (possible after
+  /// sync, since there is no unique constraint) the most recently updated one wins.
+  public func referenceRange(for type: MeasurementType) -> ReferenceRange? {
+    referenceRangeSettings(for: type).first.map { ReferenceRange(lower: $0.lower, upper: $0.upper) }
+  }
+
+  /// Stores or removes (`nil`) the reference range of `type`; removes duplicates.
+  public func setReferenceRange(_ range: ReferenceRange?, for type: MeasurementType, in context: ModelContext) {
+    var settings = referenceRangeSettings(for: type)
+    if let range {
+      let setting: ReferenceRangeSetting
+      if settings.isEmpty {
+        setting = ReferenceRangeSetting(horse: self, type: type, range: range)
+        context.insert(setting)
+      } else {
+        setting = settings.removeFirst()
+        setting.lower = range.lower
+        setting.upper = range.upper
+        setting.touch()
+      }
+    }
+    settings.forEach(context.delete)
+    touch()
+  }
+
+  /// Entries for `type`, most recently updated first.
+  private func referenceRangeSettings(for type: MeasurementType) -> [ReferenceRangeSetting] {
+    (referenceRanges ?? [])
+      .filter { $0.measurementTypeRaw == type.rawValue && !$0.isDeleted }
+      .sorted { $0.updatedAt > $1.updatedAt }
+  }
+}
