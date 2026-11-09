@@ -4,7 +4,7 @@ Stand: 9. November 2026 · Toolchain: Xcode 27.2, Swift 6.4.2, Deployment-Target
 
 ## Aktuelle Phase
 
-**Phase 2 – Gesundheit: abgeschlossen, wartet auf Freigabe.**
+**Phase 3 – Fütterung: abgeschlossen, wartet auf Freigabe.**
 
 ## Erledigt
 
@@ -20,7 +20,7 @@ Xcode-Projekt, Swift Package `EquiCore` mit SwiftData-Schema V1 (CloudKit-konfor
 - **Schema V2 (Q-015):** Referenzbereiche liegen pro Pferd im Datenmodell (`ReferenceRangeSetting`). Schema V1 ist eingefroren (`Model/V1`), das aktuelle Modell liegt in `Model/V2`, `EquiMigrationPlan` migriert V1→V2 leichtgewichtig. Tests prüfen: V2 ist rein additiv, V1 bleibt CloudKit-konform, ein V1-Store auf der Platte wird ohne Datenverlust migriert.
 - **Logik in EquiCore:** `WeightEstimation`, `ChartTimeRange`, `ReferenceRange`, `HorseAge`, `DecimalInput`, `ActiveHorseSelection`, `Horse.move(to:on:in:)`.
 
-### Phase 2 – Gesundheit
+### Phase 2 – Gesundheit ✅ (freigegeben)
 
 - **Symptome (4.4):** Kategorie inkl. eigener Kategorien mit Namensvorschlägen, Schweregrad, Beginn/Ende, typspezifische Details für Husten, Spannigkeit, Kolik und Augenentzündung, Fotos, Notiz (F-GESUND-01, -02). Laufende Symptome stehen oben in der Übersicht und lassen sich mit einem Tipp beenden (F-GESUND-03).
 - **Krankheiten:** Diagnosen anlegen, Symptome und Behandlungen verknüpfen. Chronische, nicht ausgeheilte Erkrankungen erscheinen dauerhaft im Pferdeprofil (F-GESUND-04).
@@ -31,27 +31,38 @@ Xcode-Projekt, Swift Package `EquiCore` mit SwiftData-Schema V1 (CloudKit-konfor
 - **Menüs:** „+“ › Symptom, Behandlung, Krankheit; Profil › Kontakte; Durchsuchen › Symptome und Krankheiten, Behandlungen, Medikamente, Zeitleiste.
 - **Logik in EquiCore:** `WithdrawalCalculator`, `Medication.withdrawalEnd`, `Horse.activeWithdrawals`, `.ongoingSymptoms`, `.chronicConditions`, `.timeline`, `.lastVaccinations`.
 
-## Prüfergebnisse Phase 2 (iPhone 18 Pro, iOS 27.2)
+### Phase 3 – Fütterung
+
+- **Futtermittel (4.3):** Stammdaten für alle Pferde mit Kategorie, Hersteller und Standardeinheit; anlegen, bearbeiten, archivieren. Erreichbar über Profil › Futtermittel und Durchsuchen › Fütterung (F-FUTTER-01).
+- **Futterplan:** pro Mahlzeit (morgens, mittags, abends, ad libitum) Futtermittel, Menge und Einheit (kg, g, Liter, Messbecher, Scheiben) (F-FUTTER-02).
+- **Planversionen:** Jede Änderung gilt ab einem wählbaren Datum und legt eine neue Version an. Unveränderte Positionen laufen weiter. Die Versionsliste und ein Hinweis auf künftig geltende Pläne sind sichtbar (F-FUTTER-03).
+- **Abweichungen und Zusatzgaben:** über „+“ › Fütterung oder direkt in der Tagesansicht (F-FUTTER-04).
+- **Fütterung an Tag X:** Plan des Tages, Zusatzgaben und Tagesmenge pro Kategorie; Tage mit Pfeilen oder Datumsauswahl wechseln (F-FUTTER-05).
+- **Tagesmengen im Verlauf:** gestapeltes Balkendiagramm in kg pro Kategorie über 30 Tage, 90 Tage oder 1 Jahr (F-FUTTER-06).
+- **Logik in EquiCore:** `Horse.feedingPlan(at:)`, `.applyFeedingPlan(_:from:feeds:in:)`, `.feedingLogs(onDayOf:)`, `.feedingPlanVersionDates`, `.dailyFeedTotals(from:through:)`.
+
+## Prüfergebnisse Phase 3 (iPhone 18 Pro, iOS 27.2)
 
 | Prüfung | Ergebnis |
 | --- | --- |
 | Build iPhone | ✅ ohne Compiler-Warnungen |
 | Build iPad | ⏸ ausgesetzt (Q-014) |
-| `swift test --package-path EquiCore` | ✅ 37 Tests grün |
+| `swift test --package-path EquiCore` | ✅ 42 Tests grün |
 | App-Unit-Tests | ✅ 7 Tests grün |
-| UI-Test Abnahme Phase 2: Kolik mit Details und Foto, mit Tierarztbesuch und Medikament verknüpft, erscheint in der Zeitleiste; laufendes Symptom und Wartezeit in der Übersicht | ✅ |
-| UI-Tests Phase 0/1 (App-Start, 2 Pferde mit Messwerten) | ✅ |
+| UI-Test Abnahme Phase 3: Plan anlegen, ab morgen ändern; heute (vor der Änderung) alter Plan, morgen neuer Plan, gestern kein Plan; Zusatzgabe nur an ihrem Tag | ✅ |
+| UI-Tests Phase 0–2 | ✅ (der Messwerte-Test brauchte einen zweiten Lauf, siehe „Bekannte Probleme“) |
 | Ansichten visuell geprüft (Screenshots aus dem UI-Test) | ✅ |
 | `swift format lint` | ✅ |
 
 ## Nächster Schritt
 
-Phase 3 – Fütterung (4.3). Danach bleibt die Volltextsuche für Phase 9 vorgemerkt (Q-029).
+Phase 4 – Erinnerungen (4.6), inklusive der dafür vorgemerkten Punkte aus Phase 2 (Q-026) und des Onboarding-Schritts „Benachrichtigungen“ (Q-018). Die Volltextsuche bleibt für Phase 9 vorgemerkt (Q-029).
 
 ## Bekannte Probleme
 
+- Im Gesamtlauf blieb ein UI-Test einmal beim ersten Antippen hängen. Es gab keine fehlgeschlagene Prüfung, und das Ergebnispaket war unvollständig („result: unknown“). Bei der Wiederholung war er grün. Ursache ist die Simulator-Infrastruktur, nicht die App. Abhilfe: betroffene Testklasse mit `-only-testing:` wiederholen.
 - Der erste App-Start nach dem Kaltstart eines Simulators dauert sehr lange. Ein Testlauf direkt danach kann mit „Test crashed with signal kill before establishing connection“ scheitern. Abhilfe: Simulator vorher booten (`xcrun simctl boot "iPhone 18 Pro"`) oder den Lauf wiederholen.
-- Die UI-Tests dauern zusammen rund 8 bis 12 Minuten. Texteingaben warten auf den Tastaturfokus, Schalter werden nach dem Umlegen geprüft.
+- Die UI-Tests dauern zusammen rund 12 bis 15 Minuten. Texteingaben warten auf den Tastaturfokus, Schalter werden nach dem Umlegen geprüft.
 - Die Fotoauswahl des Systems läuft in einem eigenen Prozess und lässt sich im UI-Test nicht zuverlässig bedienen. Nur in Debug-Builds mit `-uiTesting` gibt es deshalb den Knopf „Testfoto hinzufügen“; er nutzt denselben Speicherweg wie echte Fotos.
 - Für den Fototest liegt ein Testbild in der Simulator-Mediathek (`xcrun simctl addmedia`). Für den aktuellen UI-Test ist es nicht mehr nötig.
 - Der Test auf einem echten Gerät steht noch aus (Q-012).

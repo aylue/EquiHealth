@@ -22,6 +22,18 @@ struct FeedingPlanView: View {
       } else {
         FeedingPlanSections(items: plan)
       }
+      if let upcoming = horse.feedingPlanVersionDates.filter({ $0 > .now }).last {
+        Section {
+          NavigationLink {
+            FeedingDayView(horse: horse, date: upcoming)
+          } label: {
+            Label(
+              "Ab \(upcoming.formatted(date: .long, time: .omitted)) gilt ein geänderter Plan",
+              systemImage: "calendar.badge.clock")
+          }
+          .accessibilityIdentifier("plan.upcoming")
+        }
+      }
       let versions = horse.feedingPlanVersionDates
       if !versions.isEmpty {
         Section {

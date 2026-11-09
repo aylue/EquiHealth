@@ -38,6 +38,37 @@ class EquiUITestCase: XCTestCase {
     field.typeText(text)
   }
 
+  /// Replaces the content of a text field: places the cursor at the end, deletes, types.
+  func replaceText(_ text: String, in field: XCUIElement) {
+    scrollTo(field)
+    field.coordinate(withNormalizedOffset: CGVector(dx: 0.95, dy: 0.5)).tap()
+    let focused = NSPredicate(format: "hasKeyboardFocus == true")
+    _ = XCTWaiter.wait(for: [XCTNSPredicateExpectation(predicate: focused, object: field)], timeout: 3)
+    let current = (field.value as? String) ?? ""
+    field.typeText(String(repeating: XCUIKeyboardKey.delete.rawValue, count: current.count) + text)
+  }
+
+  /// Picks a day in a compact date picker, `daysFromToday` days from today (same or next month).
+  func pickDate(daysFromToday: Int, in picker: XCUIElement) {
+    let calendar = Calendar(identifier: .gregorian)
+    let target = calendar.date(byAdding: .day, value: daysFromToday, to: .now)!
+    scrollTo(picker)
+    picker.tap()
+    if !calendar.isDate(target, equalTo: .now, toGranularity: .month) {
+      let next = app.buttons["Nächster Monat"]
+      XCTAssertTrue(next.waitForExistence(timeout: 5))
+      next.tap()
+    }
+    let formatter = DateFormatter()
+    formatter.locale = Locale(identifier: "de_DE")
+    formatter.dateFormat = "d. MMMM"
+    let day = app.buttons.matching(NSPredicate(format: "label CONTAINS %@", formatter.string(from: target))).firstMatch
+    XCTAssertTrue(day.waitForExistence(timeout: 5), "Tag \(formatter.string(from: target)) nicht im Kalender")
+    day.tap()
+    // Close the calendar popover by tapping outside of it.
+    app.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.05)).tap()
+  }
+
   /// Scrolls the frontmost list until `element` is hittable.
   func scrollTo(_ element: XCUIElement, maxSwipes: Int = 8) {
     var swipes = 0
