@@ -102,7 +102,6 @@ struct StableLocationSection: View {
           .disabled(manualCoordinate == nil)
           .accessibilityIdentifier("stable.applyCoordinates")
       }
-      .accessibilityIdentifier("stable.manualCoordinates")
 
       if let message {
         Text(message).font(.footnote).foregroundStyle(.secondary)

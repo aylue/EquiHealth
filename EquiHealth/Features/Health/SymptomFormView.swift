@@ -88,6 +88,7 @@ struct SymptomFormView: View {
 
         Section {
           DatePicker("Beginn", selection: $startDate)
+            .accessibilityIdentifier("symptom.start")
           Toggle("Beendet", isOn: $hasEnded.animation())
           if hasEnded {
             DatePicker("Ende", selection: $endDate, in: startDate...)

@@ -1,10 +1,10 @@
 # Fortschritt
 
-Stand: 9. November 2026 · Toolchain: Xcode 27.2, Swift 6.4.2, Deployment-Target iOS 27.0 · iPad vorerst ausgesetzt (Q-014)
+Stand: 10. November 2026 · Toolchain: Xcode 27.2, Swift 6.4.2, Deployment-Target iOS 27.0 · iPad vorerst ausgesetzt (Q-014)
 
 ## Aktuelle Phase
 
-**Phase 4 – Erinnerungen: abgeschlossen, wartet auf Freigabe.**
+**Phase 5 – Wetter: abgeschlossen, wartet auf Freigabe.**
 
 ## Erledigt
 
@@ -42,7 +42,7 @@ Xcode-Projekt, Swift Package `EquiCore` mit SwiftData-Schema V1 (CloudKit-konfor
 - **Schema V3 (Q-033):** `FeedingLog.kindRaw` und `.mealRaw`. V2 ist eingefroren (`Model/V2`), das aktuelle Modell liegt in `Model/V3`, die Migration läuft V1→V2→V3. Tests prüfen jede Versionsstufe auf „nur additiv“ und CloudKit-Konformität.
 - **Logik in EquiCore:** `Horse.feedingDay(_:)`, `.setFeedingDeviation`, `.clearFeedingDeviation`, `.extraFeedingLogs(onDayOf:)`, `Horse.feedingPlan(at:)`, `.applyFeedingPlan(_:from:feeds:in:)`, `.feedingLogs(onDayOf:)`, `.feedingPlanVersionDates`, `.dailyFeedTotals(from:through:)`.
 
-### Phase 4 – Erinnerungen
+### Phase 4 – Erinnerungen ✅ (freigegeben)
 
 - **Regeln (4.6):** pro Pferd mit frei wählbarem Intervall (Tage, Wochen, Monate, Jahre), Vorlaufzeit, Uhrzeit, erstem Termin und Aktiv-Schalter (F-ERIN-01, -02). Vorlagen für Influenza, Tetanus, Herpes, Zahnkontrolle, Hufschmied und Wurmkur liefern nur Startwerte (F-ERIN-03, Q-037). Erreichbar über „+“ › Erinnerung und den Tab „Termine“.
 - **Fälligkeit:** letzte passende Behandlung + Intervall, sonst der erste Termin. Bei Impf-Regeln zählt nur ein Impfstoff gegen die jeweilige Krankheit (Q-038).
@@ -54,28 +54,40 @@ Xcode-Projekt, Swift Package `EquiCore` mit SwiftData-Schema V1 (CloudKit-konfor
 - **Behoben während der Abnahme:** Die App stürzte beim Antippen einer Mitteilungsaktion ab, weil der Abschluss-Handler nicht auf dem Main Thread lief. Außerdem öffnete sich das Vorlagen-Menü im Formular nicht zuverlässig; es ist jetzt eine sichtbare Liste.
 - **Logik in EquiCore:** `ReminderRule.nextDueDate`, `.isFulfilled(by:)`, `IntervalUnit.add`, `ReminderPlanner.plan` (64er-Limit).
 
-## Prüfergebnisse Phase 4 (iPhone 18 Pro, iOS 27.2)
+### Phase 5 – Wetter
+
+- **Bright Sky (4.7):** `WeatherProvider`-Protokoll (F-ARCH-03), `BrightSkyProvider` als einziger Netzwerkzugriff der App. Stundenwerte werden zu Tageswerten verdichtet: Temperatur min/mittel/max, Niederschlagssumme, mittlere Luftfeuchte, maximale Böe, vorherrschende Wetterlage, Station (F-WETTER-01). Koordinaten werden auf 2 Nachkommastellen gerundet (NF-01).
+- **Standort:** Für Wetter gilt der Stall, an dem das Pferd am jeweiligen Tag stand. Ohne Stall erscheint „Stall hinterlegen“, ohne Standort ein eigener Hinweis (F-WETTER-02). Den Stall-Standort setzt man über den aktuellen Standort (einmalig), die Ortssuche oder Koordinaten (Q-017, Q-044). Die erste Stallzuordnung kann einen unbekannten Beginn haben (Q-042).
+- **Cache:** lokaler Wetter-Store über einen `ModelActor`, also nicht auf dem Main Actor (NF-05). Vergangene Tage werden nicht erneut abgerufen, der aktuelle Tag höchstens stündlich. Verstreute Tage gehen in Blöcken von höchstens 31 Tagen raus (F-WETTER-03, Q-045).
+- **Anzeige:** Symptom-Detail mit dem Wetter am Beginn und den 3 Tagen davor (F-GESUND-05). Körpertemperatur mit zuschaltbarer Lufttemperatur als zweite Linie in einem Diagramm darunter (F-MESS-05, Q-043). Wetterzeile pro Tag in der Zeitleiste (F-WETTER-04).
+- **Quellenangabe:** „Wetterdaten: Deutscher Wetterdienst, über Bright Sky“ an jeder Wetteranzeige und unter Einstellungen › Impressum und Quellen (F-WETTER-05).
+- **Offline/Fehler:** Es werden zwischengespeicherte Daten gezeigt, sonst ein dezenter Hinweis. Kein Dialog, kein Absturz (F-WETTER-06).
+- **Nicht umgesetzt:** zweiter Anbieter (F-WETTER-07, KANN, Q-046).
+
+## Prüfergebnisse Phase 5 (iPhone 18 Pro, iOS 27.2)
 
 | Prüfung | Ergebnis |
 | --- | --- |
 | Build iPhone | ✅ ohne Compiler-Warnungen |
 | Build iPad | ⏸ ausgesetzt (Q-014) |
-| `swift test --package-path EquiCore` | ✅ 52 Tests grün (u. a. Abnahmefall Influenza: Impfung 9.11.2026 → fällig 9.5.2027, Vorlauf 25.4.2027 9:00; 64er-Limit; Verschieben) |
-| App-Unit-Tests | ✅ 11 Tests grün (u. a. Mitteilungsaktionen „Erledigt“ und „In 1 Woche erinnern“) |
-| UI-Test Abnahme Phase 4: Regel aus Vorlage „Influenza, 6 Monate, 14 Tage Vorlauf“, Impfung erfassen → richtiges Fälligkeitsdatum; echte Mitteilung erscheint mit beiden Aktionen; „Erledigt“ öffnet die vorbefüllte Eingabe, die sich mit einem Tipp speichern lässt | ✅ |
-| UI-Tests Phase 0–3 | ✅ |
+| `swift test --package-path EquiCore` | ✅ 62 Tests grün (u. a. Abnahmefall: Symptom vom letzten Jahr → 4 Tageswerte mit 1 Anfrage, zweiter Aufruf 0 Anfragen aus dem Cache; offline → Cache plus Fehlerhinweis ohne Ausnahme; Rundung; Bright-Sky-Anfrage und JSON) |
+| App-Unit-Tests | ✅ 13 Tests grün (u. a. Stall pro Tag, Umzug zwischen zwei Ställen, offline) |
+| UI-Test Abnahme Phase 5: Stall mit Standort in Münster, Husten vom 15.11.2025 → 4 Tageswerte mit Quellenangabe, Wetterzeile in der Zeitleiste | ✅ |
+| UI-Test offline: dezenter Hinweis, kein Dialog | ✅ |
+| UI-Tests Phase 0–4 | ✅ |
 | Ansichten visuell geprüft (Screenshots aus dem UI-Test) | ✅ |
 | `swift format lint` | ✅ |
 
 ## Nächster Schritt
 
-Phase 5 – Wetter (4.7), inklusive Stall-Standort (Q-017), Wetter im Symptom-Detail (Q-025) und Lufttemperatur im Temperaturdiagramm (Q-019). Die Volltextsuche bleibt für Phase 9 vorgemerkt (Q-029).
+Phase 6 – Export und Backup (4.8, 4.9). Die Volltextsuche bleibt für Phase 9 vorgemerkt (Q-029).
 
 ## Bekannte Probleme
 
 - Im Gesamtlauf blieb ein UI-Test einmal beim ersten Antippen hängen. Es gab keine fehlgeschlagene Prüfung, und das Ergebnispaket war unvollständig („result: unknown“). Bei der Wiederholung war er grün. Ursache ist die Simulator-Infrastruktur, nicht die App. Abhilfe: betroffene Testklasse mit `-only-testing:` wiederholen.
 - Der erste App-Start nach dem Kaltstart eines Simulators dauert sehr lange. Ein Testlauf direkt danach kann mit „Test crashed with signal kill before establishing connection“ scheitern. Abhilfe: Simulator vorher booten (`xcrun simctl boot "iPhone 18 Pro"`) oder den Lauf wiederholen.
-- Die UI-Tests dauern zusammen rund 12 bis 18 Minuten.
+- Die UI-Tests dauern zusammen rund 15 bis 22 Minuten.
+- UI-Tests nutzen nie das Netz: Mit `-uiTesting` liefert ein fester Test-Anbieter das Wetter, mit `-weatherOffline` scheitert er absichtlich (Q-047).
 - Der Erinnerungs-Test braucht die Mitteilungsfreigabe im Simulator. Beim ersten Lauf bestätigt er den Systemdialog selbst; danach bleibt die Freigabe im Simulator gespeichert. Texteingaben warten auf den Tastaturfokus, Schalter werden nach dem Umlegen geprüft.
 - Die Fotoauswahl des Systems läuft in einem eigenen Prozess und lässt sich im UI-Test nicht zuverlässig bedienen. Nur in Debug-Builds mit `-uiTesting` gibt es deshalb den Knopf „Testfoto hinzufügen“; er nutzt denselben Speicherweg wie echte Fotos.
 - Für den Fototest liegt ein Testbild in der Simulator-Mediathek (`xcrun simctl addmedia`). Für den aktuellen UI-Test ist es nicht mehr nötig.

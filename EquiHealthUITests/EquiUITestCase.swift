@@ -7,10 +7,10 @@ class EquiUITestCase: XCTestCase {
 
   /// Starts the app with an empty in-memory store and German locale.
   /// `XCUIApplication` is created here (on the main actor), not in the test case initializer.
-  func launch() {
+  func launch(arguments: [String] = []) {
     continueAfterFailure = false
     app = XCUIApplication()
-    app.launchArguments += ["-uiTesting", "-AppleLanguages", "(de)", "-AppleLocale", "de_DE"]
+    app.launchArguments += ["-uiTesting", "-AppleLanguages", "(de)", "-AppleLocale", "de_DE"] + arguments
     app.launch()
   }
 
@@ -70,6 +70,26 @@ class EquiUITestCase: XCTestCase {
     XCTAssertTrue(day.waitForExistence(timeout: 5), "Tag \(formatter.string(from: target)) nicht im Kalender")
     day.tap()
     // Close the calendar popover by tapping outside of it.
+    app.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.05)).tap()
+  }
+
+  /// Picks `day` of the month `monthsBack` months before the current one in a compact date picker
+  /// (date part of a date-and-time picker).
+  func pickPastDate(monthsBack: Int, day: Int, in picker: XCUIElement) {
+    scrollTo(picker)
+    let datePart = picker.buttons.firstMatch.exists ? picker.buttons.firstMatch : picker
+    datePart.tap()
+    let previous = app.buttons["Vorheriger Monat"]
+    XCTAssertTrue(previous.waitForExistence(timeout: 5))
+    for _ in 0..<monthsBack { previous.tap() }
+    let target = Calendar(identifier: .gregorian).date(byAdding: .month, value: -monthsBack, to: .now)!
+    let formatter = DateFormatter()
+    formatter.locale = Locale(identifier: "de_DE")
+    formatter.dateFormat = "MMMM"
+    let label = "\(day). \(formatter.string(from: target))"
+    let button = app.buttons.matching(NSPredicate(format: "label CONTAINS %@", label)).firstMatch
+    XCTAssertTrue(button.waitForExistence(timeout: 5), "Tag \(label) nicht im Kalender")
+    button.tap()
     app.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.05)).tap()
   }
 
