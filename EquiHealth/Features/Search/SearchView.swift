@@ -12,6 +12,7 @@ struct SearchView: View {
         Text("Durchsuche Notizen, Symptome, Behandlungen und Medikamente.")
       }
       .navigationTitle("Suche")
+      .appToolbar()
       .searchable(text: $query)
     }
   }

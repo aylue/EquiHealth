@@ -10,6 +10,7 @@ struct AppointmentsView: View {
         Text("Fällige Impfungen, Hufschmied- und Zahntermine erscheinen hier.")
       }
       .navigationTitle("Termine")
+      .appToolbar()
     }
   }
 }
