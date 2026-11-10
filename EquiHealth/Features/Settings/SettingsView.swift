@@ -1,4 +1,5 @@
 import EquiCore
+import SwiftData
 import SwiftUI
 import UIKit
 import UserNotifications
@@ -9,6 +10,9 @@ struct SettingsView: View {
   @Environment(ReminderNotificationService.self) private var notifications
   @Environment(CloudSyncMonitor.self) private var sync
   @Environment(\.openURL) private var openURL
+  @Environment(\.modelContext) private var modelContext
+  @Query(sort: \Horse.sortIndex) private var horses: [Horse]
+  @State private var developerMessage: String?
 
   var body: some View {
     @Bindable var appState = appState
@@ -91,6 +95,10 @@ struct SettingsView: View {
           Text(explanation)
         }
       }
+      #if DEBUG
+        developerSection
+      #endif
+
       Section("Hinweis") {
         DisclaimerText()
       }
@@ -112,6 +120,41 @@ struct SettingsView: View {
     .navigationTitle("Einstellungen")
     .task { await notifications.refreshAuthorizationStatus() }
   }
+
+  #if DEBUG
+    /// F-TRAIN-06: sample sessions until the training app exists. Debug builds only.
+    @ViewBuilder private var developerSection: some View {
+      let horse = ActiveHorseSelection.resolve(storedID: appState.activeHorseID, in: horses)
+      Section {
+        Button("Beispiel-Trainingseinheiten erzeugen", systemImage: "figure.equestrian.sports") {
+          guard let horse else { return }
+          let sessions = TrainingSampleGenerator.insertSamples(
+            for: horse, seed: UInt64(Date.now.timeIntervalSince1970), in: modelContext)
+          try? modelContext.save()
+          developerMessage = String(localized: "\(sessions.count) Einheiten für \(horse.name) erzeugt.")
+        }
+        .disabled(horse == nil)
+        .accessibilityIdentifier("developer.createTrainingSamples")
+        Button("Beispiel-Einheiten löschen", systemImage: "trash", role: .destructive) {
+          guard let horse else { return }
+          TrainingSampleGenerator.removeSamples(for: horse, in: modelContext)
+          try? modelContext.save()
+          developerMessage = String(localized: "Beispiel-Einheiten von \(horse.name) gelöscht.")
+        }
+        .disabled(horse == nil)
+        if let developerMessage {
+          Text(developerMessage).foregroundStyle(.secondary)
+            .accessibilityIdentifier("developer.message")
+        }
+      } header: {
+        Text("Entwickler")
+      } footer: {
+        Text(
+          "Nur in Debug-Builds. Erzeugt 4 Wochen Beispiel-Einheiten für das aktive Pferd, bis die Trainings-App existiert."
+        )
+      }
+    }
+  #endif
 
   private var statusText: String {
     switch notifications.authorizationStatus {

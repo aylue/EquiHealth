@@ -37,6 +37,13 @@ struct RootView: View {
       }
     }
     .tabViewStyle(.sidebarAdaptable)
+    // F-TRAIN-05: equihealth://horse/<uuid> makes the horse active and shows its overview.
+    .onOpenURL { url in
+      guard case .horse(let id) = DeepLink(url: url), allHorses.contains(where: { $0.id == id }) else { return }
+      appState.activeHorseID = id
+      appState.sheet = nil
+      selectedTab = .overview
+    }
     .sheet(item: $appState.sheet) { sheet in
       AppSheetContent(sheet: sheet)
         .interactiveDismissDisabled(sheet == .onboarding)

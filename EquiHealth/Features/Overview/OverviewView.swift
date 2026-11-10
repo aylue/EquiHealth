@@ -3,7 +3,7 @@ import SwiftUI
 
 /// "Übersicht" tab, like "Summary" in Apple Health: pinned measurements with a mini chart.
 /// Shows ongoing symptoms (F-GESUND-03) and running withdrawal periods (F-BEH-09) on top.
-/// Also shows reminders due within 30 days. Training follows in a later phase.
+/// Also shows reminders due within 30 days and the last training session (SPEC 5).
 struct OverviewView: View {
   @Environment(AppState.self) private var appState
   @State private var showsPinEditor = false
@@ -36,6 +36,16 @@ struct OverviewView: View {
             if !horse.activeWithdrawals().isEmpty {
               Section("Warte- und Karenzzeiten") {
                 WithdrawalNoticeRows(horse: horse)
+              }
+            }
+            if let last = horse.sortedTrainingSessions.first {
+              Section("Letzte Trainingseinheit") {
+                NavigationLink {
+                  TrainingDetailView(session: last)
+                } label: {
+                  TrainingSessionRow(session: last)
+                }
+                .accessibilityIdentifier("overview.lastTraining")
               }
             }
             Section("Angeheftet") {

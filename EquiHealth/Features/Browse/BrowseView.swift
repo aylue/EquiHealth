@@ -2,7 +2,6 @@ import EquiCore
 import SwiftUI
 
 /// "Durchsuchen" tab: health categories with colour and SF Symbol (SPEC section 5).
-/// Training follows in a later phase.
 struct BrowseView: View {
   var body: some View {
     NavigationStack {
@@ -33,6 +32,11 @@ struct BrowseView: View {
               }
               categoryLink("Medikamente", systemImage: "pills", color: .categoryMedications, id: "medications") {
                 MedicationsListView(horse: horse)
+              }
+              categoryLink(
+                "Training", systemImage: "figure.equestrian.sports", color: .categoryTraining, id: "training"
+              ) {
+                TrainingListView(horse: horse)
               }
             }
             Section {
