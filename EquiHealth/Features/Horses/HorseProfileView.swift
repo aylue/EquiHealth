@@ -6,6 +6,7 @@ import SwiftUI
 struct HorseProfileView: View {
   @Bindable var horse: Horse
   @State private var showsEditor = false
+  @State private var showsSharing = false
   @State private var showsStableAssignment = false
 
   var body: some View {
@@ -85,6 +86,16 @@ struct HorseProfileView: View {
       ToolbarItem(placement: .primaryAction) {
         Button("Bearbeiten") { showsEditor = true }
       }
+      // F-TEIL-04: only with `sharingEnabled` (needs CKShare and a paid developer account, F-TEIL-03).
+      if FeatureFlags.sharingEnabled {
+        ToolbarItem(placement: .secondaryAction) {
+          Button("Pferd teilen", systemImage: "person.2") { showsSharing = true }
+            .accessibilityIdentifier("horse.share")
+        }
+      }
+    }
+    .sheet(isPresented: $showsSharing) {
+      HorseSharingPlaceholderView(horse: horse)
     }
     .sheet(isPresented: $showsEditor) {
       HorseFormView(horse: horse)

@@ -160,5 +160,6 @@ private struct CloseButton: ViewModifier {
     .environment(appState)
     .environment(ReminderNotificationService(container: container, appState: appState))
     .environment(WeatherService(container: container, provider: BrightSkyProvider()))
+    .environment(CloudSyncMonitor())
     .modelContainer(container)
 }

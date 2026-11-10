@@ -1,6 +1,9 @@
 {
   "sourceLanguage" : "de",
   "strings" : {
+    " gegen %@" : {
+
+    },
     "–" : {
 
     },
@@ -13,7 +16,33 @@
     "**Körperlänge:** vom Buggelenk bis zum Sitzbeinhöcker." : {
 
     },
+    "%@ · %@ – %@" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@ · %2$@ – %3$@"
+          }
+        }
+      }
+    },
+    "%@ · seit %@" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@ · seit %2$@"
+          }
+        }
+      }
+    },
     "%@ /min" : {
+
+    },
+    "%@ anrufen" : {
+
+    },
+    "%@ beenden" : {
 
     },
     "%@ bis %@" : {
@@ -29,19 +58,113 @@
     "%@ hinzufügen" : {
 
     },
+    "%@ in Tagen" : {
+
+    },
+    "%@, %@" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@, %2$@"
+          }
+        }
+      }
+    },
+    "%@: %@" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@: %2$@"
+          }
+        }
+      }
+    },
+    "%@: Karenzzeit lief bis %@." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@: Karenzzeit lief bis %2$@."
+          }
+        }
+      }
+    },
+    "%@: Turnier-Karenzzeit beendet" : {
+
+    },
+    "%lld Pferde, %lld Einträge, %lld Dateien" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$lld Pferde, %2$lld Einträge, %3$lld Dateien"
+          }
+        }
+      }
+    },
+    "%lld Positionen" : {
+
+    },
+    "%lld Tage" : {
+
+    },
+    "%lld Zeilen" : {
+
+    },
+    "°C Luft" : {
+
+    },
     "0" : {
+
+    },
+    "0,00" : {
+
+    },
+    "1 Jahr" : {
+
+    },
+    "1 Zeile" : {
 
     },
     "6M" : {
       "comment" : "Chart range: six months"
     },
+    "30 Tage" : {
+
+    },
+    "90 Tage" : {
+
+    },
     "Ab" : {
+
+    },
+    "Ab %@ gilt ein geänderter Plan" : {
 
     },
     "Abbrechen" : {
 
     },
+    "Abends" : {
+
+    },
+    "abgelehnt" : {
+
+    },
+    "Abgeschlossene Symptome" : {
+
+    },
     "Abzeichen" : {
+
+    },
+    "Ad libitum" : {
+
+    },
+    "Adresse" : {
+
+    },
+    "aktiv" : {
 
     },
     "Aktiv" : {
@@ -50,13 +173,41 @@
     "Aktives Pferd: %@" : {
 
     },
+    "Aktuellen Standort verwenden" : {
+
+    },
+    "alle" : {
+
+    },
     "Alle" : {
       "comment" : "Chart range: all"
+    },
+    "alle %lld %@" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "alle %1$lld %2$@"
+          }
+        }
+      }
+    },
+    "Alle Behandlungen" : {
+
+    },
+    "Alle Daten ersetzen?" : {
+
     },
     "Alle Einträge" : {
 
     },
+    "Alle Medikamente" : {
+
+    },
     "Alle Messwerte und Einträge dieses Pferdes werden ebenfalls gelöscht. Das lässt sich nicht rückgängig machen." : {
+
+    },
+    "Alle Pferde und Einträge auf diesem Gerät werden durch das Backup ersetzt." : {
 
     },
     "Alle Zuordnungen von Pferden zu diesem Stall werden ebenfalls gelöscht." : {
@@ -65,10 +216,28 @@
     "Alter" : {
 
     },
+    "An diesem Tag galt kein Futterplan." : {
+
+    },
+    "Andere Menge" : {
+
+    },
+    "Angabe" : {
+
+    },
     "Angeheftet" : {
 
     },
     "Angeheftete Werte bearbeiten" : {
+
+    },
+    "Anhänge" : {
+
+    },
+    "Anzahl" : {
+
+    },
+    "App-Version" : {
 
     },
     "Archivieren" : {
@@ -77,7 +246,13 @@
     "Archiviert" : {
 
     },
+    "Archivierte Futtermittel stehen in neuen Plänen nicht zur Auswahl. Bisherige Einträge bleiben erhalten." : {
+
+    },
     "Archivierte Pferde erscheinen nicht im Pferde-Umschalter. Ihre Daten bleiben erhalten." : {
+
+    },
+    "Art" : {
 
     },
     "Atemfrequenz" : {
@@ -86,7 +261,37 @@
     "Atemzüge/min" : {
 
     },
+    "Auge" : {
+
+    },
+    "Auge: %@" : {
+
+    },
+    "Augenentzündung" : {
+
+    },
     "Aus Brustumfang und Körperlänge." : {
+
+    },
+    "Aus Futterplan und Zusatzgaben. Nur Mengen in kg und g werden berücksichtigt." : {
+
+    },
+    "ausgeheilt" : {
+
+    },
+    "Ausgeheilt" : {
+
+    },
+    "Ausgeheilt am" : {
+
+    },
+    "ausgeheilt am %@" : {
+
+    },
+    "ausgewählt" : {
+
+    },
+    "Auslassen" : {
 
     },
     "außerhalb" : {
@@ -95,7 +300,22 @@
     "außerhalb des Referenzbereichs" : {
 
     },
+    "äußerlich" : {
+
+    },
     "Auswahl" : {
+
+    },
+    "Backup" : {
+
+    },
+    "Backup erstellen" : {
+
+    },
+    "Backup gesichert." : {
+
+    },
+    "Backup wiederherstellen" : {
 
     },
     "Bauchumfang" : {
@@ -104,7 +324,70 @@
     "Bearbeiten" : {
 
     },
+    "Beenden" : {
+
+    },
+    "Beendet" : {
+
+    },
     "Beginn" : {
+
+    },
+    "Beginn unbekannt" : {
+
+    },
+    "Behandlung" : {
+
+    },
+    "Behandlung bearbeiten" : {
+
+    },
+    "Behandlung erfassen" : {
+
+    },
+    "Behandlung hinzufügen" : {
+
+    },
+    "Behandlungen" : {
+
+    },
+    "bei der Arbeit" : {
+
+    },
+    "beide" : {
+
+    },
+    "beide Augen" : {
+
+    },
+    "beim Füttern" : {
+
+    },
+    "Bereiche" : {
+
+    },
+    "Beschreibung" : {
+
+    },
+    "Betroffene Region" : {
+
+    },
+    "bewölkt" : {
+
+    },
+    "Bezeichnung" : {
+
+    },
+    "Bis" : {
+
+    },
+    "bis %@" : {
+
+    },
+    "Bis zu diesem Tag bleibt der bisherige Plan erhalten." : {
+
+    },
+    "Bisherige Kategorien" : {
 
     },
     "Bitte wählen" : {
@@ -113,13 +396,70 @@
     "Body Condition Score" : {
 
     },
+    "Böen %@" : {
+
+    },
+    "Breitengrad, z. B. 51,96" : {
+
+    },
+    "Bright Sky (brightsky.dev)" : {
+
+    },
     "Brustumfang" : {
+
+    },
+    "Chargennummer" : {
 
     },
     "Chipnummer" : {
 
     },
+    "chronisch" : {
+
+    },
+    "Chronisch" : {
+
+    },
+    "Chronische Erkrankungen" : {
+
+    },
+    "Chronische Erkrankungen werden im Pferdeprofil dauerhaft angezeigt." : {
+
+    },
     "cm" : {
+
+    },
+    "CSV-Export" : {
+
+    },
+    "Das Backup ist unvollständig. Es wurde nichts verändert." : {
+
+    },
+    "Das Backup konnte nicht erstellt werden." : {
+
+    },
+    "Das Backup konnte nicht gesichert werden." : {
+
+    },
+    "Das Pferd stand schon vor heute dort. Wetterdaten älterer Einträge nutzen dann diesen Stall." : {
+
+    },
+    "Dateien erstellen" : {
+
+    },
+    "Daten" : {
+
+    },
+    "Datum" : {
+
+    },
+    "Dauer" : {
+
+    },
+    "Dauer in Minuten" : {
+
+    },
+    "Dauer: %@" : {
 
     },
     "Dein Bereich: %@ – %@" : {
@@ -132,10 +472,52 @@
         }
       }
     },
+    "Demnächst fällig" : {
+
+    },
     "Der Bereich ist deine eigene Einstellung, zum Beispiel nach Absprache mit deinem Tierarzt. Die App gibt keine Grenzwerte vor." : {
 
     },
-    "Der genaue Standort für Wetterdaten wird in einer späteren Version ergänzt." : {
+    "Der erste Termin gilt, solange noch keine passende Behandlung erfasst ist." : {
+
+    },
+    "Der Export ist fehlgeschlagen." : {
+
+    },
+    "Der Standort bleibt auf dem Gerät. Für Wetterabfragen werden nur auf 2 Nachkommastellen gerundete Koordinaten (ca. 1 km) an Bright Sky übertragen." : {
+
+    },
+    "Der Standort konnte nicht ermittelt werden." : {
+
+    },
+    "Details" : {
+
+    },
+    "Details Augenentzündung" : {
+
+    },
+    "Details Husten" : {
+
+    },
+    "Details Kolik" : {
+
+    },
+    "Details Spannigkeit" : {
+
+    },
+    "Deutscher Wetterdienst – Open Data" : {
+
+    },
+    "Diagnosedatum bekannt" : {
+
+    },
+    "diagnostiziert %@" : {
+
+    },
+    "Diagnostiziert am" : {
+
+    },
+    "Diagnostiziert von" : {
 
     },
     "Diagramm %@" : {
@@ -145,6 +527,55 @@
 
     },
     "Die bisherige Zuordnung endet an diesem Tag." : {
+
+    },
+    "Die Datei ist kein gültiges EquiHealth-Backup." : {
+
+    },
+    "Die Dateien konnten nicht gesichert werden." : {
+
+    },
+    "Die nächste Fälligkeit rechnet ab der letzten Behandlung „%@“%@." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Die nächste Fälligkeit rechnet ab der letzten Behandlung „%1$@“%2$@."
+          }
+        }
+      }
+    },
+    "Die nächste Fälligkeit stammt aus deinen Erinnerungen unter „Termine“." : {
+
+    },
+    "Die nächste Fälligkeit wird aus der letzten passenden Behandlung berechnet." : {
+
+    },
+    "Die Suche ist gerade nicht möglich. Du kannst die Koordinaten auch eingeben." : {
+
+    },
+    "Dienstleister" : {
+
+    },
+    "Diesen Monat" : {
+
+    },
+    "Dieses Backup stammt aus einer neueren App-Version. Bitte zuerst die App aktualisieren." : {
+
+    },
+    "Dokument %@" : {
+
+    },
+    "Dosis" : {
+
+    },
+    "Du kannst das jederzeit in den Einstellungen ändern." : {
+
+    },
+    "Du wirst um diese Uhrzeit am Fälligkeitstag erinnert und, falls gewählt, so viele Tage vorher." : {
+
+    },
+    "Durchfall" : {
 
     },
     "Durchsuche Notizen, Symptome, Behandlungen und Medikamente." : {
@@ -167,22 +598,119 @@
         }
       }
     },
+    "E-Mail" : {
+
+    },
+    "E-Mail an %@" : {
+
+    },
+    "Eigene" : {
+
+    },
+    "Eigene Kategorie" : {
+
+    },
+    "Ein Backup enthält alle Pferde und Einträge mit Fotos und Anhängen, aber keine Wetterdaten. Mit kostenlosem Apple-Account läuft die App nach 7 Tagen ab: Sichere regelmäßig, zum Beispiel in iCloud Drive oder auf einem Mac." : {
+
+    },
+    "Einheit" : {
+
+    },
+    "Einheit, z. B. ml" : {
+
+    },
     "Einstellungen" : {
+
+    },
+    "Einträge" : {
 
     },
     "Ende" : {
 
     },
+    "Ende (letzte Gabe)" : {
+
+    },
+    "Endet am" : {
+
+    },
+    "Entfernen" : {
+
+    },
     "Equidenpass" : {
+
+    },
+    "EquiHealth erinnert dich an Impfungen, Hufschmied, Zahnkontrolle und Wurmkur." : {
 
     },
     "EquiHealth ist das Gesundheitstagebuch für deine Pferde: Messwerte, Fütterung, Symptome und Termine an einem Ort." : {
 
     },
+    "Erfasse Symptome und Krankheiten über das Plus-Menü." : {
+
+    },
+    "Ergänzungsfutter" : {
+
+    },
+    "Erinnerung" : {
+
+    },
+    "Erinnerung anlegen" : {
+
+    },
+    "Erinnerung bearbeiten" : {
+
+    },
+    "Erinnerung löschen" : {
+
+    },
+    "Erinnerung löschen?" : {
+
+    },
+    "Erinnerung nicht gefunden" : {
+
+    },
+    "Erinnerungen" : {
+
+    },
+    "Erinnerungen auf diesem Gerät" : {
+
+    },
+    "erlaubt" : {
+
+    },
+    "Erledigt" : {
+
+    },
+    "Erledigt durch" : {
+
+    },
+    "Ersetzen" : {
+
+    },
+    "Erstellt" : {
+
+    },
+    "Erstellt am" : {
+
+    },
+    "Erster Termin" : {
+
+    },
     "Erstes Pferd anlegen" : {
 
     },
+    "Excel (Deutsch)" : {
+
+    },
+    "Fällig am %@" : {
+
+    },
+    "Fällig seit %@" : {
+
+    },
     "Fällige Impfungen, Hufschmied- und Zahntermine erscheinen hier." : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -195,7 +723,25 @@
     "Farbe" : {
 
     },
+    "Farbe des Ausflusses" : {
+
+    },
     "Fertig" : {
+
+    },
+    "feucht" : {
+
+    },
+    "Fieber" : {
+
+    },
+    "Filter" : {
+
+    },
+    "Format" : {
+
+    },
+    "Foto" : {
 
     },
     "Foto ändern" : {
@@ -207,7 +753,52 @@
     "Foto entfernen" : {
 
     },
+    "Fotos" : {
+
+    },
+    "Fotos hinzufügen" : {
+
+    },
+    "Fotos und Anhänge" : {
+
+    },
     "Frühere Ställe" : {
+
+    },
+    "Für „%@“ ist noch kein Standort hinterlegt." : {
+
+    },
+    "Für Wetterdaten" : {
+
+    },
+    "Futtermittel" : {
+
+    },
+    "Futtermittel anlegen" : {
+
+    },
+    "Futtermittel bearbeiten" : {
+
+    },
+    "Futtermittel hinzufügen" : {
+
+    },
+    "Futterplan" : {
+
+    },
+    "Futterplan ändern" : {
+
+    },
+    "Fütterung" : {
+
+    },
+    "Fütterung (Plan und Abweichungen)" : {
+
+    },
+    "Fütterung an Tag X" : {
+
+    },
+    "g" : {
 
     },
     "Geburtsdatum" : {
@@ -216,7 +807,13 @@
     "Geburtsdatum bekannt" : {
 
     },
+    "gegen %@" : {
+
+    },
     "Gelöschter Stall" : {
+
+    },
+    "Gelöschtes Futtermittel" : {
 
     },
     "gemessen" : {
@@ -231,6 +828,9 @@
     "Geschlecht" : {
 
     },
+    "Gesichert." : {
+
+    },
     "Gewicht" : {
 
     },
@@ -243,7 +843,49 @@
     "Gewicht schätzen" : {
 
     },
+    "Gewitter" : {
+
+    },
+    "Gilt nur für dieses Gerät. So vermeidest du doppelte Hinweise, wenn du die App auf iPhone und iPad nutzt." : {
+
+    },
+    "Gramm" : {
+
+    },
+    "Gültig ab" : {
+
+    },
+    "gültig ab %@" : {
+
+    },
+    "Hagel" : {
+
+    },
+    "Häufigkeit, z. B. 2× täglich" : {
+
+    },
+    "Hautveränderung" : {
+
+    },
     "Hengst" : {
+
+    },
+    "Herpes" : {
+
+    },
+    "Hersteller" : {
+
+    },
+    "heute" : {
+
+    },
+    "heute ausgelassen" : {
+
+    },
+    "Heute auslassen" : {
+
+    },
+    "Heute fällig" : {
 
     },
     "Hier erscheinen Messwerte, Fütterung, Gesundheit und Behandlungen." : {
@@ -263,7 +905,79 @@
     "Hinzufügen" : {
 
     },
+    "Hufschmied" : {
+
+    },
+    "Husten" : {
+
+    },
     "iCloud-Synchronisierung" : {
+
+    },
+    "Impf-Erinnerung anlegen" : {
+
+    },
+    "Impfstoff" : {
+
+    },
+    "Impfstoff (%@)" : {
+
+    },
+    "Impfstoff hinzufügen" : {
+
+    },
+    "Impfstoffe" : {
+
+    },
+    "Impfübersicht" : {
+
+    },
+    "Impfung" : {
+
+    },
+    "Impfung gegen" : {
+
+    },
+    "Impfung Herpes" : {
+
+    },
+    "Impfung Influenza" : {
+
+    },
+    "Impfung Tetanus" : {
+
+    },
+    "Impressum und Quellen" : {
+
+    },
+    "In 1 Woche erinnern" : {
+
+    },
+    "In Dateien sichern" : {
+
+    },
+    "In den iOS-Einstellungen öffnen" : {
+
+    },
+    "in Ruhe" : {
+
+    },
+    "Influenza" : {
+
+    },
+    "Inhalation" : {
+
+    },
+    "Inhalt" : {
+
+    },
+    "Intervall" : {
+
+    },
+    "intramuskulär" : {
+
+    },
+    "intravenös" : {
 
     },
     "J" : {
@@ -275,22 +989,79 @@
     "Jahr" : {
 
     },
+    "Jahre" : {
+
+    },
+    "Jede Änderung legt eine neue Version an. So bleibt nachvollziehbar, was %@ an einem Tag bekam." : {
+
+    },
     "Jüngste Werte" : {
 
     },
     "Jüngster Wert im Zeitraum" : {
 
     },
+    "Karte mit dem Standort des Stalls" : {
+
+    },
+    "Kategorie" : {
+
+    },
     "Kategorien" : {
+
+    },
+    "Kein Futterplan" : {
+
+    },
+    "kein Kotabsatz" : {
+
+    },
+    "Kein Kotabsatz" : {
+
+    },
+    "kein Stall hinterlegt" : {
 
     },
     "Kein Stall zugeordnet" : {
 
     },
+    "Kein Standort für Wetterdaten" : {
+
+    },
+    "Kein Termin" : {
+
+    },
+    "Keine" : {
+
+    },
     "Keine Angabe" : {
 
     },
+    "Keine Behandlungen" : {
+
+    },
+    "keine Daten" : {
+
+    },
     "Keine Daten" : {
+
+    },
+    "Keine Einträge" : {
+
+    },
+    "keine Erinnerung" : {
+
+    },
+    "Keine Futtermittel" : {
+
+    },
+    "Keine Kontakte" : {
+
+    },
+    "Keine Medikamente" : {
+
+    },
+    "Keine Mengen in kg für diesen Zeitraum." : {
 
     },
     "Keine Messwerte angeheftet" : {
@@ -309,13 +1080,94 @@
         }
       }
     },
+    "Keine Treffer." : {
+
+    },
     "Keine Werte in diesem Zeitraum" : {
+
+    },
+    "Keine Wetterdaten für diesen Zeitraum." : {
+
+    },
+    "Keiner" : {
+
+    },
+    "kg" : {
+
+    },
+    "Kilogramm" : {
+
+    },
+    "klar" : {
+
+    },
+    "Kolik" : {
+
+    },
+    "Komma und Dezimalpunkt, zum Beispiel für Numbers oder andere Programme. UTF-8, Datum im ISO-8601-Format." : {
+
+    },
+    "Kontakt anlegen" : {
+
+    },
+    "Kontakt bearbeiten" : {
+
+    },
+    "Kontakt hinzufügen" : {
+
+    },
+    "Kontakte" : {
+
+    },
+    "Koordinaten eingeben" : {
+
+    },
+    "Koordinaten übernehmen" : {
 
     },
     "Körperlänge" : {
 
     },
     "Körpertemperatur" : {
+
+    },
+    "Kosten" : {
+
+    },
+    "Kraftfutter" : {
+
+    },
+    "Krankheit" : {
+
+    },
+    "Krankheit bearbeiten" : {
+
+    },
+    "Krankheiten" : {
+
+    },
+    "l" : {
+
+    },
+    "Lahmheit" : {
+
+    },
+    "Längengrad, z. B. 7,63" : {
+
+    },
+    "laufend" : {
+
+    },
+    "Laufende Symptome" : {
+
+    },
+    "Laufende Symptome erscheinen oben in der Übersicht." : {
+
+    },
+    "Laufende Warte- und Karenzzeiten" : {
+
+    },
+    "Laut Plan: %@. Gilt nur für diesen Tag." : {
 
     },
     "Lege ein Pferd an, um Messwerte, Fütterung und Gesundheit zu erfassen." : {
@@ -328,10 +1180,49 @@
         }
       }
     },
+    "Lege Erinnerungen für Impfungen, Hufschmied, Zahnkontrolle oder Wurmkur an." : {
+
+    },
+    "Lege fest, was %@ zu welcher Mahlzeit bekommt." : {
+
+    },
+    "Lege Heu, Kraftfutter, Mineralfutter und Zusätze einmal an. Sie gelten für alle Pferde." : {
+
+    },
+    "Lege Tierarzt, Hufschmied und Therapeuten einmal an und verwende sie in Behandlungen wieder." : {
+
+    },
+    "leicht" : {
+
+    },
+    "Letzte Impfung" : {
+
+    },
     "Letzter Wert" : {
 
     },
+    "Letztes Backup" : {
+
+    },
+    "lichtempfindlich" : {
+
+    },
+    "Lichtempfindlich" : {
+
+    },
+    "links" : {
+
+    },
+    "Liter" : {
+
+    },
     "Löschen" : {
+
+    },
+    "Lufttemperatur" : {
+
+    },
+    "Lufttemperatur einblenden" : {
 
     },
     "M" : {
@@ -344,6 +1235,30 @@
 
     },
     "Maße ebenfalls speichern" : {
+
+    },
+    "Maximum" : {
+
+    },
+    "Medikament" : {
+
+    },
+    "Medikament hinzufügen" : {
+
+    },
+    "Medikamente" : {
+
+    },
+    "Medikamente erfasst du innerhalb einer Behandlung." : {
+
+    },
+    "Menge" : {
+
+    },
+    "Menge in kg" : {
+
+    },
+    "Messbecher" : {
 
     },
     "Messwert" : {
@@ -361,10 +1276,64 @@
     "Methode" : {
 
     },
+    "min" : {
+
+    },
+    "Mineralfutter" : {
+
+    },
+    "Minimum" : {
+
+    },
+    "Mittags" : {
+
+    },
+    "Mitteilung bei Ende der Turnier-Karenzzeit" : {
+
+    },
+    "Mitteilungen" : {
+
+    },
+    "Mitteilungen erlauben" : {
+
+    },
+    "Mitteilungen sind abgelehnt. Du kannst sie später in den iOS-Einstellungen erlauben." : {
+
+    },
+    "Mitteilungen sind erlaubt" : {
+
+    },
+    "mittel" : {
+
+    },
     "Monat" : {
 
     },
+    "Monate" : {
+
+    },
+    "Morgens" : {
+
+    },
+    "Muskulatur hart" : {
+
+    },
+    "nach der Arbeit" : {
+
+    },
+    "Nach der Arbeit" : {
+
+    },
+    "Nächste Fälligkeit" : {
+
+    },
+    "Nächster Tag" : {
+
+    },
     "Name" : {
+
+    },
+    "Name der Kategorie" : {
 
     },
     "Name des Pferdes" : {
@@ -373,19 +1342,52 @@
     "Name des Stalls" : {
 
     },
+    "Nasenausfluss" : {
+
+    },
+    "Nasenausfluss (%@)" : {
+
+    },
+    "Nebel" : {
+
+    },
     "Nein" : {
+
+    },
+    "Neue Erinnerung" : {
+
+    },
+    "Neue Krankheit" : {
+
+    },
+    "Neuen Kontakt anlegen" : {
 
     },
     "Neuen Stall anlegen" : {
 
     },
+    "Neuer Kontakt" : {
+
+    },
     "Neuer Stall" : {
+
+    },
+    "Neues Futtermittel" : {
 
     },
     "Neues Pferd" : {
 
     },
+    "nicht angelegt" : {
+
+    },
+    "nicht gefragt" : {
+
+    },
     "Noch keine Einträge" : {
+
+    },
+    "Noch keine Futtermittel angelegt." : {
 
     },
     "Noch keine Kategorien" : {
@@ -402,6 +1404,9 @@
     "Noch keine Messwerte" : {
 
     },
+    "noch keine passende Behandlung" : {
+
+    },
     "Noch keine Pferde" : {
       "localizations" : {
         "en" : {
@@ -415,6 +1420,9 @@
     "Noch keine Ställe angelegt." : {
 
     },
+    "noch keins" : {
+
+    },
     "Noch nicht verfügbar" : {
 
     },
@@ -424,10 +1432,40 @@
     "Notizen" : {
 
     },
+    "Nur Mengen in kg und g. Liter, Messbecher und Scheiben lassen sich nicht in kg umrechnen." : {
+
+    },
     "Obergrenze" : {
 
     },
+    "Ohne Termin" : {
+
+    },
+    "oral" : {
+
+    },
     "Ort" : {
+
+    },
+    "Ort oder Adresse suchen" : {
+
+    },
+    "Osteopath" : {
+
+    },
+    "Osteopathie" : {
+
+    },
+    "pausiert" : {
+
+    },
+    "Pausiert" : {
+
+    },
+    "PDF" : {
+
+    },
+    "PDF hinzufügen" : {
 
     },
     "Pferd" : {
@@ -445,6 +1483,9 @@
     "Pferde" : {
 
     },
+    "Pferde und Erinnerungen werden immer vollständig exportiert." : {
+
+    },
     "Pferde verwalten" : {
 
     },
@@ -454,6 +1495,39 @@
     "Pferdeverwaltung" : {
 
     },
+    "Pferdezahnarzt" : {
+
+    },
+    "Physiotherapeut" : {
+
+    },
+    "Physiotherapie" : {
+
+    },
+    "Plan" : {
+
+    },
+    "Plan ändern" : {
+
+    },
+    "Plan anlegen" : {
+
+    },
+    "Plan: %@" : {
+
+    },
+    "Präparat" : {
+
+    },
+    "Präparat eintragen" : {
+
+    },
+    "Präparat und Charge optional ergänzen" : {
+
+    },
+    "Praxis" : {
+
+    },
     "Profil" : {
 
     },
@@ -461,6 +1535,12 @@
 
     },
     "Rasse" : {
+
+    },
+    "Raufutter" : {
+
+    },
+    "rechts" : {
 
     },
     "Referenzbereich" : {
@@ -475,22 +1555,70 @@
     "Referenzbereich festlegen" : {
 
     },
+    "Regen" : {
+
+    },
+    "Region: %@" : {
+
+    },
+    "Rolle" : {
+
+    },
     "Rufname" : {
+
+    },
+    "Saftfutter" : {
+
+    },
+    "Scharren" : {
 
     },
     "Schätzformel" : {
 
     },
+    "Scheiben" : {
+
+    },
+    "Schemaversion" : {
+
+    },
     "Schlachttier" : {
+
+    },
+    "Schlachttier laut Equidenpass" : {
 
     },
     "Schläge/min" : {
 
     },
-    "Schritt 1 von 2: Pferd anlegen" : {
+    "Schnee" : {
 
     },
-    "Schritt 2 von 2: Stall (optional)" : {
+    "Schneeregen" : {
+
+    },
+    "Schritt 1 von 3: Pferd anlegen" : {
+
+    },
+    "Schritt 2 von 3: Stall (optional)" : {
+
+    },
+    "Schritt 3 von 3: Mitteilungen (optional)" : {
+
+    },
+    "Schwellung" : {
+
+    },
+    "schwer" : {
+
+    },
+    "Schweregrad" : {
+
+    },
+    "Schweregrad: %@" : {
+
+    },
+    "Schwitzen" : {
 
     },
     "Sechs Monate" : {
@@ -499,13 +1627,28 @@
     "seit %@" : {
 
     },
+    "seit unbekannt" : {
+
+    },
+    "Semikolon und Dezimalkomma, öffnet sich in Excel mit deutscher Einstellung direkt richtig. UTF-8, Datum im ISO-8601-Format." : {
+
+    },
     "Sichern" : {
 
     },
     "Skizze: Der Brustumfang wird direkt hinter dem Widerrist rund um den Körper gemessen, die Körperlänge vom Buggelenk bis zum Sitzbeinhöcker." : {
 
     },
+    "sonstige" : {
+
+    },
     "Sonstige" : {
+
+    },
+    "Sonstiges" : {
+
+    },
+    "Spannigkeit" : {
 
     },
     "Später" : {
@@ -520,10 +1663,19 @@
     "Stall bearbeiten" : {
 
     },
+    "Stall hinterlegen, um die Lufttemperatur zu sehen." : {
+
+    },
+    "Stall hinterlegen, um Wetterdaten zu sehen." : {
+
+    },
     "Stall hinzufügen" : {
 
     },
     "Stall löschen?" : {
+
+    },
+    "Stall ohne Standort" : {
 
     },
     "Stall zuordnen" : {
@@ -538,6 +1690,21 @@
     "Stammdaten" : {
 
     },
+    "Standard" : {
+
+    },
+    "Standardeinheit" : {
+
+    },
+    "Standort entfernen" : {
+
+    },
+    "Standort für Wetterdaten" : {
+
+    },
+    "Standortzugriff ist nicht erlaubt. Suche den Ort stattdessen." : {
+
+    },
     "Status" : {
 
     },
@@ -550,6 +1717,9 @@
     "Stute" : {
 
     },
+    "subkutan" : {
+
+    },
     "Suche" : {
       "localizations" : {
         "en" : {
@@ -560,10 +1730,61 @@
         }
       }
     },
+    "Suchen" : {
+
+    },
+    "Symptom" : {
+
+    },
+    "Symptom bearbeiten" : {
+
+    },
+    "Symptom erfassen" : {
+
+    },
+    "Symptom jetzt beenden" : {
+
+    },
+    "Symptome" : {
+
+    },
+    "Symptome und Krankheiten" : {
+
+    },
+    "Symptome, Krankheiten und Behandlungen erscheinen hier chronologisch." : {
+
+    },
     "T" : {
       "comment" : "Chart range: day"
     },
     "Tag" : {
+
+    },
+    "Tage" : {
+
+    },
+    "Tage ab letzter Gabe" : {
+
+    },
+    "Tagesmenge" : {
+
+    },
+    "Tagesmengen" : {
+
+    },
+    "Tagesmengen im Verlauf" : {
+
+    },
+    "Tagesmittel und Spanne am Stall des jeweiligen Tages. %@" : {
+
+    },
+    "Teilen" : {
+
+    },
+    "teils bewölkt" : {
+
+    },
+    "Telefon" : {
 
     },
     "Termine" : {
@@ -576,13 +1797,55 @@
         }
       }
     },
+    "Tetanus" : {
+
+    },
     "Thermometer" : {
+
+    },
+    "Tierarzt" : {
+
+    },
+    "Tierarzt gerufen" : {
+
+    },
+    "Tierarztbesuch" : {
+
+    },
+    "Tippe auf eine Planposition, um sie für diesen Tag auszulassen oder eine andere Menge zu erfassen." : {
+
+    },
+    "Titel" : {
+
+    },
+    "Tollwut" : {
+
+    },
+    "Trainingseinheiten" : {
+
+    },
+    "Tränenfluss" : {
+
+    },
+    "trocken" : {
+
+    },
+    "Turnier-Karenzzeit" : {
 
     },
     "Über" : {
 
     },
     "Über den Stall ordnet die App später Wetterdaten zu. Du kannst ihn auch später festlegen." : {
+
+    },
+    "überfällig" : {
+
+    },
+    "Überfällig" : {
+
+    },
+    "Übernehmen" : {
 
     },
     "Übersicht" : {
@@ -601,16 +1864,52 @@
     "UELN" : {
 
     },
+    "Uhrzeit" : {
+
+    },
     "Umzug" : {
 
     },
     "Umzug erfassen" : {
 
     },
+    "unbekannt" : {
+
+    },
     "Untergrenze" : {
 
     },
+    "Verabreichung" : {
+
+    },
+    "Verknüpft mit" : {
+
+    },
+    "Verknüpfungen" : {
+
+    },
     "Version" : {
+
+    },
+    "Versionen" : {
+
+    },
+    "Von" : {
+
+    },
+    "Vor dem Wiederherstellen siehst du, was das Backup enthält, und wählst zwischen Zusammenführen und Ersetzen." : {
+
+    },
+    "Vorheriger Tag" : {
+
+    },
+    "Vorlage" : {
+
+    },
+    "Vorlagen enthalten nur Startwerte. Passe Intervall und Vorlauf an dein Pferd an." : {
+
+    },
+    "Vorlaufzeit" : {
 
     },
     "W" : {
@@ -620,6 +1919,18 @@
 
     },
     "Wallach" : {
+
+    },
+    "Wälzen" : {
+
+    },
+    "Warte- und Karenzzeiten" : {
+
+    },
+    "Wartezeit Lebensmittel" : {
+
+    },
+    "Was wurde gemacht?" : {
 
     },
     "Wechselt das angezeigte Pferd" : {
@@ -634,19 +1945,98 @@
     "Wert" : {
 
     },
+    "Werte aus Beipackzettel oder Tierarztangabe. Die App liefert keine eigenen Werte." : {
+
+    },
+    "Wetter am Beginn und den 3 Tagen davor" : {
+
+    },
+    "Wetter wird geladen …" : {
+
+    },
+    "Wetterdaten sind gerade nicht erreichbar." : {
+
+    },
+    "Wetterdaten sind gerade nicht erreichbar. Angezeigt wird, was bereits gespeichert ist." : {
+
+    },
+    "Wetterdaten stammen aus den offenen Daten des Deutschen Wetterdienstes und werden über Bright Sky abgerufen. Dabei werden nur auf 2 Nachkommastellen gerundete Stall-Koordinaten übertragen." : {
+
+    },
+    "Wetterdaten: Deutscher Wetterdienst, über Bright Sky" : {
+
+    },
+    "Wie geplant" : {
+
+    },
+    "Wiederhergestellt: %lld Einträge neu, %lld bereits vorhanden." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Wiederhergestellt: %1$lld Einträge neu, %2$lld bereits vorhanden."
+          }
+        }
+      }
+    },
     "Wiederherstellen" : {
+
+    },
+    "Wiederherstellen fehlgeschlagen. Es wurde nichts verändert." : {
 
     },
     "Willkommen" : {
 
     },
+    "windig" : {
+
+    },
+    "Wird zusätzlich zum Plan gezählt. Eine Planposition auslassen oder ändern kannst du in „Fütterung an Tag X“ direkt an der Position." : {
+
+    },
+    "Wirkstoff" : {
+
+    },
     "Woche" : {
+
+    },
+    "Wochen" : {
+
+    },
+    "Wurmkur" : {
+
+    },
+    "Zahnbehandlung" : {
+
+    },
+    "Zahnkontrolle" : {
+
+    },
+    "Zeitleiste" : {
 
     },
     "Zeitpunkt" : {
 
     },
     "Zeitraum" : {
+
+    },
+    "Zeitraum eingrenzen" : {
+
+    },
+    "Zusammenführen" : {
+
+    },
+    "Zusammenführen ergänzt fehlende Einträge; vorhandene werden nicht doppelt angelegt. Ersetzen löscht zuerst alle Daten auf diesem Gerät." : {
+
+    },
+    "Zusatzgabe bearbeiten" : {
+
+    },
+    "Zusatzgabe erfassen" : {
+
+    },
+    "Zusatzgaben" : {
 
     }
   },

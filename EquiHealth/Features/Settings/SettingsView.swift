@@ -7,6 +7,7 @@ import UserNotifications
 struct SettingsView: View {
   @Environment(AppState.self) private var appState
   @Environment(ReminderNotificationService.self) private var notifications
+  @Environment(CloudSyncMonitor.self) private var sync
   @Environment(\.openURL) private var openURL
 
   var body: some View {
@@ -72,12 +73,23 @@ struct SettingsView: View {
         Text("Daten")
       }
 
-      Section("iCloud-Synchronisierung") {
-        // SPEC 4.10: shown until `cloudSyncEnabled` is on.
+      Section {
+        // SPEC 4.10: "noch nicht verfügbar" until `cloudSyncEnabled` is on; F-SYNC-03 afterwards.
         LabeledContent("Status") {
-          Text(FeatureFlags.cloudSyncEnabled ? "Aktiv" : "Noch nicht verfügbar")
+          Text(sync.status.title)
         }
         .accessibilityIdentifier("settings.syncStatus")
+        if FeatureFlags.cloudSyncEnabled {
+          LabeledContent("Letzter Abgleich") {
+            Text(sync.status.lastSync.map { $0.formatted(date: .abbreviated, time: .shortened) } ?? "–")
+          }
+        }
+      } header: {
+        Text("iCloud-Synchronisierung")
+      } footer: {
+        if let explanation = sync.status.explanation {
+          Text(explanation)
+        }
       }
       Section("Hinweis") {
         DisclaimerText()

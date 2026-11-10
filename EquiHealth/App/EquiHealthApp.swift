@@ -9,6 +9,7 @@ struct EquiHealthApp: App {
   @State private var appState: AppState
   @State private var notificationService: ReminderNotificationService
   @State private var weatherService: WeatherService
+  @State private var syncMonitor = CloudSyncMonitor()
   private let notificationRouter: NotificationRouter
 
   init() {
@@ -54,6 +55,8 @@ struct EquiHealthApp: App {
         .environment(appState)
         .environment(notificationService)
         .environment(weatherService)
+        .environment(syncMonitor)
+        .task { await syncMonitor.start() }
     }
     .modelContainer(modelContainer)
     .backgroundTask(.appRefresh(NotificationIdentifiers.refreshTask)) {

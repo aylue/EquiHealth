@@ -3,6 +3,7 @@ import XCTest
 /// UI tests of the core flows (NF-10).
 final class LaunchUITests: EquiUITestCase {
   /// Phase 0: the app starts with the tab structure; onboarding appears on first start (F-UI-06).
+  /// Phase 7: Settings show iCloud sync as not yet available.
   func testLaunchShowsOnboardingAndTabs() throws {
     launch()
     XCTAssertTrue(app.textFields["onboarding.horseName"].waitForExistence(timeout: 20))
@@ -11,6 +12,16 @@ final class LaunchUITests: EquiUITestCase {
       XCTAssertTrue(app.buttons[title].firstMatch.waitForExistence(timeout: 10), "Tab \(title) fehlt")
     }
     XCTAssertTrue(app.staticTexts["Noch keine Pferde"].exists)
+
+    // Phase 7: without an iCloud entitlement the app runs and Settings say "noch nicht verfügbar" (SPEC 4.10).
+    tapMenuItem("Einstellungen", in: app.buttons["profileMenu"])
+    let syncStatus = app.descendants(matching: .any)["settings.syncStatus"].firstMatch
+    scrollTo(syncStatus)
+    XCTAssertTrue(syncStatus.label.contains("Noch nicht verfügbar"), "Sync-Status: \(syncStatus.label)")
+    let explanation = text(containing: "bleiben alle Daten auf diesem Gerät")
+    scrollTo(explanation)
+    XCTAssertTrue(explanation.exists)
+    attachScreenshot("Einstellungen iCloud")
   }
 
   /// Phase 1 acceptance: create two horses, switch, enter weight and temperature for each,
