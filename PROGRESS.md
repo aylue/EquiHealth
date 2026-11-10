@@ -1,10 +1,10 @@
 # Fortschritt
 
-Stand: 10. November 2026 · Toolchain: Xcode 27.2, Swift 6.4.2, Deployment-Target iOS 27.0 · iPad vorerst ausgesetzt (Q-014)
+Stand: 11. November 2026 · Toolchain: Xcode 27.2, Swift 6.4.2, Deployment-Target iOS 27.0 · iPad vorerst ausgesetzt (Q-014)
 
 ## Aktuelle Phase
 
-**Phase 7 – iCloud-Sync und Teilen vorbereiten: abgeschlossen, wartet auf Freigabe.**
+**Phase 8 – Trainings-Schnittstelle: abgeschlossen, wartet auf Freigabe.**
 
 ## Erledigt
 
@@ -71,7 +71,7 @@ Xcode-Projekt, Swift Package `EquiCore` mit SwiftData-Schema V1 (CloudKit-konfor
 - **Wiederherstellen:** Vorschau, dann Zusammenführen (UUID entscheidet, nichts doppelt) oder Ersetzen (F-BACKUP-03). Ältere Schemaversionen lassen sich importieren (F-BACKUP-04). Der Import ist transaktional, ganz oder gar nicht (NF-06). „Letztes Backup“ steht in den Einstellungen (F-BACKUP-05).
 - **Nicht auf dem Main Actor:** CSV-Export und Backup laufen in eigenen `ModelActor`s (NF-05).
 
-### Phase 7 – iCloud-Sync und Teilen vorbereiten
+### Phase 7 – iCloud-Sync und Teilen vorbereiten ✅ (freigegeben)
 
 - **Sync hinter `cloudSyncEnabled` (4.10):**
   - `EquiModelContainer` wählt bei eingeschaltetem Flag die private CloudKit-Datenbank für den Hauptstore. Der Wetter-Cache bleibt lokal, In-Memory-Stores (Tests) synchronisieren nie.
@@ -84,23 +84,42 @@ Xcode-Projekt, Swift Package `EquiCore` mit SwiftData-Schema V1 (CloudKit-konfor
   - „Pferd teilen“ im Pferdeprofil erscheint nur mit `sharingEnabled` (F-TEIL-04, Q-056). `createdBy`/`lastModifiedBy` gab es schon (F-TEIL-02).
 - **`ENABLE_CLOUDKIT.md`:** vollständige Anleitung mit Backup vorab, Kennungen, Xcode-Capabilities, Flag, Liste der dann anzupassenden Tests, Schema anlegen und nach Production übertragen, erster Abgleich mit vorhandenen Daten, Prüfliste F-SYNC-01 bis -04, die übrigen Flags (Trainings-Container, Teilen, Widgets) und der Weg zurück.
 
-## Prüfergebnisse Phase 7 (iPhone 13 mini, iOS 27.2)
+### Phase 8 – Trainings-Schnittstelle
+
+- **Schnittstelle in EquiCore (4.11):**
+  - `TrainingInterface` mit Version, URL-Schemata, Bundle-IDs und Feldlisten. Ein Test gleicht die Feldliste mit dem Modell ab (F-TRAIN-03).
+  - `DeepLink` baut und liest `equihealth://horse/<uuid>` und `equitraining://start?horse=<uuid>` (F-TRAIN-05).
+  - Routen werden als JSON gespeichert, die Wochenauswertung liefert `Horse.trainingWeeks(_:)`.
+- **Bereich „Training“ pro Pferd (Durchsuchen › Training, F-TRAIN-04):**
+  - Diese Woche: Anzahl, Dauer, Distanz, Dauer nach Art, Gangarten.
+  - Die letzten 8 Wochen als Diagramm.
+  - Die Liste der Einheiten. Das Detail zeigt Werte, Gangarten und eine Karte der Route mit Start (Q-062).
+  - Die Übersicht zeigt „Letzte Trainingseinheit“ (SPEC 5).
+- **Deep Links:** `equihealth` ist registriert und öffnet ein Pferd (Q-060). „Training starten“ öffnet die Trainings-App; ist sie nicht installiert, blendet sich der Button aus (Q-059). `equitraining` ist als abfragbares Schema eingetragen.
+- **Entwickler-Menü (nur Debug):** erzeugt und löscht Beispiel-Einheiten für das aktive Pferd (F-TRAIN-06, Q-061). Trainingseinheiten liegen im lokalen Store, der gemeinsame Container bleibt aus (`sharedTrainingContainerEnabled = false`).
+- **`INTERFACE.md`:**
+  - gemeinsamer Code, Datenhoheit (F-TRAIN-02), Schema mit Einheiten und Pflichtfeldern, Routenformat,
+  - Anzeige, Deep Links,
+  - der spätere gemeinsame Container mit App Group und Umzug (F-TRAIN-01), Versionierung.
+- **Behoben während der Abnahme:** Leere Fläche in der Zeile „Art“ im Detail, Rasterlinie durch die Beschriftung im Art-Diagramm, wechselnde Farben je Trainingsart.
+
+## Prüfergebnisse Phase 8 (iPhone 13 mini, iOS 27.2)
 
 | Prüfung | Ergebnis |
 | --- | --- |
 | Build iPhone (13 mini) | ✅ ohne Compiler-Warnungen |
-| Build iPad | ⏸ ausgesetzt (Q-014); iPad-Simulator nicht mehr vorhanden (Q-057) |
-| Gebaute App ohne Entitlements (`codesign -d --entitlements`) | ✅ keine |
-| `swift test --package-path EquiCore` | ✅ 82 Tests grün (u. a. Sync-Status beider Pfade, Container-Auswahl, Pferd als Wurzel aller Einträge, Schema-Initialisierung verweigert bei Flag aus) |
-| App-Unit-Tests | ✅ 15 Tests grün (u. a. keine eingebundenen Entitlements, Sync-Monitor bleibt aus) |
-| UI-Test Abnahme Phase 7: App startet ohne iCloud-Entitlement, Einstellungen zeigen „Noch nicht verfügbar“ | ✅ |
-| UI-Tests Phase 0–6 (jetzt auf dem kleineren iPhone 13 mini) | ✅ |
-| `ENABLE_CLOUDKIT.md` vollständig | ✅ |
+| Build iPad | ⏸ ausgesetzt (Q-014, Q-057) |
+| `swift test --package-path EquiCore` | ✅ 88 Tests grün (u. a. Deep Links, Feldliste = Modell, Routen-Kodierung, Wochenübersicht mit leeren Wochen und Wochengrenze, reproduzierbare Beispiel-Einheiten) |
+| App-Unit-Tests | ✅ 15 Tests grün |
+| UI-Test Abnahme Phase 8: Beispiel-Einheiten aus dem Entwickler-Menü → Wochenübersicht, 8-Wochen-Diagramm, Detail mit Karte und Gangarten, „Letzte Trainingseinheit“ in der Übersicht | ✅ |
+| UI-Tests Phase 0–7 | ✅ |
+| Ansichten visuell geprüft (Screenshots aus dem UI-Test) | ✅ |
+| `INTERFACE.md` vollständig | ✅ |
 | `swift format lint` | ✅ |
 
 ## Nächster Schritt
 
-Phase 8 – Trainings-Schnittstelle (4.11) mit Debug-Menü für Beispiel-Einheiten, Wochenübersicht, Karte und vollständiger `INTERFACE.md`. Die Volltextsuche bleibt für Phase 9 vorgemerkt (Q-029).
+Phase 9 – Feinschliff: Barrierefreiheits-Durchgang, Englisch-Lokalisierung, App-Icon-Platzhalter. Dazu die vorgemerkten Punkte Volltextsuche (Q-029) und Fehleransicht beim Öffnen der Datenbank (Q-010).
 
 ## Bekannte Probleme
 
