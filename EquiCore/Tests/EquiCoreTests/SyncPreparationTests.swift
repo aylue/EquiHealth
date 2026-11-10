@@ -42,6 +42,15 @@ struct SyncPreparationTests {
     #expect(configurations.allSatisfy { $0.cloudKitContainerIdentifier == nil }, "Kein CloudKit-Container")
   }
 
+  @Test("Hauptstore synchronisiert nur mit Flag und nie im Speicher (Tests, UI-Tests)")
+  func containerSelection() {
+    #expect(EquiModelContainer.mainStoreContainerIdentifier(syncEnabled: false, inMemory: false) == nil)
+    #expect(EquiModelContainer.mainStoreContainerIdentifier(syncEnabled: true, inMemory: true) == nil)
+    #expect(
+      EquiModelContainer.mainStoreContainerIdentifier(syncEnabled: true, inMemory: false)
+        == "iCloud.de.aylu.EquiHealth")
+  }
+
   @Test("Das CloudKit-Schema lässt sich bei ausgeschaltetem Sync nicht anlegen")
   func schemaInitializerRefusesWhileDisabled() {
     #expect(throws: CloudKitSchemaInitializer.InitializerError.syncDisabled) {

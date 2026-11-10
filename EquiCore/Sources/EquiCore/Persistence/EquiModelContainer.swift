@@ -9,9 +9,16 @@ public enum EquiModelContainer {
   public static let mainStoreName = "EquiHealth"
   public static let weatherStoreName = "WeatherCache"
 
-  /// CloudKit setting of the main store. `.none` while sync is disabled.
-  public static var mainStoreCloudKitDatabase: ModelConfiguration.CloudKitDatabase {
-    FeatureFlags.cloudSyncEnabled ? .private(FeatureFlags.cloudKitContainerIdentifier) : .none
+  /// CloudKit container of the main store, or `nil` for a local store. In-memory stores (tests,
+  /// UI tests) never sync, even with sync enabled.
+  static func mainStoreContainerIdentifier(syncEnabled: Bool, inMemory: Bool) -> String? {
+    syncEnabled && !inMemory ? FeatureFlags.cloudKitContainerIdentifier : nil
+  }
+
+  /// CloudKit setting of the main store. `.none` while sync is disabled (F-ARCH-06).
+  static func mainStoreCloudKitDatabase(inMemory: Bool) -> ModelConfiguration.CloudKitDatabase {
+    mainStoreContainerIdentifier(syncEnabled: FeatureFlags.cloudSyncEnabled, inMemory: inMemory)
+      .map { .private($0) } ?? .none
   }
 
   /// - Parameters:
@@ -39,7 +46,7 @@ public enum EquiModelContainer {
         ModelConfiguration(
           mainStoreName, schema: Schema(synced),
           url: storeDirectory.appending(path: "\(mainStoreName).store"),
-          cloudKitDatabase: mainStoreCloudKitDatabase),
+          cloudKitDatabase: mainStoreCloudKitDatabase(inMemory: false)),
         ModelConfiguration(
           weatherStoreName, schema: Schema(localOnly),
           url: storeDirectory.appending(path: "\(weatherStoreName).store"),
@@ -49,7 +56,7 @@ public enum EquiModelContainer {
     return [
       ModelConfiguration(
         mainStoreName, schema: Schema(synced), isStoredInMemoryOnly: inMemory, allowsSave: true,
-        cloudKitDatabase: mainStoreCloudKitDatabase),
+        cloudKitDatabase: mainStoreCloudKitDatabase(inMemory: inMemory)),
       ModelConfiguration(
         weatherStoreName, schema: Schema(localOnly), isStoredInMemoryOnly: inMemory, allowsSave: true,
         cloudKitDatabase: .none),

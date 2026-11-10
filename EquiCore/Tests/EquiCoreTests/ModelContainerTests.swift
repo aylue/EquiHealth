@@ -8,7 +8,7 @@ import Testing
 struct ModelContainerTests {
   @Test("F-ARCH-06: Hauptstore ist ohne Entwicklerkonto rein lokal")
   func mainStoreIsLocal() {
-    #expect(isLocal(EquiModelContainer.mainStoreCloudKitDatabase))
+    #expect(isLocal(EquiModelContainer.mainStoreCloudKitDatabase(inMemory: false)))
   }
 
   @Test("Container mit beiden Stores lässt sich erzeugen; WeatherDay liegt im lokalen Wetter-Store")
