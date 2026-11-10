@@ -122,6 +122,12 @@ struct SettingsView: View {
   }
 
   #if DEBUG
+    /// Fixed in UI tests so the samples are reproducible, otherwise new on every tap.
+    private static var sampleSeed: UInt64 {
+      ProcessInfo.processInfo.arguments.contains(LaunchArgument.uiTesting)
+        ? 42 : UInt64(Date.now.timeIntervalSince1970)
+    }
+
     /// F-TRAIN-06: sample sessions until the training app exists. Debug builds only.
     @ViewBuilder private var developerSection: some View {
       let horse = ActiveHorseSelection.resolve(storedID: appState.activeHorseID, in: horses)
@@ -129,7 +135,7 @@ struct SettingsView: View {
         Button("Beispiel-Trainingseinheiten erzeugen", systemImage: "figure.equestrian.sports") {
           guard let horse else { return }
           let sessions = TrainingSampleGenerator.insertSamples(
-            for: horse, seed: UInt64(Date.now.timeIntervalSince1970), in: modelContext)
+            for: horse, seed: Self.sampleSeed, in: modelContext)
           try? modelContext.save()
           developerMessage = String(localized: "\(sessions.count) Einheiten für \(horse.name) erzeugt.")
         }

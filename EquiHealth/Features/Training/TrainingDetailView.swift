@@ -19,7 +19,12 @@ struct TrainingDetailView: View {
 
       Section {
         LabeledContent("Art") {
-          Label(session.type.title, systemImage: session.type.systemImage)
+          HStack(spacing: 6) {
+            Image(systemName: session.type.systemImage)
+              .foregroundStyle(Color.categoryTraining)
+              .accessibilityHidden(true)
+            Text(session.type.title)
+          }
         }
         LabeledContent("Beginn", value: session.start.formatted(date: .long, time: .shortened))
         LabeledContent("Dauer", value: TrainingFormat.duration(session.duration))
@@ -41,6 +46,7 @@ struct TrainingDetailView: View {
         Section("Gangarten") {
           ForEach(gaits, id: \.0) { gait, seconds in
             LabeledContent(gait.title, value: seconds.map(TrainingFormat.duration) ?? "–")
+              .accessibilityIdentifier("training.gait.\(gait.rawValue)")
           }
         }
       }

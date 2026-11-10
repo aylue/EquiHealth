@@ -97,6 +97,9 @@ struct WeekSummaryView: View {
             }
         }
         .chartXAxis(.hidden)
+        .chartYAxis {
+          AxisMarks { _ in AxisValueLabel() }
+        }
         .frame(height: CGFloat(types.count) * 28)
         .accessibilityLabel(Text("Dauer nach Trainingsart"))
       }
@@ -158,6 +161,8 @@ struct WeeklyDurationChart: View {
       BarMark(x: .value("Woche", bar.week, unit: .weekOfYear), y: .value("Minuten", bar.minutes))
         .foregroundStyle(by: .value("Typ", bar.type.title))
     }
+    // Fixed domain: every training type keeps its colour, independent of the data shown.
+    .chartForegroundStyleScale(domain: TrainingType.allCases.map(\.title))
     .chartYAxisLabel("min")
     .frame(height: 180)
     .accessibilityLabel(Text("Trainingsminuten pro Woche"))
