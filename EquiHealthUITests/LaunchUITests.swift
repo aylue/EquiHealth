@@ -24,6 +24,14 @@ final class LaunchUITests: EquiUITestCase {
     attachScreenshot("Einstellungen iCloud")
   }
 
+  /// Q-010: if the database cannot be opened, an explanation is shown instead of a crash.
+  func testDatabaseErrorShowsExplanation() throws {
+    launch(arguments: ["-simulateStoreFailure"])
+    XCTAssertTrue(app.descendants(matching: .any)["databaseError"].firstMatch.waitForExistence(timeout: 20))
+    XCTAssertTrue(text(containing: "Es wurde nichts gelöscht").exists)
+    XCTAssertFalse(app.buttons["Übersicht"].exists, "Keine Tabs ohne Datenbank")
+  }
+
   /// Phase 1 acceptance: create two horses, switch, enter weight and temperature for each,
   /// chart with time ranges and reference band (F-PFERD-01, F-PFERD-02, F-MESS-01..04).
   func testTwoHorsesWithWeightAndTemperature() throws {
