@@ -13,6 +13,7 @@ struct SettingsView: View {
   @Environment(\.modelContext) private var modelContext
   @Query(sort: \Horse.sortIndex) private var horses: [Horse]
   @State private var developerMessage: String?
+  @State private var isGeneratingLargeData = false
 
   var body: some View {
     @Bindable var appState = appState
@@ -122,6 +123,18 @@ struct SettingsView: View {
   }
 
   #if DEBUG
+    /// NF-04: about 50,000 entries, generated off the main actor.
+    private func generateLargeData() async {
+      isGeneratingLargeData = true
+      defer { isGeneratingLargeData = false }
+      do {
+        let summary = try await LargeDataGenerator(modelContainer: modelContext.container).generate()
+        developerMessage = String(localized: "\(summary.entries) Einträge für \(summary.horses) Pferde erzeugt.")
+      } catch {
+        developerMessage = String(localized: "Testdaten konnten nicht erzeugt werden.")
+      }
+    }
+
     /// Fixed in UI tests so the samples are reproducible, otherwise new on every tap.
     private static var sampleSeed: UInt64 {
       ProcessInfo.processInfo.arguments.contains(LaunchArgument.uiTesting)
@@ -148,6 +161,26 @@ struct SettingsView: View {
           developerMessage = String(localized: "Beispiel-Einheiten von \(horse.name) gelöscht.")
         }
         .disabled(horse == nil)
+        Button {
+          Task { await generateLargeData() }
+        } label: {
+          HStack {
+            Label("Testdaten erzeugen (10 Pferde, 10 Jahre)", systemImage: "cylinder.split.1x2")
+            if isGeneratingLargeData {
+              Spacer()
+              ProgressView()
+            }
+          }
+        }
+        .disabled(isGeneratingLargeData)
+        .accessibilityIdentifier("developer.generateLargeData")
+        Button("Testdaten löschen", systemImage: "trash", role: .destructive) {
+          Task {
+            try? await LargeDataGenerator(modelContainer: modelContext.container).removeGeneratedData()
+            developerMessage = String(localized: "Testdaten gelöscht.")
+          }
+        }
+        .disabled(isGeneratingLargeData)
         if let developerMessage {
           Text(developerMessage).foregroundStyle(.secondary)
             .accessibilityIdentifier("developer.message")

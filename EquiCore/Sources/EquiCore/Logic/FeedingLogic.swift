@@ -105,16 +105,29 @@ extension Horse {
   /// Plan positions of the calendar day of `day` with their deviations (F-FUTTER-05, Q-033).
   /// The plan valid at noon of that day is used.
   public func feedingDay(_ day: Date, calendar: Calendar = .current) -> [FeedingDayEntry] {
+    Self.feedingDay(
+      day, planItems: feedingPlanItems ?? [], logsOfDay: feedingLogs(onDayOf: day, calendar: calendar),
+      calendar: calendar)
+  }
+
+  /// `feedingDay` for already selected plan items and the logs of that day (used for ranges).
+  static func feedingDay(
+    _ day: Date, planItems: [FeedingPlanItem], logsOfDay: [FeedingLog], calendar: Calendar
+  ) -> [FeedingDayEntry] {
     let start = calendar.startOfDay(for: day)
     let noon = calendar.date(byAdding: .hour, value: 12, to: start) ?? start
-    let deviations = feedingLogs(onDayOf: day, calendar: calendar).filter { $0.kind != .extra }
-    return feedingPlan(at: noon).map { item in
-      let match =
-        deviations
-        .filter { $0.feed?.id == item.feed?.id && $0.mealRaw == item.mealRaw }
-        .max { $0.updatedAt < $1.updatedAt }
-      return FeedingDayEntry(planItem: item, deviation: match)
-    }
+    let deviations = logsOfDay.filter { $0.kind != .extra }
+    return
+      planItems
+      .filter { $0.isValid(at: noon) }
+      .sorted { ($0.meal.sortOrder, $0.feed?.name ?? "") < ($1.meal.sortOrder, $1.feed?.name ?? "") }
+      .map { item in
+        let match =
+          deviations
+          .filter { $0.feed?.id == item.feed?.id && $0.mealRaw == item.mealRaw }
+          .max { $0.updatedAt < $1.updatedAt }
+        return FeedingDayEntry(planItem: item, deviation: match)
+      }
   }
 
   /// Records that `item` was fed with `amount` (`nil` = left out) on the day of `day` (Q-033).
@@ -191,13 +204,22 @@ extension Horse {
     var totals: [DailyFeedTotal] = []
     var day = calendar.startOfDay(for: startDate)
     let last = calendar.startOfDay(for: endDate)
+    let rangeEnd = calendar.date(byAdding: .day, value: 1, to: last) ?? last
+    // NF-04: group once instead of scanning all entries for every day.
+    let logsByDay = Dictionary(
+      grouping: (feedingLogs ?? []).filter { $0.timestamp >= day && $0.timestamp < rangeEnd }
+    ) { calendar.startOfDay(for: $0.timestamp) }
+    let planItems = (feedingPlanItems ?? []).filter {
+      $0.validFrom < rangeEnd && ($0.validUntil ?? .distantFuture) > day
+    }
     while day <= last {
+      let logs = (logsByDay[day] ?? []).sorted { $0.timestamp < $1.timestamp }
       var perCategory: [FeedCategory: Double] = [:]
-      for entry in feedingDay(day, calendar: calendar) {
+      for entry in Self.feedingDay(day, planItems: planItems, logsOfDay: logs, calendar: calendar) {
         guard let factor = entry.effectiveUnit.kilogramsPerUnit, let feed = entry.planItem.feed else { continue }
         perCategory[feed.category, default: 0] += entry.effectiveAmount * factor
       }
-      for log in extraFeedingLogs(onDayOf: day, calendar: calendar) {
+      for log in logs where log.kind == .extra {
         guard let factor = log.unit.kilogramsPerUnit, let feed = log.feed else { continue }
         perCategory[feed.category, default: 0] += log.amount * factor
       }

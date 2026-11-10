@@ -205,6 +205,21 @@ struct WeatherTests {
     #expect(provider.requests.map { calendar.dateComponents([.day], from: $0.start, to: $0.end).day } == [3, 31, 9])
   }
 
+  @Test("Verstreute Tage innerhalb von 31 Tagen kommen mit einer Anfrage; Lückentage werden mitgespeichert")
+  func scatteredDaysWithinWindowNeedOneRequest() async throws {
+    let repository = try makeRepository()
+    let provider = MockWeatherProvider()
+    let days = [1, 5, 12, 20, 30].map { date(2025, 6, $0) }
+    let first = await repository.weather(
+      for: days, latitude: 51.96, longitude: 7.63, provider: provider, now: date(2026, 11, 9), calendar: calendar)
+    #expect(first.fetchCount == 1)
+    #expect(first.days.count == 5, "Nur die gewünschten Tage im Ergebnis")
+    let gap = await repository.weather(
+      for: [date(2025, 6, 15)], latitude: 51.96, longitude: 7.63, provider: provider, now: date(2026, 11, 9),
+      calendar: calendar)
+    #expect(gap.fetchCount == 0, "Lückentag kommt aus dem Cache")
+  }
+
   @Test("Wetter-Cache liegt im lokalen Store, nicht im synchronisierten")
   func weatherDayIsLocalOnly() {
     #expect(CurrentSchema.localOnlyModels.map { "\($0)" } == ["\(WeatherDay.self)"])

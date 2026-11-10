@@ -59,12 +59,13 @@ public actor WeatherRepository {
     return WeatherLookupResult(days: result, error: failure, fetchCount: fetchCount)
   }
 
-  /// Groups days into runs of consecutive days, at most `maxDays` long; one request per run.
+  /// Groups days into windows spanning at most `maxDays` calendar days; one request per window.
+  /// Days in gaps are fetched too (cheap) and cached, so scattered entries need few requests.
   static func chunks(of days: [Date], maxDays: Int = 31, calendar: Calendar) -> [[Date]] {
     var result: [[Date]] = []
     for day in days.sorted() {
-      if var current = result.last, let previous = current.last, current.count < maxDays,
-        calendar.date(byAdding: .day, value: 1, to: previous) == day
+      if var current = result.last, let first = current.first,
+        let limit = calendar.date(byAdding: .day, value: maxDays, to: first), day < limit
       {
         current.append(day)
         result[result.count - 1] = current

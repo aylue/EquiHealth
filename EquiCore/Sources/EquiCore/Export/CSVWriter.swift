@@ -66,27 +66,35 @@ public enum CSVWriter {
     return "\"" + field.replacingOccurrences(of: "\"", with: "\"\"") + "\""
   }
 
+  /// Formatters for one file; creating them per cell is slow (NF-04).
+  struct Formatters {
+    let timestamp: ISO8601DateFormatter
+    let day: ISO8601DateFormatter
+
+    init(timeZone: TimeZone) {
+      timestamp = ISO8601DateFormatter()
+      timestamp.timeZone = timeZone
+      timestamp.formatOptions = [.withInternetDateTime]
+      day = ISO8601DateFormatter()
+      day.timeZone = timeZone
+      day.formatOptions = [.withFullDate]
+    }
+  }
+
   public static func format(_ value: CSVValue, as format: CSVFormat, timeZone: TimeZone = .current) -> String {
+    Self.format(value, as: format, formatters: Formatters(timeZone: timeZone))
+  }
+
+  static func format(_ value: CSVValue, as format: CSVFormat, formatters: Formatters) -> String {
     switch value {
     case .text(let text):
       return text
     case .number(let number):
-      var text =
-        number.rounded() == number && abs(number) < 1e15
-        ? String(Int64(number))
-        : String(format: "%.6f", number).replacingOccurrences(of: "0+$", with: "", options: .regularExpression)
-      if text.hasSuffix(".") { text.removeLast() }
-      return text.replacingOccurrences(of: ".", with: format.decimalSeparator)
+      return numberText(number).replacingOccurrences(of: ".", with: format.decimalSeparator)
     case .timestamp(let date):
-      let formatter = ISO8601DateFormatter()
-      formatter.timeZone = timeZone
-      formatter.formatOptions = [.withInternetDateTime]
-      return formatter.string(from: date)
+      return formatters.timestamp.string(from: date)
     case .day(let date):
-      let formatter = ISO8601DateFormatter()
-      formatter.timeZone = timeZone
-      formatter.formatOptions = [.withFullDate]
-      return formatter.string(from: date)
+      return formatters.day.string(from: date)
     case .bool(let flag):
       return flag ? "ja" : "nein"
     case .empty:
@@ -94,15 +102,28 @@ public enum CSVWriter {
     }
   }
 
+  /// Integers without decimals, otherwise at most 6 decimals, always with a decimal point.
+  static func numberText(_ number: Double) -> String {
+    if number.rounded() == number && abs(number) < 1e15 {
+      return String(Int64(number))
+    }
+    let rounded = (number * 1_000_000).rounded() / 1_000_000
+    if rounded.rounded() == rounded && abs(rounded) < 1e15 {
+      return String(Int64(rounded))
+    }
+    return String(rounded)
+  }
+
   /// UTF-8 with BOM, header line, CRLF line endings.
   public static func data(for table: CSVTable, format: CSVFormat, timeZone: TimeZone = .current) -> Data {
-    var lines = [
-      table.header.map { escape($0, separator: format.separator) }.joined(separator: String(format.separator))
-    ]
+    let formatters = Formatters(timeZone: timeZone)
+    let separator = String(format.separator)
+    var lines = [table.header.map { escape($0, separator: format.separator) }.joined(separator: separator)]
+    lines.reserveCapacity(table.rows.count + 1)
     for row in table.rows {
       lines.append(
-        row.map { escape(Self.format($0, as: format, timeZone: timeZone), separator: format.separator) }
-          .joined(separator: String(format.separator)))
+        row.map { escape(Self.format($0, as: format, formatters: formatters), separator: format.separator) }
+          .joined(separator: separator))
     }
     return byteOrderMark + Data((lines.joined(separator: "\r\n") + "\r\n").utf8)
   }

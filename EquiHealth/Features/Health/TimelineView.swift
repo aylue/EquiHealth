@@ -7,6 +7,8 @@ struct HealthTimelineView: View {
   let horse: Horse
   @State private var kinds = Set(TimelineKind.allCases)
   @State private var weatherLookup = WeatherService.Lookup()
+  /// Days whose weather was requested; weather loads page by page while scrolling (NF-04).
+  @State private var requestedWeatherDays = Set<Date>()
 
   var body: some View {
     let items = horse.timeline(kinds: kinds)
@@ -30,6 +32,7 @@ struct HealthTimelineView: View {
             Spacer()
             WeatherInlineLabel(state: weatherLookup.states[day])
           }
+          .onAppear { loadWeather(from: day, in: days.map(\.key)) }
         }
       }
       if weatherLookup.states.values.contains(where: { if case .weather = $0 { true } else { false } }) {
@@ -40,9 +43,6 @@ struct HealthTimelineView: View {
       }
     }
     .navigationTitle("Zeitleiste")
-    .task(id: days.map(\.key)) {
-      weatherLookup = await weather.lookup(horse: horse, days: days.map(\.key))
-    }
     .toolbar {
       ToolbarItem(placement: .primaryAction) {
         Menu {
@@ -63,6 +63,18 @@ struct HealthTimelineView: View {
         }
         .accessibilityIdentifier("timeline.filter")
       }
+    }
+  }
+
+  /// Loads the weather of `day` and the next 29 older days with entries that are not loaded yet.
+  private func loadWeather(from day: Date, in keys: [Date]) {
+    guard !requestedWeatherDays.contains(day), let index = keys.firstIndex(of: day) else { return }
+    let window = keys[index..<min(index + 30, keys.count)].filter { !requestedWeatherDays.contains($0) }
+    requestedWeatherDays.formUnion(window)
+    Task {
+      let result = await weather.lookup(horse: horse, days: window)
+      weatherLookup.states.merge(result.states) { _, new in new }
+      weatherLookup.hadError = weatherLookup.hadError || result.hadError
     }
   }
 
