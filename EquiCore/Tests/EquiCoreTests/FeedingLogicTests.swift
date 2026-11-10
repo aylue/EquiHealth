@@ -195,3 +195,26 @@ struct FeedingDeviationTests {
     #expect(horse.feedingDay(day, calendar: calendar).first { $0.planItem === hayItem }?.effectiveAmount == 8)
   }
 }
+
+@Suite("Wochenmittel der Tagesmengen (F-FUTTER-06, NF-04)")
+struct WeeklyFeedAverageTests {
+  @Test("Mittel pro Tag und Woche; Tage ohne Eintrag zählen mit 0 kg; Teilwochen nur mit ihren Tagen")
+  func weeklyAverages() {
+    var calendar = Calendar(identifier: .gregorian)
+    calendar.timeZone = TimeZone(identifier: "Europe/Berlin")!
+    calendar.firstWeekday = 2
+    func day(_ d: Int) -> Date { calendar.date(from: DateComponents(year: 2026, month: 11, day: d))! }
+    // Mon 2.11. – Sun 8.11., then Mon 9.11. – Wed 11.11.
+    let totals = [
+      DailyFeedTotal(day: day(2), category: .roughage, kilograms: 8),
+      DailyFeedTotal(day: day(3), category: .roughage, kilograms: 6),
+      DailyFeedTotal(day: day(9), category: .roughage, kilograms: 9),
+      DailyFeedTotal(day: day(10), category: .concentrate, kilograms: 0.6),
+    ]
+    let weeks = totals.weeklyAverages(from: day(2), through: day(11), calendar: calendar)
+    #expect(weeks.count == 3)
+    #expect(weeks[0] == WeeklyFeedAverage(weekStart: day(2), category: .roughage, kilogramsPerDay: 2))
+    #expect(weeks[1] == WeeklyFeedAverage(weekStart: day(9), category: .roughage, kilogramsPerDay: 3))
+    #expect(abs(weeks[2].kilogramsPerDay - 0.2) < 1e-9)
+  }
+}

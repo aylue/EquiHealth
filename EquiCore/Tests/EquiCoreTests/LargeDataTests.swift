@@ -43,6 +43,10 @@ struct LargeDataTests {
         from: Calendar.current.date(byAdding: .year, value: -1, to: .now)!, through: .now)
     }
     _ = measure("Trainingswochen (8)", .seconds(1)) { horse.trainingWeeks(8) }
+    let timeline = measure("Zeitleiste aller Einträge", .seconds(1)) {
+      horse.timeline(kinds: Set(TimelineKind.allCases))
+    }
+    #expect(timeline.count > 300, "Symptome, Krankheiten und Behandlungen eines Pferdes über 10 Jahre")
     _ = measure("Laufende Wartezeiten", .seconds(1)) { horse.activeWithdrawals() }
     _ = try measure("Erinnerungsplan aller Pferde", .seconds(2)) {
       ReminderPlanner.plan(rules: try context.fetch(FetchDescriptor<ReminderRule>()))

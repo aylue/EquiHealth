@@ -234,3 +234,39 @@ extension Horse {
     return totals
   }
 }
+
+/// Average kilograms per day of one category within one week (F-FUTTER-06, NF-04).
+public struct WeeklyFeedAverage: Equatable, Sendable {
+  public var weekStart: Date
+  public var category: FeedCategory
+  /// Mean over the days of the week that lie in the requested range.
+  public var kilogramsPerDay: Double
+}
+
+extension Array where Element == DailyFeedTotal {
+  /// Weekly means for long periods: days without an entry of a category count as 0 kg.
+  public func weeklyAverages(from start: Date, through end: Date, calendar: Calendar = .current)
+    -> [WeeklyFeedAverage]
+  {
+    let firstDay = calendar.startOfDay(for: start)
+    let lastDay = calendar.startOfDay(for: end)
+    var daysPerWeek: [Date: Int] = [:]
+    var day = firstDay
+    while day <= lastDay {
+      if let week = calendar.dateInterval(of: .weekOfYear, for: day)?.start { daysPerWeek[week, default: 0] += 1 }
+      guard let next = calendar.date(byAdding: .day, value: 1, to: day) else { break }
+      day = next
+    }
+    var sums: [Date: [FeedCategory: Double]] = [:]
+    for total in self {
+      guard let week = calendar.dateInterval(of: .weekOfYear, for: total.day)?.start else { continue }
+      sums[week, default: [:]][total.category, default: 0] += total.kilograms
+    }
+    return sums.keys.sorted().flatMap { week in
+      FeedCategory.allCases.compactMap { category -> WeeklyFeedAverage? in
+        guard let sum = sums[week]?[category], let days = daysPerWeek[week], days > 0 else { return nil }
+        return WeeklyFeedAverage(weekStart: week, category: category, kilogramsPerDay: sum / Double(days))
+      }
+    }
+  }
+}

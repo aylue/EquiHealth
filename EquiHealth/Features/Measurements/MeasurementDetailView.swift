@@ -35,15 +35,12 @@ struct MeasurementDetailView: View {
     horse.referenceRange(for: type)
   }
 
-  private var domain: DateInterval {
-    range.domain(for: measurements.map(\.timestamp))
-  }
-
-  private var visible: [BodyMeasurement] {
-    measurements.filter { domain.contains($0.timestamp) }.reversed()
-  }
-
   var body: some View {
+    // Computed once per update; with thousands of values this matters (NF-04).
+    let domain = range.domain(for: measurements.map(\.timestamp))
+    let visible = Array(measurements.filter { domain.contains($0.timestamp) }.reversed())
+    let points = ChartSeries.points(
+      from: visible.map { .init(date: $0.timestamp, value: $0.value, isEstimated: $0.isEstimated) }, domain: domain)
     List {
       Section {
         VStack(alignment: .leading, spacing: 12) {
@@ -57,7 +54,7 @@ struct MeasurementDetailView: View {
           .pickerStyle(.segmented)
           .accessibilityIdentifier("chartRange")
 
-          header
+          header(visible: visible)
 
           if visible.isEmpty {
             Text("Keine Werte in diesem Zeitraum")
@@ -65,13 +62,13 @@ struct MeasurementDetailView: View {
               .frame(maxWidth: .infinity, minHeight: 200)
           } else {
             MeasurementChart(
-              type: type, measurements: visible, domain: domain, referenceRange: referenceRange,
+              type: type, points: points, domain: domain, referenceRange: referenceRange,
               selectedDate: $selectedDate
             )
             .frame(height: 240)
             .accessibilityIdentifier("measurementChart")
           }
-          legend
+          legend(visible: visible, points: points)
         }
         .padding(.vertical, 4)
       }
@@ -133,7 +130,7 @@ struct MeasurementDetailView: View {
     .onChange(of: range) { selectedDate = nil }
   }
 
-  @ViewBuilder private var header: some View {
+  @ViewBuilder private func header(visible: [BodyMeasurement]) -> some View {
     if let latest = visible.last ?? measurements.first {
       VStack(alignment: .leading, spacing: 2) {
         Text(visible.isEmpty ? "Letzter Wert" : "Jüngster Wert im Zeitraum")
@@ -155,7 +152,13 @@ struct MeasurementDetailView: View {
     }
   }
 
-  @ViewBuilder private var legend: some View {
+  @ViewBuilder private func legend(visible: [BodyMeasurement], points: [ChartPoint]) -> some View {
+    if points.contains(where: \.isSummary) {
+      Text("Über \(visible.count) Werte: Punkt = Mittelwert, Balken = Spanne je Abschnitt")
+        .font(.caption)
+        .foregroundStyle(.secondary)
+        .accessibilityIdentifier("chart.summaryNote")
+    }
     if visible.contains(where: \.isEstimated) || referenceRange != nil {
       HStack(spacing: 16) {
         legendItem("gemessen", PointSymbol(isEstimated: false, isOutOfRange: false))

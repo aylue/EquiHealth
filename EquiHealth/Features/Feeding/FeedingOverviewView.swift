@@ -69,20 +69,40 @@ struct FeedingHistoryView: View {
             .foregroundStyle(.secondary)
             .frame(maxWidth: .infinity, minHeight: 200)
         } else {
-          Chart(Array(totals.enumerated()), id: \.offset) { _, total in
-            BarMark(
-              x: .value("Tag", total.day, unit: .day),
-              y: .value("Menge in kg", total.kilograms)
-            )
-            .foregroundStyle(by: .value("Kategorie", total.category.title))
-            .accessibilityLabel(Text(total.day.formatted(date: .abbreviated, time: .omitted)))
-            .accessibilityValue(Text("\(total.category.title): \(FeedUnit.kilogram.format(total.kilograms))"))
+          if days > 90 {
+            // NF-04: one bar per week instead of 365 per category.
+            let weeks = totals.weeklyAverages(from: start, through: end)
+            Chart(Array(weeks.enumerated()), id: \.offset) { _, week in
+              BarMark(
+                x: .value("Woche", week.weekStart, unit: .weekOfYear),
+                y: .value("kg pro Tag", week.kilogramsPerDay)
+              )
+              .foregroundStyle(by: .value("Kategorie", week.category.title))
+              .accessibilityLabel(Text(week.weekStart.formatted(.dateTime.day().month().year())))
+              .accessibilityValue(
+                Text("\(week.category.title): \(FeedUnit.kilogram.format(week.kilogramsPerDay)) pro Tag"))
+            }
+            .chartYAxisLabel("kg pro Tag")
+            .frame(height: 260)
+          } else {
+            Chart(Array(totals.enumerated()), id: \.offset) { _, total in
+              BarMark(
+                x: .value("Tag", total.day, unit: .day),
+                y: .value("Menge in kg", total.kilograms)
+              )
+              .foregroundStyle(by: .value("Kategorie", total.category.title))
+              .accessibilityLabel(Text(total.day.formatted(date: .abbreviated, time: .omitted)))
+              .accessibilityValue(Text("\(total.category.title): \(FeedUnit.kilogram.format(total.kilograms))"))
+            }
+            .chartYAxisLabel("kg")
+            .frame(height: 260)
           }
-          .chartYAxisLabel("kg")
-          .frame(height: 260)
         }
       } footer: {
-        Text("Aus Futterplan und Zusatzgaben. Nur Mengen in kg und g werden berücksichtigt.")
+        Text(
+          days > 90
+            ? "Wochenmittel pro Tag aus Futterplan und Zusatzgaben. Nur Mengen in kg und g werden berücksichtigt."
+            : "Aus Futterplan und Zusatzgaben. Nur Mengen in kg und g werden berücksichtigt.")
       }
     }
     .navigationTitle("Tagesmengen")
