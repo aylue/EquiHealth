@@ -2,25 +2,66 @@
   "sourceLanguage" : "de",
   "strings" : {
     " gegen %@" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : " against %@"
+          }
+        }
+      }
     },
     "–" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "–"
+          }
+        }
+      }
     },
     "„%@“ löschen" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Delete “%@”"
+          }
+        }
+      }
     },
     "**Brustumfang:** Gurtumfang direkt hinter dem Widerrist – nicht der Bauchumfang." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "**Heart girth:** girth directly behind the withers – not the belly girth."
+          }
+        }
+      }
     },
     "**Körperlänge:** vom Buggelenk bis zum Sitzbeinhöcker." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "**Body length:** from the point of the shoulder to the point of the buttock."
+          }
+        }
+      }
     },
     "%@ · %@ – %@" : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "new",
+            "value" : "%1$@ · %2$@ – %3$@"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
             "value" : "%1$@ · %2$@ – %3$@"
           }
         }
@@ -33,17 +74,44 @@
             "state" : "new",
             "value" : "%1$@ · seit %2$@"
           }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ · since %2$@"
+          }
         }
       }
     },
     "%@ /min" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ /min"
+          }
+        }
+      }
     },
     "%@ anrufen" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Call %@"
+          }
+        }
+      }
     },
     "%@ beenden" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "End %@"
+          }
+        }
+      }
     },
     "%@ bis %@" : {
       "localizations" : {
@@ -52,20 +120,46 @@
             "state" : "new",
             "value" : "%1$@ bis %2$@"
           }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ to %2$@"
+          }
         }
       }
     },
     "%@ hinzufügen" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Add %@"
+          }
+        }
+      }
     },
     "%@ in Tagen" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ in days"
+          }
+        }
+      }
     },
     "%@, %@" : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "new",
+            "value" : "%1$@, %2$@"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
             "value" : "%1$@, %2$@"
           }
         }
@@ -78,6 +172,28 @@
             "state" : "new",
             "value" : "%1$@: %2$@"
           }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@: %2$@"
+          }
+        }
+      }
+    },
+    "%@: %@ pro Tag" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@: %2$@ pro Tag"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@: %2$@ per day"
+          }
         }
       }
     },
@@ -88,11 +204,24 @@
             "state" : "new",
             "value" : "%1$@: Karenzzeit lief bis %2$@."
           }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@: withdrawal period ran until %2$@."
+          }
         }
       }
     },
     "%@: Turnier-Karenzzeit beendet" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@: competition withdrawal period ended"
+          }
+        }
+      }
     },
     "%lld Pferde, %lld Einträge, %lld Dateien" : {
       "localizations" : {
@@ -101,86 +230,296 @@
             "state" : "new",
             "value" : "%1$lld Pferde, %2$lld Einträge, %3$lld Dateien"
           }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$lld horses, %2$lld entries, %3$lld files"
+          }
         }
       }
     },
     "%lld Positionen" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld items"
+          }
+        }
+      }
+    },
+    "%lld S/min" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld bpm"
+          }
+        }
+      }
     },
     "%lld Tage" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld days"
+          }
+        }
+      }
     },
     "%lld Zeilen" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld rows"
+          }
+        }
+      }
     },
     "°C Luft" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "°C air"
+          }
+        }
+      }
     },
     "0" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "0"
+          }
+        }
+      }
     },
     "0,00" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "0.00"
+          }
+        }
+      }
     },
     "1 Jahr" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "1 year"
+          }
+        }
+      }
     },
     "1 Zeile" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "1 row"
+          }
+        }
+      }
     },
     "6M" : {
-      "comment" : "Chart range: six months"
+      "comment" : "Chart range: six months",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "6M"
+          }
+        }
+      }
     },
     "30 Tage" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "30 days"
+          }
+        }
+      }
     },
     "90 Tage" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "90 days"
+          }
+        }
+      }
     },
     "Ab" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "From"
+          }
+        }
+      }
     },
     "Ab %@ gilt ein geänderter Plan" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A changed plan applies from %@"
+          }
+        }
+      }
     },
     "Abbrechen" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cancel"
+          }
+        }
+      }
     },
     "Abends" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Evening"
+          }
+        }
+      }
     },
     "abgelehnt" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "declined"
+          }
+        }
+      }
     },
     "Abgeschlossene Symptome" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ended symptoms"
+          }
+        }
+      }
+    },
+    "Abgleich wird wiederholt" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sync will be retried"
+          }
+        }
+      }
     },
     "Abzeichen" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Markings"
+          }
+        }
+      }
     },
     "Ad libitum" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ad libitum"
+          }
+        }
+      }
     },
     "Adresse" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Address"
+          }
+        }
+      }
     },
     "aktiv" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "active"
+          }
+        }
+      }
     },
     "Aktiv" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Active"
+          }
+        }
+      }
     },
     "Aktives Pferd: %@" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Active horse: %@"
+          }
+        }
+      }
     },
     "Aktuellen Standort verwenden" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Use current location"
+          }
+        }
+      }
     },
     "alle" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "every"
+          }
+        }
+      }
     },
     "Alle" : {
-      "comment" : "Chart range: all"
+      "comment" : "Chart range: all",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "All"
+          }
+        }
+      }
     },
     "alle %lld %@" : {
       "localizations" : {
@@ -189,278 +528,994 @@
             "state" : "new",
             "value" : "alle %1$lld %2$@"
           }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "every %1$lld %2$@"
+          }
         }
       }
     },
     "Alle Behandlungen" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "All treatments"
+          }
+        }
+      }
     },
     "Alle Daten ersetzen?" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Replace all data?"
+          }
+        }
+      }
     },
     "Alle Einträge" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "All entries"
+          }
+        }
+      }
     },
     "Alle Medikamente" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "All medications"
+          }
+        }
+      }
     },
     "Alle Messwerte und Einträge dieses Pferdes werden ebenfalls gelöscht. Das lässt sich nicht rückgängig machen." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "All measurements and entries of this horse will be deleted too. This cannot be undone."
+          }
+        }
+      }
     },
     "Alle Pferde und Einträge auf diesem Gerät werden durch das Backup ersetzt." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "All horses and entries on this device will be replaced by the backup."
+          }
+        }
+      }
     },
     "Alle Zuordnungen von Pferden zu diesem Stall werden ebenfalls gelöscht." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "All assignments of horses to this stable will be deleted too."
+          }
+        }
+      }
     },
     "Alter" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Age"
+          }
+        }
+      }
     },
     "An diesem Tag galt kein Futterplan." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No feeding plan applied on this day."
+          }
+        }
+      }
     },
     "Andere Menge" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Different amount"
+          }
+        }
+      }
     },
     "Angabe" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Value"
+          }
+        }
+      }
     },
     "Angeheftet" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pinned"
+          }
+        }
+      }
     },
     "Angeheftete Werte bearbeiten" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Edit pinned values"
+          }
+        }
+      }
     },
     "Anhänge" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Attachments"
+          }
+        }
+      }
+    },
+    "Anteil" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Share"
+          }
+        }
+      }
     },
     "Anzahl" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Number"
+          }
+        }
+      }
     },
     "App-Version" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "App version"
+          }
+        }
+      }
     },
     "Archivieren" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Archive"
+          }
+        }
+      }
     },
     "Archiviert" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Archived"
+          }
+        }
+      }
     },
     "Archivierte Futtermittel stehen in neuen Plänen nicht zur Auswahl. Bisherige Einträge bleiben erhalten." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Archived feeds are not offered in new plans. Existing entries are kept."
+          }
+        }
+      }
     },
     "Archivierte Pferde erscheinen nicht im Pferde-Umschalter. Ihre Daten bleiben erhalten." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Archived horses do not appear in the horse switcher. Their data is kept."
+          }
+        }
+      }
     },
     "Art" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Type"
+          }
+        }
+      }
     },
     "Atemfrequenz" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Respiratory rate"
+          }
+        }
+      }
     },
     "Atemzüge/min" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "breaths/min"
+          }
+        }
+      }
+    },
+    "Aufgezeichnet von %@." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Recorded by %@."
+          }
+        }
+      }
     },
     "Auge" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Eye"
+          }
+        }
+      }
     },
     "Auge: %@" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Eye: %@"
+          }
+        }
+      }
     },
     "Augenentzündung" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Eye inflammation"
+          }
+        }
+      }
     },
     "Aus Brustumfang und Körperlänge." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "From heart girth and body length."
+          }
+        }
+      }
     },
     "Aus Futterplan und Zusatzgaben. Nur Mengen in kg und g werden berücksichtigt." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "From feeding plan and extra feedings. Only amounts in kg and g are included."
+          }
+        }
+      }
     },
     "ausgeheilt" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "healed"
+          }
+        }
+      }
     },
     "Ausgeheilt" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Healed"
+          }
+        }
+      }
     },
     "Ausgeheilt am" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Healed on"
+          }
+        }
+      }
     },
     "ausgeheilt am %@" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "healed on %@"
+          }
+        }
+      }
     },
     "ausgewählt" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "selected"
+          }
+        }
+      }
     },
     "Auslassen" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Leave out"
+          }
+        }
+      }
+    },
+    "Ausritt" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hack"
+          }
+        }
+      }
     },
     "außerhalb" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "outside"
+          }
+        }
+      }
     },
     "außerhalb des Referenzbereichs" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "outside the reference range"
+          }
+        }
+      }
     },
     "äußerlich" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "topical"
+          }
+        }
+      }
     },
     "Auswahl" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Selection"
+          }
+        }
+      }
     },
     "Backup" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Backup"
+          }
+        }
+      }
     },
     "Backup erstellen" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Create backup"
+          }
+        }
+      }
     },
     "Backup gesichert." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Backup saved."
+          }
+        }
+      }
     },
     "Backup wiederherstellen" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Restore backup"
+          }
+        }
+      }
     },
     "Bauchumfang" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Belly girth"
+          }
+        }
+      }
     },
     "Bearbeiten" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Edit"
+          }
+        }
+      }
+    },
+    "Beende die App ganz und öffne sie erneut." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Quit the app completely and open it again."
+          }
+        }
+      }
     },
     "Beenden" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "End"
+          }
+        }
+      }
     },
     "Beendet" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ended"
+          }
+        }
+      }
     },
     "Beginn" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Start"
+          }
+        }
+      }
     },
     "Beginn unbekannt" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Start unknown"
+          }
+        }
+      }
     },
     "Behandlung" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Treatment"
+          }
+        }
+      }
     },
     "Behandlung bearbeiten" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Edit treatment"
+          }
+        }
+      }
     },
     "Behandlung erfassen" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Add treatment"
+          }
+        }
+      }
     },
     "Behandlung hinzufügen" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Add treatment"
+          }
+        }
+      }
     },
     "Behandlungen" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Treatments"
+          }
+        }
+      }
     },
     "bei der Arbeit" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "during work"
+          }
+        }
+      }
     },
     "beide" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "both"
+          }
+        }
+      }
     },
     "beide Augen" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "both eyes"
+          }
+        }
+      }
     },
     "beim Füttern" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "when feeding"
+          }
+        }
+      }
+    },
+    "Beispiel-Einheit aus dem Entwickler-Menü." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sample session from the developer menu."
+          }
+        }
+      }
     },
     "Bereiche" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Areas"
+          }
+        }
+      }
     },
     "Beschreibung" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Description"
+          }
+        }
+      }
     },
     "Betroffene Region" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Affected region"
+          }
+        }
+      }
     },
     "bewölkt" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "cloudy"
+          }
+        }
+      }
     },
     "Bezeichnung" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Name"
+          }
+        }
+      }
     },
     "Bis" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "To"
+          }
+        }
+      }
     },
     "bis %@" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "until %@"
+          }
+        }
+      }
     },
     "Bis zu diesem Tag bleibt der bisherige Plan erhalten." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The previous plan is kept until this day."
+          }
+        }
+      }
     },
     "Bisherige Kategorien" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Previous categories"
+          }
+        }
+      }
     },
     "Bitte wählen" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Please choose"
+          }
+        }
+      }
+    },
+    "Bodenarbeit" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Groundwork"
+          }
+        }
+      }
     },
     "Body Condition Score" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Body condition score"
+          }
+        }
+      }
     },
     "Böen %@" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gusts %@"
+          }
+        }
+      }
     },
     "Breitengrad, z. B. 51,96" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Latitude, e.g. 51.96"
+          }
+        }
+      }
     },
     "Bright Sky (brightsky.dev)" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bright Sky (brightsky.dev)"
+          }
+        }
+      }
     },
     "Brustumfang" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Heart girth"
+          }
+        }
+      }
     },
     "Chargennummer" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Batch number"
+          }
+        }
+      }
     },
     "Chipnummer" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Microchip number"
+          }
+        }
+      }
     },
     "chronisch" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "chronic"
+          }
+        }
+      }
     },
     "Chronisch" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Chronic"
+          }
+        }
+      }
     },
     "Chronische Erkrankungen" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Chronic conditions"
+          }
+        }
+      }
     },
     "Chronische Erkrankungen werden im Pferdeprofil dauerhaft angezeigt." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Chronic conditions are always shown in the horse profile."
+          }
+        }
+      }
     },
     "cm" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "cm"
+          }
+        }
+      }
     },
     "CSV-Export" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "CSV export"
+          }
+        }
+      }
     },
     "Das Backup ist unvollständig. Es wurde nichts verändert." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The backup is incomplete. Nothing was changed."
+          }
+        }
+      }
     },
     "Das Backup konnte nicht erstellt werden." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The backup could not be created."
+          }
+        }
+      }
     },
     "Das Backup konnte nicht gesichert werden." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The backup could not be saved."
+          }
+        }
+      }
     },
     "Das Pferd stand schon vor heute dort. Wetterdaten älterer Einträge nutzen dann diesen Stall." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The horse already stood there before today. Weather for older entries then uses this stable."
+          }
+        }
+      }
     },
     "Dateien erstellen" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Create files"
+          }
+        }
+      }
     },
     "Daten" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Data"
+          }
+        }
+      }
+    },
+    "Daten konnten nicht geöffnet werden" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Data could not be opened"
+          }
+        }
+      }
     },
     "Datum" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Date"
+          }
+        }
+      }
     },
     "Dauer" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Duration"
+          }
+        }
+      }
     },
     "Dauer in Minuten" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Duration in minutes"
+          }
+        }
+      }
+    },
+    "Dauer nach Trainingsart" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Duration by training type"
+          }
+        }
+      }
     },
     "Dauer: %@" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Duration: %@"
+          }
+        }
+      }
     },
     "Dein Bereich: %@ – %@" : {
       "localizations" : {
@@ -469,71 +1524,234 @@
             "state" : "new",
             "value" : "Dein Bereich: %1$@ – %2$@"
           }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Your range: %1$@ – %2$@"
+          }
         }
       }
     },
     "Demnächst fällig" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Due soon"
+          }
+        }
+      }
     },
     "Der Bereich ist deine eigene Einstellung, zum Beispiel nach Absprache mit deinem Tierarzt. Die App gibt keine Grenzwerte vor." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The range is your own setting, for example as agreed with your vet. The app does not provide limits."
+          }
+        }
+      }
     },
     "Der erste Termin gilt, solange noch keine passende Behandlung erfasst ist." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The first date applies until a matching treatment has been recorded."
+          }
+        }
+      }
     },
     "Der Export ist fehlgeschlagen." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The export failed."
+          }
+        }
+      }
+    },
+    "Der letzte Abgleich ist fehlgeschlagen. Er wird automatisch wiederholt." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The last sync failed. It will be retried automatically."
+          }
+        }
+      }
     },
     "Der Standort bleibt auf dem Gerät. Für Wetterabfragen werden nur auf 2 Nachkommastellen gerundete Koordinaten (ca. 1 km) an Bright Sky übertragen." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The location stays on the device. For weather lookups only coordinates rounded to 2 decimal places (about 1 km) are sent to Bright Sky."
+          }
+        }
+      }
     },
     "Der Standort konnte nicht ermittelt werden." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The location could not be determined."
+          }
+        }
+      }
     },
     "Details" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Details"
+          }
+        }
+      }
     },
     "Details Augenentzündung" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Eye inflammation details"
+          }
+        }
+      }
     },
     "Details Husten" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cough details"
+          }
+        }
+      }
     },
     "Details Kolik" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Colic details"
+          }
+        }
+      }
     },
     "Details Spannigkeit" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Muscle stiffness details"
+          }
+        }
+      }
     },
     "Deutscher Wetterdienst – Open Data" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Deutscher Wetterdienst – Open Data"
+          }
+        }
+      }
     },
     "Diagnosedatum bekannt" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Diagnosis date known"
+          }
+        }
+      }
     },
     "diagnostiziert %@" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "diagnosed %@"
+          }
+        }
+      }
     },
     "Diagnostiziert am" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Diagnosed on"
+          }
+        }
+      }
     },
     "Diagnostiziert von" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Diagnosed by"
+          }
+        }
+      }
     },
     "Diagramm %@" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Chart %@"
+          }
+        }
+      }
     },
     "Die App ersetzt keine tierärztliche Beratung. Referenzbereiche und Wartezeiten sind deine eigenen Eingaben." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The app does not replace veterinary advice. Reference ranges and withdrawal periods are your own entries."
+          }
+        }
+      }
     },
     "Die bisherige Zuordnung endet an diesem Tag." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The previous assignment ends on this day."
+          }
+        }
+      }
     },
     "Die Datei ist kein gültiges EquiHealth-Backup." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The file is not a valid EquiHealth backup."
+          }
+        }
+      }
     },
     "Die Dateien konnten nicht gesichert werden." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The files could not be saved."
+          }
+        }
+      }
     },
     "Die nächste Fälligkeit rechnet ab der letzten Behandlung „%@“%@." : {
       "localizations" : {
@@ -542,48 +1760,181 @@
             "state" : "new",
             "value" : "Die nächste Fälligkeit rechnet ab der letzten Behandlung „%1$@“%2$@."
           }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The next due date counts from the last “%1$@” treatment%2$@."
+          }
         }
       }
     },
     "Die nächste Fälligkeit stammt aus deinen Erinnerungen unter „Termine“." : {
-
-    },
-    "Die nächste Fälligkeit wird aus der letzten passenden Behandlung berechnet." : {
-
-    },
-    "Die Suche ist gerade nicht möglich. Du kannst die Koordinaten auch eingeben." : {
-
-    },
-    "Dienstleister" : {
-
-    },
-    "Diesen Monat" : {
-
-    },
-    "Dieses Backup stammt aus einer neueren App-Version. Bitte zuerst die App aktualisieren." : {
-
-    },
-    "Dokument %@" : {
-
-    },
-    "Dosis" : {
-
-    },
-    "Du kannst das jederzeit in den Einstellungen ändern." : {
-
-    },
-    "Du wirst um diese Uhrzeit am Fälligkeitstag erinnert und, falls gewählt, so viele Tage vorher." : {
-
-    },
-    "Durchfall" : {
-
-    },
-    "Durchsuche Notizen, Symptome, Behandlungen und Medikamente." : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Search notes, symptoms, treatments and medications."
+            "value" : "The next due date comes from your reminders under “Appointments”."
+          }
+        }
+      }
+    },
+    "Die nächste Fälligkeit wird aus der letzten passenden Behandlung berechnet." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The next due date is calculated from the last matching treatment."
+          }
+        }
+      }
+    },
+    "Die Suche ist gerade nicht möglich. Du kannst die Koordinaten auch eingeben." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Search is not available right now. You can also enter the coordinates."
+          }
+        }
+      }
+    },
+    "Die Synchronisierung zwischen iPhone und iPad kommt in einer späteren Version. Bis dahin bleiben alle Daten auf diesem Gerät. Sichere sie regelmäßig über „Backup“." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Syncing between iPhone and iPad will come in a later version. Until then all data stays on this device. Back it up regularly with “Backup”."
+          }
+        }
+      }
+    },
+    "Die Trainings-App ist auf diesem Gerät nicht installiert." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The training app is not installed on this device."
+          }
+        }
+      }
+    },
+    "Dienstleister" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Provider"
+          }
+        }
+      }
+    },
+    "Diese Woche" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This week"
+          }
+        }
+      }
+    },
+    "Diesen Monat" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This month"
+          }
+        }
+      }
+    },
+    "Dieses Backup stammt aus einer neueren App-Version. Bitte zuerst die App aktualisieren." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This backup is from a newer app version. Please update the app first."
+          }
+        }
+      }
+    },
+    "Distanz" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Distance"
+          }
+        }
+      }
+    },
+    "Dokument %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Document %@"
+          }
+        }
+      }
+    },
+    "Dosis" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dose"
+          }
+        }
+      }
+    },
+    "Dressur" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dressage"
+          }
+        }
+      }
+    },
+    "Du kannst das jederzeit in den Einstellungen ändern." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You can change this at any time in Settings."
+          }
+        }
+      }
+    },
+    "Du wirst um diese Uhrzeit am Fälligkeitstag erinnert und, falls gewählt, so viele Tage vorher." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You will be reminded at this time on the due date and, if chosen, this many days before."
+          }
+        }
+      }
+    },
+    "Durchfall" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Diarrhoea"
+          }
+        }
+      }
+    },
+    "Durchsuche Notizen, Symptome, Krankheiten, Behandlungen und Medikamente aller Pferde." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Search notes, symptoms, conditions, treatments and medications of all horses."
           }
         }
       }
@@ -599,476 +1950,1671 @@
       }
     },
     "E-Mail" : {
-
-    },
-    "E-Mail an %@" : {
-
-    },
-    "Eigene" : {
-
-    },
-    "Eigene Kategorie" : {
-
-    },
-    "Ein Backup enthält alle Pferde und Einträge mit Fotos und Anhängen, aber keine Wetterdaten. Mit kostenlosem Apple-Account läuft die App nach 7 Tagen ab: Sichere regelmäßig, zum Beispiel in iCloud Drive oder auf einem Mac." : {
-
-    },
-    "Einheit" : {
-
-    },
-    "Einheit, z. B. ml" : {
-
-    },
-    "Einstellungen" : {
-
-    },
-    "Einträge" : {
-
-    },
-    "Ende" : {
-
-    },
-    "Ende (letzte Gabe)" : {
-
-    },
-    "Endet am" : {
-
-    },
-    "Entfernen" : {
-
-    },
-    "Equidenpass" : {
-
-    },
-    "EquiHealth erinnert dich an Impfungen, Hufschmied, Zahnkontrolle und Wurmkur." : {
-
-    },
-    "EquiHealth ist das Gesundheitstagebuch für deine Pferde: Messwerte, Fütterung, Symptome und Termine an einem Ort." : {
-
-    },
-    "Erfasse Symptome und Krankheiten über das Plus-Menü." : {
-
-    },
-    "Ergänzungsfutter" : {
-
-    },
-    "Erinnerung" : {
-
-    },
-    "Erinnerung anlegen" : {
-
-    },
-    "Erinnerung bearbeiten" : {
-
-    },
-    "Erinnerung löschen" : {
-
-    },
-    "Erinnerung löschen?" : {
-
-    },
-    "Erinnerung nicht gefunden" : {
-
-    },
-    "Erinnerungen" : {
-
-    },
-    "Erinnerungen auf diesem Gerät" : {
-
-    },
-    "erlaubt" : {
-
-    },
-    "Erledigt" : {
-
-    },
-    "Erledigt durch" : {
-
-    },
-    "Ersetzen" : {
-
-    },
-    "Erstellt" : {
-
-    },
-    "Erstellt am" : {
-
-    },
-    "Erster Termin" : {
-
-    },
-    "Erstes Pferd anlegen" : {
-
-    },
-    "Excel (Deutsch)" : {
-
-    },
-    "Fällig am %@" : {
-
-    },
-    "Fällig seit %@" : {
-
-    },
-    "Fällige Impfungen, Hufschmied- und Zahntermine erscheinen hier." : {
-      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Upcoming vaccinations, farrier and dental appointments will appear here."
+            "value" : "Email"
+          }
+        }
+      }
+    },
+    "E-Mail an %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Email %@"
+          }
+        }
+      }
+    },
+    "Eigene" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Custom"
+          }
+        }
+      }
+    },
+    "Eigene Kategorie" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Custom category"
+          }
+        }
+      }
+    },
+    "Ein Backup enthält alle Pferde und Einträge mit Fotos und Anhängen, aber keine Wetterdaten. Mit kostenlosem Apple-Account läuft die App nach 7 Tagen ab: Sichere regelmäßig, zum Beispiel in iCloud Drive oder auf einem Mac." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A backup contains all horses and entries with photos and attachments, but no weather data. With a free Apple account the app expires after 7 days: back up regularly, for example to iCloud Drive or a Mac."
+          }
+        }
+      }
+    },
+    "Einheit" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unit"
+          }
+        }
+      }
+    },
+    "Einheit, z. B. ml" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unit, e.g. ml"
+          }
+        }
+      }
+    },
+    "Einheiten" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sessions"
+          }
+        }
+      }
+    },
+    "Einheiten zeichnet die geplante Trainings-App auf. Sie erscheinen dann hier." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sessions are recorded by the planned training app. They will then appear here."
+          }
+        }
+      }
+    },
+    "Einstellungen" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Settings"
+          }
+        }
+      }
+    },
+    "Eintrag nicht gefunden" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Entry not found"
+          }
+        }
+      }
+    },
+    "Einträge" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Entries"
+          }
+        }
+      }
+    },
+    "Ende" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "End"
+          }
+        }
+      }
+    },
+    "Ende (letzte Gabe)" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "End (last dose)"
+          }
+        }
+      }
+    },
+    "Endet am" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ends on"
+          }
+        }
+      }
+    },
+    "Entfernen" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Remove"
+          }
+        }
+      }
+    },
+    "Equidenpass" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Equine passport"
+          }
+        }
+      }
+    },
+    "EquiHealth" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "EquiHealth"
+          }
+        }
+      }
+    },
+    "EquiHealth erinnert dich an Impfungen, Hufschmied, Zahnkontrolle und Wurmkur." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "EquiHealth reminds you of vaccinations, farrier, dental checks and deworming."
+          }
+        }
+      }
+    },
+    "EquiHealth ist das Gesundheitstagebuch für deine Pferde: Messwerte, Fütterung, Symptome und Termine an einem Ort." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "EquiHealth is the health diary for your horses: measurements, feeding, symptoms and appointments in one place."
+          }
+        }
+      }
+    },
+    "EquiHealth kann seine Datenbank gerade nicht öffnen. Es wurde nichts gelöscht." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "EquiHealth cannot open its database right now. Nothing was deleted."
+          }
+        }
+      }
+    },
+    "Erfasse Symptome und Krankheiten über das Plus-Menü." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Record symptoms and conditions with the plus menu."
+          }
+        }
+      }
+    },
+    "Ergänzungsfutter" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Supplement"
+          }
+        }
+      }
+    },
+    "Erinnerung" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reminder"
+          }
+        }
+      }
+    },
+    "Erinnerung anlegen" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Create reminder"
+          }
+        }
+      }
+    },
+    "Erinnerung bearbeiten" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Edit reminder"
+          }
+        }
+      }
+    },
+    "Erinnerung löschen" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Delete reminder"
+          }
+        }
+      }
+    },
+    "Erinnerung löschen?" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Delete reminder?"
+          }
+        }
+      }
+    },
+    "Erinnerung nicht gefunden" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reminder not found"
+          }
+        }
+      }
+    },
+    "Erinnerungen" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reminders"
+          }
+        }
+      }
+    },
+    "Erinnerungen auf diesem Gerät" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reminders on this device"
+          }
+        }
+      }
+    },
+    "erlaubt" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "allowed"
+          }
+        }
+      }
+    },
+    "Erledigt" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Done"
+          }
+        }
+      }
+    },
+    "Erledigt durch" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Completed by"
+          }
+        }
+      }
+    },
+    "Ersetzen" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Replace"
+          }
+        }
+      }
+    },
+    "Erstellt" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Created"
+          }
+        }
+      }
+    },
+    "Erstellt am" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Created on"
+          }
+        }
+      }
+    },
+    "Erster Termin" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "First date"
+          }
+        }
+      }
+    },
+    "Erstes Pferd anlegen" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Add first horse"
+          }
+        }
+      }
+    },
+    "Excel (Deutsch)" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Excel (German)"
+          }
+        }
+      }
+    },
+    "Fällig am %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Due on %@"
+          }
+        }
+      }
+    },
+    "Fällig seit %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Due since %@"
           }
         }
       }
     },
     "Farbe" : {
-
-    },
-    "Farbe des Ausflusses" : {
-
-    },
-    "Fertig" : {
-
-    },
-    "feucht" : {
-
-    },
-    "Fieber" : {
-
-    },
-    "Filter" : {
-
-    },
-    "Format" : {
-
-    },
-    "Foto" : {
-
-    },
-    "Foto ändern" : {
-
-    },
-    "Foto auswählen" : {
-
-    },
-    "Foto entfernen" : {
-
-    },
-    "Fotos" : {
-
-    },
-    "Fotos hinzufügen" : {
-
-    },
-    "Fotos und Anhänge" : {
-
-    },
-    "Frühere Ställe" : {
-
-    },
-    "Für „%@“ ist noch kein Standort hinterlegt." : {
-
-    },
-    "Für Wetterdaten" : {
-
-    },
-    "Futtermittel" : {
-
-    },
-    "Futtermittel anlegen" : {
-
-    },
-    "Futtermittel bearbeiten" : {
-
-    },
-    "Futtermittel hinzufügen" : {
-
-    },
-    "Futterplan" : {
-
-    },
-    "Futterplan ändern" : {
-
-    },
-    "Fütterung" : {
-
-    },
-    "Fütterung (Plan und Abweichungen)" : {
-
-    },
-    "Fütterung an Tag X" : {
-
-    },
-    "g" : {
-
-    },
-    "Geburtsdatum" : {
-
-    },
-    "Geburtsdatum bekannt" : {
-
-    },
-    "gegen %@" : {
-
-    },
-    "Gelöschter Stall" : {
-
-    },
-    "Gelöschtes Futtermittel" : {
-
-    },
-    "gemessen" : {
-
-    },
-    "geschätzt" : {
-
-    },
-    "Geschätztes Gewicht" : {
-
-    },
-    "Geschlecht" : {
-
-    },
-    "Gesichert." : {
-
-    },
-    "Gewicht" : {
-
-    },
-    "Gewicht ≈ Brustumfang² × Körperlänge ÷ 11.880. Bei Fohlen, Ponys und sehr schweren Rassen ist die Formel ungenauer." : {
-
-    },
-    "Gewicht ohne Waage schätzen" : {
-
-    },
-    "Gewicht schätzen" : {
-
-    },
-    "Gewitter" : {
-
-    },
-    "Gilt nur für dieses Gerät. So vermeidest du doppelte Hinweise, wenn du die App auf iPhone und iPad nutzt." : {
-
-    },
-    "Gramm" : {
-
-    },
-    "Gültig ab" : {
-
-    },
-    "gültig ab %@" : {
-
-    },
-    "Hagel" : {
-
-    },
-    "Häufigkeit, z. B. 2× täglich" : {
-
-    },
-    "Hautveränderung" : {
-
-    },
-    "Hengst" : {
-
-    },
-    "Herpes" : {
-
-    },
-    "Hersteller" : {
-
-    },
-    "heute" : {
-
-    },
-    "heute ausgelassen" : {
-
-    },
-    "Heute auslassen" : {
-
-    },
-    "Heute fällig" : {
-
-    },
-    "Hier erscheinen Messwerte, Fütterung, Gesundheit und Behandlungen." : {
-      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Measurements, feeding, health and treatments will appear here."
+            "value" : "Colour"
+          }
+        }
+      }
+    },
+    "Farbe des Ausflusses" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Colour of discharge"
+          }
+        }
+      }
+    },
+    "Fertig" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Done"
+          }
+        }
+      }
+    },
+    "feucht" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "productive"
+          }
+        }
+      }
+    },
+    "Fieber" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fever"
+          }
+        }
+      }
+    },
+    "Filter" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Filter"
+          }
+        }
+      }
+    },
+    "Format" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Format"
+          }
+        }
+      }
+    },
+    "Foto" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Photo"
+          }
+        }
+      }
+    },
+    "Foto ändern" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Change photo"
+          }
+        }
+      }
+    },
+    "Foto auswählen" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Choose photo"
+          }
+        }
+      }
+    },
+    "Foto entfernen" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Remove photo"
+          }
+        }
+      }
+    },
+    "Fotos" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Photos"
+          }
+        }
+      }
+    },
+    "Fotos hinzufügen" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Add photos"
+          }
+        }
+      }
+    },
+    "Fotos und Anhänge" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Photos and attachments"
+          }
+        }
+      }
+    },
+    "Freigaben für Reitbeteiligung, Stall oder Tierarzt sind vorbereitet, aber noch nicht umgesetzt. Geteilt würden %lld Einträge von %@." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Freigaben für Reitbeteiligung, Stall oder Tierarzt sind vorbereitet, aber noch nicht umgesetzt. Geteilt würden %1$lld Einträge von %2$@."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sharing with a part-loaner, the stable or the vet is prepared but not implemented yet. %1$lld entries of %2$@ would be shared."
+          }
+        }
+      }
+    },
+    "Frühere Ställe" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Previous stables"
+          }
+        }
+      }
+    },
+    "Für „%@“ ist noch kein Standort hinterlegt." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No location has been set for “%@” yet."
+          }
+        }
+      }
+    },
+    "Für Wetterdaten" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "For weather data"
+          }
+        }
+      }
+    },
+    "Futtermittel" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Feeds"
+          }
+        }
+      }
+    },
+    "Futtermittel anlegen" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Add feed"
+          }
+        }
+      }
+    },
+    "Futtermittel bearbeiten" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Edit feed"
+          }
+        }
+      }
+    },
+    "Futtermittel hinzufügen" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Add feed"
+          }
+        }
+      }
+    },
+    "Futterplan" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Feeding plan"
+          }
+        }
+      }
+    },
+    "Futterplan ändern" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Change feeding plan"
+          }
+        }
+      }
+    },
+    "Fütterung" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Feeding"
+          }
+        }
+      }
+    },
+    "Fütterung (Plan und Abweichungen)" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Feeding (plan and deviations)"
+          }
+        }
+      }
+    },
+    "Fütterung an Tag X" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Feeding on a given day"
+          }
+        }
+      }
+    },
+    "g" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "g"
+          }
+        }
+      }
+    },
+    "Galopp" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Canter"
+          }
+        }
+      }
+    },
+    "Gangart" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gait"
+          }
+        }
+      }
+    },
+    "Gangarten" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gaits"
+          }
+        }
+      }
+    },
+    "Geburtsdatum" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Date of birth"
+          }
+        }
+      }
+    },
+    "Geburtsdatum bekannt" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Date of birth known"
+          }
+        }
+      }
+    },
+    "gegen %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "against %@"
+          }
+        }
+      }
+    },
+    "Gelöschter Stall" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Deleted stable"
+          }
+        }
+      }
+    },
+    "Gelöschtes Futtermittel" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Deleted feed"
+          }
+        }
+      }
+    },
+    "gemessen" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "measured"
+          }
+        }
+      }
+    },
+    "geschätzt" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "estimated"
+          }
+        }
+      }
+    },
+    "Geschätztes Gewicht" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Estimated weight"
+          }
+        }
+      }
+    },
+    "Geschlecht" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sex"
+          }
+        }
+      }
+    },
+    "Gesichert." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Saved."
+          }
+        }
+      }
+    },
+    "Gewicht" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Weight"
+          }
+        }
+      }
+    },
+    "Gewicht ≈ Brustumfang² × Körperlänge ÷ 11.880. Bei Fohlen, Ponys und sehr schweren Rassen ist die Formel ungenauer." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Weight ≈ heart girth² × body length ÷ 11,880. The formula is less accurate for foals, ponies and very heavy breeds."
+          }
+        }
+      }
+    },
+    "Gewicht ohne Waage schätzen" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Estimate weight without scales"
+          }
+        }
+      }
+    },
+    "Gewicht schätzen" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Estimate weight"
+          }
+        }
+      }
+    },
+    "Gewitter" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Thunderstorm"
+          }
+        }
+      }
+    },
+    "Gilt nur für dieses Gerät. So vermeidest du doppelte Hinweise, wenn du die App auf iPhone und iPad nutzt." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Applies to this device only. This avoids duplicate notifications if you use the app on iPhone and iPad."
+          }
+        }
+      }
+    },
+    "Gramm" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Grams"
+          }
+        }
+      }
+    },
+    "Gültig ab" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Valid from"
+          }
+        }
+      }
+    },
+    "gültig ab %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "valid from %@"
+          }
+        }
+      }
+    },
+    "Hagel" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hail"
+          }
+        }
+      }
+    },
+    "Häufigkeit, z. B. 2× täglich" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Frequency, e.g. twice daily"
+          }
+        }
+      }
+    },
+    "Hautveränderung" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Skin change"
+          }
+        }
+      }
+    },
+    "Hengst" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stallion"
+          }
+        }
+      }
+    },
+    "Herpes" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Herpes"
+          }
+        }
+      }
+    },
+    "Hersteller" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Manufacturer"
+          }
+        }
+      }
+    },
+    "Herzfrequenz max." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Max. heart rate"
+          }
+        }
+      }
+    },
+    "Herzfrequenz Ø" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Avg. heart rate"
+          }
+        }
+      }
+    },
+    "heute" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "today"
+          }
+        }
+      }
+    },
+    "heute ausgelassen" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "left out today"
+          }
+        }
+      }
+    },
+    "Heute auslassen" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Leave out today"
+          }
+        }
+      }
+    },
+    "Heute fällig" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Due today"
           }
         }
       }
     },
     "Hinweis" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Notice"
+          }
+        }
+      }
     },
     "Hinzufügen" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Add"
+          }
+        }
+      }
     },
     "Hufschmied" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Farrier"
+          }
+        }
+      }
     },
     "Husten" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cough"
+          }
+        }
+      }
+    },
+    "iCloud ist auf diesem Gerät eingeschränkt, zum Beispiel durch Bildschirmzeit." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "iCloud is restricted on this device, for example by Screen Time."
+          }
+        }
+      }
+    },
+    "iCloud ist gerade nicht erreichbar. Der Abgleich läuft nach, sobald möglich." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "iCloud is not reachable right now. Syncing will catch up as soon as possible."
+          }
+        }
+      }
     },
     "iCloud-Synchronisierung" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "iCloud sync"
+          }
+        }
+      }
     },
     "Impf-Erinnerung anlegen" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Create vaccination reminder"
+          }
+        }
+      }
     },
     "Impfstoff" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vaccine"
+          }
+        }
+      }
     },
     "Impfstoff (%@)" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vaccine (%@)"
+          }
+        }
+      }
     },
     "Impfstoff hinzufügen" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Add vaccine"
+          }
+        }
+      }
     },
     "Impfstoffe" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vaccines"
+          }
+        }
+      }
     },
     "Impfübersicht" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vaccination overview"
+          }
+        }
+      }
     },
     "Impfung" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vaccination"
+          }
+        }
+      }
     },
     "Impfung gegen" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vaccination against"
+          }
+        }
+      }
     },
     "Impfung Herpes" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Herpes vaccination"
+          }
+        }
+      }
     },
     "Impfung Influenza" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Influenza vaccination"
+          }
+        }
+      }
     },
     "Impfung Tetanus" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tetanus vaccination"
+          }
+        }
+      }
     },
     "Impressum und Quellen" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Legal notice and sources"
+          }
+        }
+      }
     },
     "In 1 Woche erinnern" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Remind me in 1 week"
+          }
+        }
+      }
     },
     "In Dateien sichern" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Save to Files"
+          }
+        }
+      }
     },
     "In den iOS-Einstellungen öffnen" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Open in iOS Settings"
+          }
+        }
+      }
     },
     "in Ruhe" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "at rest"
+          }
+        }
+      }
     },
     "Influenza" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Influenza"
+          }
+        }
+      }
     },
     "Inhalation" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Inhalation"
+          }
+        }
+      }
     },
     "Inhalt" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Contents"
+          }
+        }
+      }
     },
     "Intervall" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Interval"
+          }
+        }
+      }
     },
     "intramuskulär" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "intramuscular"
+          }
+        }
+      }
     },
     "intravenös" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "intravenous"
+          }
+        }
+      }
     },
     "J" : {
-      "comment" : "Chart range: year"
+      "comment" : "Chart range: year",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Y"
+          }
+        }
+      }
     },
     "Ja" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yes"
+          }
+        }
+      }
     },
     "Jahr" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Year"
+          }
+        }
+      }
     },
     "Jahre" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Years"
+          }
+        }
+      }
     },
     "Jede Änderung legt eine neue Version an. So bleibt nachvollziehbar, was %@ an einem Tag bekam." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Every change creates a new version, so you can always see what %@ got on a given day."
+          }
+        }
+      }
     },
     "Jüngste Werte" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Latest values"
+          }
+        }
+      }
     },
     "Jüngster Wert im Zeitraum" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Latest value in period"
+          }
+        }
+      }
+    },
+    "Karte der Route" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Map of the route"
+          }
+        }
+      }
     },
     "Karte mit dem Standort des Stalls" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Map with the stable's location"
+          }
+        }
+      }
     },
     "Kategorie" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Category"
+          }
+        }
+      }
     },
     "Kategorien" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Categories"
+          }
+        }
+      }
     },
     "Kein Futterplan" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No feeding plan"
+          }
+        }
+      }
+    },
+    "Kein iCloud-Konto" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No iCloud account"
+          }
+        }
+      }
     },
     "kein Kotabsatz" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "no droppings"
+          }
+        }
+      }
     },
     "Kein Kotabsatz" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No droppings"
+          }
+        }
+      }
     },
     "kein Stall hinterlegt" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "no stable set"
+          }
+        }
+      }
     },
     "Kein Stall zugeordnet" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No stable assigned"
+          }
+        }
+      }
     },
     "Kein Standort für Wetterdaten" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No location for weather data"
+          }
+        }
+      }
     },
     "Kein Termin" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No date"
+          }
+        }
+      }
+    },
+    "keine" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "none"
+          }
+        }
+      }
     },
     "Keine" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "None"
+          }
+        }
+      }
     },
     "Keine Angabe" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Not specified"
+          }
+        }
+      }
     },
     "Keine Behandlungen" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No treatments"
+          }
+        }
+      }
     },
     "keine Daten" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "no data"
+          }
+        }
+      }
     },
     "Keine Daten" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No data"
+          }
+        }
+      }
     },
     "Keine Einträge" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No entries"
+          }
+        }
+      }
     },
     "keine Erinnerung" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "no reminder"
+          }
+        }
+      }
     },
     "Keine Futtermittel" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No feeds"
+          }
+        }
+      }
     },
     "Keine Kontakte" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No contacts"
+          }
+        }
+      }
     },
     "Keine Medikamente" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No medications"
+          }
+        }
+      }
     },
     "Keine Mengen in kg für diesen Zeitraum." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No amounts in kg for this period."
+          }
+        }
+      }
     },
     "Keine Messwerte angeheftet" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No measurements pinned"
+          }
+        }
+      }
     },
     "Keine Ställe" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No stables"
+          }
+        }
+      }
     },
     "Keine Termine" : {
       "localizations" : {
@@ -1080,95 +3626,325 @@
         }
       }
     },
+    "Keine Trainingseinheiten" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No training sessions"
+          }
+        }
+      }
+    },
     "Keine Treffer." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No results."
+          }
+        }
+      }
     },
     "Keine Werte in diesem Zeitraum" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No values in this period"
+          }
+        }
+      }
     },
     "Keine Wetterdaten für diesen Zeitraum." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No weather data for this period."
+          }
+        }
+      }
     },
     "Keiner" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "None"
+          }
+        }
+      }
     },
     "kg" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "kg"
+          }
+        }
+      }
+    },
+    "kg pro Tag" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "kg per day"
+          }
+        }
+      }
     },
     "Kilogramm" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kilograms"
+          }
+        }
+      }
     },
     "klar" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "clear"
+          }
+        }
+      }
     },
     "Kolik" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Colic"
+          }
+        }
+      }
     },
     "Komma und Dezimalpunkt, zum Beispiel für Numbers oder andere Programme. UTF-8, Datum im ISO-8601-Format." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Comma and decimal point, for example for Numbers or other programs. UTF-8, dates in ISO 8601 format."
+          }
+        }
+      }
     },
     "Kontakt anlegen" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Add contact"
+          }
+        }
+      }
     },
     "Kontakt bearbeiten" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Edit contact"
+          }
+        }
+      }
     },
     "Kontakt hinzufügen" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Add contact"
+          }
+        }
+      }
     },
     "Kontakte" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Contacts"
+          }
+        }
+      }
     },
     "Koordinaten eingeben" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enter coordinates"
+          }
+        }
+      }
     },
     "Koordinaten übernehmen" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Use coordinates"
+          }
+        }
+      }
     },
     "Körperlänge" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Body length"
+          }
+        }
+      }
     },
     "Körpertemperatur" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Body temperature"
+          }
+        }
+      }
     },
     "Kosten" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cost"
+          }
+        }
+      }
     },
     "Kraftfutter" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Concentrate"
+          }
+        }
+      }
     },
     "Krankheit" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Condition"
+          }
+        }
+      }
     },
     "Krankheit bearbeiten" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Edit condition"
+          }
+        }
+      }
     },
     "Krankheiten" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Conditions"
+          }
+        }
+      }
     },
     "l" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "l"
+          }
+        }
+      }
     },
     "Lahmheit" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lameness"
+          }
+        }
+      }
     },
     "Längengrad, z. B. 7,63" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Longitude, e.g. 7.63"
+          }
+        }
+      }
     },
     "laufend" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ongoing"
+          }
+        }
+      }
     },
     "Laufende Symptome" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ongoing symptoms"
+          }
+        }
+      }
     },
     "Laufende Symptome erscheinen oben in der Übersicht." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ongoing symptoms appear at the top of the summary."
+          }
+        }
+      }
     },
     "Laufende Warte- und Karenzzeiten" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Running withdrawal periods"
+          }
+        }
+      }
     },
     "Laut Plan: %@. Gilt nur für diesen Tag." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Planned: %@. Applies to this day only."
+          }
+        }
+      }
     },
     "Lege ein Pferd an, um Messwerte, Fütterung und Gesundheit zu erfassen." : {
       "localizations" : {
@@ -1181,231 +3957,805 @@
       }
     },
     "Lege Erinnerungen für Impfungen, Hufschmied, Zahnkontrolle oder Wurmkur an." : {
-
-    },
-    "Lege fest, was %@ zu welcher Mahlzeit bekommt." : {
-
-    },
-    "Lege Heu, Kraftfutter, Mineralfutter und Zusätze einmal an. Sie gelten für alle Pferde." : {
-
-    },
-    "Lege Tierarzt, Hufschmied und Therapeuten einmal an und verwende sie in Behandlungen wieder." : {
-
-    },
-    "leicht" : {
-
-    },
-    "Letzte Impfung" : {
-
-    },
-    "Letzter Wert" : {
-
-    },
-    "Letztes Backup" : {
-
-    },
-    "lichtempfindlich" : {
-
-    },
-    "Lichtempfindlich" : {
-
-    },
-    "links" : {
-
-    },
-    "Liter" : {
-
-    },
-    "Löschen" : {
-
-    },
-    "Lufttemperatur" : {
-
-    },
-    "Lufttemperatur einblenden" : {
-
-    },
-    "M" : {
-      "comment" : "Chart range: month"
-    },
-    "Maßband" : {
-
-    },
-    "Maße" : {
-
-    },
-    "Maße ebenfalls speichern" : {
-
-    },
-    "Maximum" : {
-
-    },
-    "Medikament" : {
-
-    },
-    "Medikament hinzufügen" : {
-
-    },
-    "Medikamente" : {
-
-    },
-    "Medikamente erfasst du innerhalb einer Behandlung." : {
-
-    },
-    "Menge" : {
-
-    },
-    "Menge in kg" : {
-
-    },
-    "Messbecher" : {
-
-    },
-    "Messwert" : {
-
-    },
-    "Messwert bearbeiten" : {
-
-    },
-    "Messwert erfassen" : {
-
-    },
-    "Messwerte" : {
-
-    },
-    "Methode" : {
-
-    },
-    "min" : {
-
-    },
-    "Mineralfutter" : {
-
-    },
-    "Minimum" : {
-
-    },
-    "Mittags" : {
-
-    },
-    "Mitteilung bei Ende der Turnier-Karenzzeit" : {
-
-    },
-    "Mitteilungen" : {
-
-    },
-    "Mitteilungen erlauben" : {
-
-    },
-    "Mitteilungen sind abgelehnt. Du kannst sie später in den iOS-Einstellungen erlauben." : {
-
-    },
-    "Mitteilungen sind erlaubt" : {
-
-    },
-    "mittel" : {
-
-    },
-    "Monat" : {
-
-    },
-    "Monate" : {
-
-    },
-    "Morgens" : {
-
-    },
-    "Muskulatur hart" : {
-
-    },
-    "nach der Arbeit" : {
-
-    },
-    "Nach der Arbeit" : {
-
-    },
-    "Nächste Fälligkeit" : {
-
-    },
-    "Nächster Tag" : {
-
-    },
-    "Name" : {
-
-    },
-    "Name der Kategorie" : {
-
-    },
-    "Name des Pferdes" : {
-
-    },
-    "Name des Stalls" : {
-
-    },
-    "Nasenausfluss" : {
-
-    },
-    "Nasenausfluss (%@)" : {
-
-    },
-    "Nebel" : {
-
-    },
-    "Nein" : {
-
-    },
-    "Neue Erinnerung" : {
-
-    },
-    "Neue Krankheit" : {
-
-    },
-    "Neuen Kontakt anlegen" : {
-
-    },
-    "Neuen Stall anlegen" : {
-
-    },
-    "Neuer Kontakt" : {
-
-    },
-    "Neuer Stall" : {
-
-    },
-    "Neues Futtermittel" : {
-
-    },
-    "Neues Pferd" : {
-
-    },
-    "nicht angelegt" : {
-
-    },
-    "nicht gefragt" : {
-
-    },
-    "Noch keine Einträge" : {
-
-    },
-    "Noch keine Futtermittel angelegt." : {
-
-    },
-    "Noch keine Kategorien" : {
-      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "No Categories Yet"
+            "value" : "Create reminders for vaccinations, farrier, dental checks or deworming."
+          }
+        }
+      }
+    },
+    "Lege fest, was %@ zu welcher Mahlzeit bekommt." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Set what %@ gets at each meal."
+          }
+        }
+      }
+    },
+    "Lege Heu, Kraftfutter, Mineralfutter und Zusätze einmal an. Sie gelten für alle Pferde." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Add hay, concentrates, minerals and supplements once. They apply to all horses."
+          }
+        }
+      }
+    },
+    "Lege Tierarzt, Hufschmied und Therapeuten einmal an und verwende sie in Behandlungen wieder." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Add your vet, farrier and therapists once and reuse them in treatments."
+          }
+        }
+      }
+    },
+    "leicht" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "mild"
+          }
+        }
+      }
+    },
+    "Letzte %lld Wochen" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Last %lld weeks"
+          }
+        }
+      }
+    },
+    "Letzte Impfung" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Last vaccination"
+          }
+        }
+      }
+    },
+    "Letzte Trainingseinheit" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Last training session"
+          }
+        }
+      }
+    },
+    "Letzter Abgleich" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Last sync"
+          }
+        }
+      }
+    },
+    "Letzter Wert" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Last value"
+          }
+        }
+      }
+    },
+    "Letztes Backup" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Last backup"
+          }
+        }
+      }
+    },
+    "lichtempfindlich" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "sensitive to light"
+          }
+        }
+      }
+    },
+    "Lichtempfindlich" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sensitive to light"
+          }
+        }
+      }
+    },
+    "links" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "left"
+          }
+        }
+      }
+    },
+    "Liter" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Litres"
+          }
+        }
+      }
+    },
+    "Longieren" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lunging"
+          }
+        }
+      }
+    },
+    "Lösche die App nicht. Ohne Backup wären die Daten dann verloren. Ein Backup lässt sich nach einer Neuinstallation unter Einstellungen › Backup wiederherstellen." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Do not delete the app. Without a backup the data would be lost. A backup can be restored after reinstalling under Settings › Backup."
+          }
+        }
+      }
+    },
+    "Löschen" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Delete"
+          }
+        }
+      }
+    },
+    "Lufttemperatur" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Air temperature"
+          }
+        }
+      }
+    },
+    "Lufttemperatur einblenden" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Show air temperature"
+          }
+        }
+      }
+    },
+    "M" : {
+      "comment" : "Chart range: month",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "M"
+          }
+        }
+      }
+    },
+    "Maßband" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Measuring tape"
+          }
+        }
+      }
+    },
+    "Maße" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Measurements"
+          }
+        }
+      }
+    },
+    "Maße ebenfalls speichern" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Also save measurements"
+          }
+        }
+      }
+    },
+    "Maximum" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Maximum"
+          }
+        }
+      }
+    },
+    "Medikament" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Medication"
+          }
+        }
+      }
+    },
+    "Medikament hinzufügen" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Add medication"
+          }
+        }
+      }
+    },
+    "Medikamente" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Medications"
+          }
+        }
+      }
+    },
+    "Medikamente erfasst du innerhalb einer Behandlung." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Medications are recorded within a treatment."
+          }
+        }
+      }
+    },
+    "Melde dich in den iOS-Einstellungen bei iCloud an, um Daten zwischen Geräten abzugleichen. Die App funktioniert auch ohne." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sign in to iCloud in iOS Settings to sync data between devices. The app also works without it."
+          }
+        }
+      }
+    },
+    "Menge" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Amount"
+          }
+        }
+      }
+    },
+    "Menge in kg" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Amount in kg"
+          }
+        }
+      }
+    },
+    "Messbecher" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Scoops"
+          }
+        }
+      }
+    },
+    "Messwert" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Measurement"
+          }
+        }
+      }
+    },
+    "Messwert bearbeiten" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Edit measurement"
+          }
+        }
+      }
+    },
+    "Messwert erfassen" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Add measurement"
+          }
+        }
+      }
+    },
+    "Messwerte" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Measurements"
+          }
+        }
+      }
+    },
+    "Methode" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Method"
+          }
+        }
+      }
+    },
+    "min" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "min"
+          }
+        }
+      }
+    },
+    "Mineralfutter" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mineral feed"
+          }
+        }
+      }
+    },
+    "Minimum" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Minimum"
+          }
+        }
+      }
+    },
+    "Minuten" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Minutes"
+          }
+        }
+      }
+    },
+    "Mittags" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Noon"
+          }
+        }
+      }
+    },
+    "Mitteilung bei Ende der Turnier-Karenzzeit" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Notify when competition withdrawal ends"
+          }
+        }
+      }
+    },
+    "Mitteilungen" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Notifications"
+          }
+        }
+      }
+    },
+    "Mitteilungen erlauben" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Allow notifications"
+          }
+        }
+      }
+    },
+    "Mitteilungen sind abgelehnt. Du kannst sie später in den iOS-Einstellungen erlauben." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Notifications are declined. You can allow them later in iOS Settings."
+          }
+        }
+      }
+    },
+    "Mitteilungen sind erlaubt" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Notifications are allowed"
+          }
+        }
+      }
+    },
+    "mittel" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "moderate"
+          }
+        }
+      }
+    },
+    "Mittelwert aus %lld Werten" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mean of %lld values"
+          }
+        }
+      }
+    },
+    "Monat" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Month"
+          }
+        }
+      }
+    },
+    "Monate" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Months"
+          }
+        }
+      }
+    },
+    "Morgens" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Morning"
+          }
+        }
+      }
+    },
+    "Muskulatur hart" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hard muscles"
+          }
+        }
+      }
+    },
+    "nach der Arbeit" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "after work"
+          }
+        }
+      }
+    },
+    "Nach der Arbeit" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "After work"
+          }
+        }
+      }
+    },
+    "Nächste Fälligkeit" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Next due date"
+          }
+        }
+      }
+    },
+    "Nächster Tag" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Next day"
+          }
+        }
+      }
+    },
+    "Name" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Name"
+          }
+        }
+      }
+    },
+    "Name der Kategorie" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Category name"
+          }
+        }
+      }
+    },
+    "Name des Pferdes" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Horse's name"
+          }
+        }
+      }
+    },
+    "Name des Stalls" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stable name"
+          }
+        }
+      }
+    },
+    "Nasenausfluss" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nasal discharge"
+          }
+        }
+      }
+    },
+    "Nasenausfluss (%@)" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nasal discharge (%@)"
+          }
+        }
+      }
+    },
+    "Nebel" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fog"
+          }
+        }
+      }
+    },
+    "Nein" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No"
+          }
+        }
+      }
+    },
+    "Neue Erinnerung" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "New reminder"
+          }
+        }
+      }
+    },
+    "Neue Krankheit" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "New condition"
+          }
+        }
+      }
+    },
+    "Neuen Kontakt anlegen" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Add new contact"
+          }
+        }
+      }
+    },
+    "Neuen Stall anlegen" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Add new stable"
+          }
+        }
+      }
+    },
+    "Neuer Kontakt" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "New contact"
+          }
+        }
+      }
+    },
+    "Neuer Stall" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "New stable"
+          }
+        }
+      }
+    },
+    "Neues Futtermittel" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "New feed"
+          }
+        }
+      }
+    },
+    "Neues Pferd" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "New horse"
+          }
+        }
+      }
+    },
+    "nicht angelegt" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "not added"
+          }
+        }
+      }
+    },
+    "nicht gefragt" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "not asked"
+          }
+        }
+      }
+    },
+    "Noch keine Einträge" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No entries yet"
+          }
+        }
+      }
+    },
+    "Noch keine Futtermittel angelegt." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No feeds added yet."
           }
         }
       }
     },
     "Noch keine Messwerte" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No measurements yet"
+          }
+        }
+      }
     },
     "noch keine passende Behandlung" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "no matching treatment yet"
+          }
+        }
+      }
     },
     "Noch keine Pferde" : {
       "localizations" : {
@@ -1418,307 +4768,1126 @@
       }
     },
     "Noch keine Ställe angelegt." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No stables added yet."
+          }
+        }
+      }
     },
     "noch keins" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "none yet"
+          }
+        }
+      }
     },
     "Noch nicht verfügbar" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Not available yet"
+          }
+        }
+      }
     },
     "Notiz" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Note"
+          }
+        }
+      }
     },
     "Notizen" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Notes"
+          }
+        }
+      }
+    },
+    "Notizen, Symptome, Medikamente …" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Notes, symptoms, medications …"
+          }
+        }
+      }
     },
     "Nur Mengen in kg und g. Liter, Messbecher und Scheiben lassen sich nicht in kg umrechnen." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Only amounts in kg and g. Litres, scoops and flakes cannot be converted to kg."
+          }
+        }
+      }
+    },
+    "Ø aus %lld Werten, %@ – %@" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Ø aus %1$lld Werten, %2$@ – %3$@"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mean of %1$lld values, %2$@ – %3$@"
+          }
+        }
+      }
     },
     "Obergrenze" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Upper limit"
+          }
+        }
+      }
     },
     "Ohne Termin" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Without date"
+          }
+        }
+      }
     },
     "oral" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "oral"
+          }
+        }
+      }
     },
     "Ort" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Place"
+          }
+        }
+      }
     },
     "Ort oder Adresse suchen" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Search place or address"
+          }
+        }
+      }
     },
     "Osteopath" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Osteopath"
+          }
+        }
+      }
     },
     "Osteopathie" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Osteopathy"
+          }
+        }
+      }
     },
     "pausiert" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "paused"
+          }
+        }
+      }
     },
     "Pausiert" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Paused"
+          }
+        }
+      }
     },
     "PDF" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "PDF"
+          }
+        }
+      }
     },
     "PDF hinzufügen" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Add PDF"
+          }
+        }
+      }
     },
     "Pferd" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Horse"
+          }
+        }
+      }
     },
     "Pferd bearbeiten" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Edit horse"
+          }
+        }
+      }
     },
     "Pferd endgültig löschen?" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Delete horse permanently?"
+          }
+        }
+      }
     },
     "Pferd hinzufügen" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Add horse"
+          }
+        }
+      }
+    },
+    "Pferd teilen" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Share horse"
+          }
+        }
+      }
     },
     "Pferde" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Horses"
+          }
+        }
+      }
     },
     "Pferde und Erinnerungen werden immer vollständig exportiert." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Horses and reminders are always exported in full."
+          }
+        }
+      }
     },
     "Pferde verwalten" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Manage horses"
+          }
+        }
+      }
     },
     "Pferdeprofil" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Horse profile"
+          }
+        }
+      }
     },
     "Pferdeverwaltung" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Manage horses"
+          }
+        }
+      }
     },
     "Pferdezahnarzt" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Equine dentist"
+          }
+        }
+      }
     },
     "Physiotherapeut" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Physiotherapist"
+          }
+        }
+      }
     },
     "Physiotherapie" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Physiotherapy"
+          }
+        }
+      }
     },
     "Plan" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Plan"
+          }
+        }
+      }
     },
     "Plan ändern" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Change plan"
+          }
+        }
+      }
     },
     "Plan anlegen" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Create plan"
+          }
+        }
+      }
     },
     "Plan: %@" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Plan: %@"
+          }
+        }
+      }
     },
     "Präparat" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Product"
+          }
+        }
+      }
     },
     "Präparat eintragen" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enter product"
+          }
+        }
+      }
     },
     "Präparat und Charge optional ergänzen" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Optionally add product and batch"
+          }
+        }
+      }
     },
     "Praxis" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Practice"
+          }
+        }
+      }
     },
     "Profil" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Profile"
+          }
+        }
+      }
+    },
+    "Prüfe, ob auf dem Gerät genug Speicher frei ist." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Check that there is enough free storage on the device."
+          }
+        }
+      }
     },
     "Puls" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pulse"
+          }
+        }
+      }
+    },
+    "Quelle unbekannt." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Source unknown."
+          }
+        }
+      }
     },
     "Rasse" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Breed"
+          }
+        }
+      }
     },
     "Raufutter" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Roughage"
+          }
+        }
+      }
     },
     "rechts" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "right"
+          }
+        }
+      }
     },
     "Referenzbereich" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reference range"
+          }
+        }
+      }
     },
     "Referenzbereich anzeigen" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Show reference range"
+          }
+        }
+      }
     },
     "Referenzbereich bearbeiten" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Edit reference range"
+          }
+        }
+      }
     },
     "Referenzbereich festlegen" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Set reference range"
+          }
+        }
+      }
     },
     "Regen" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rain"
+          }
+        }
+      }
     },
     "Region: %@" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Region: %@"
+          }
+        }
+      }
+    },
+    "Reiten" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Riding"
+          }
+        }
+      }
     },
     "Rolle" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Role"
+          }
+        }
+      }
     },
     "Rufname" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Call name"
+          }
+        }
+      }
     },
     "Saftfutter" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Succulent feed"
+          }
+        }
+      }
     },
     "Scharren" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pawing"
+          }
+        }
+      }
     },
     "Schätzformel" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Estimation formula"
+          }
+        }
+      }
     },
     "Scheiben" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Flakes"
+          }
+        }
+      }
     },
     "Schemaversion" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Schema version"
+          }
+        }
+      }
     },
     "Schlachttier" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Food-producing animal"
+          }
+        }
+      }
     },
     "Schlachttier laut Equidenpass" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Food-producing animal per equine passport"
+          }
+        }
+      }
     },
     "Schläge/min" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "beats/min"
+          }
+        }
+      }
     },
     "Schnee" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Snow"
+          }
+        }
+      }
     },
     "Schneeregen" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sleet"
+          }
+        }
+      }
+    },
+    "Schritt" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Walk"
+          }
+        }
+      }
     },
     "Schritt 1 von 3: Pferd anlegen" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Step 1 of 3: Add horse"
+          }
+        }
+      }
     },
     "Schritt 2 von 3: Stall (optional)" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Step 2 of 3: Stable (optional)"
+          }
+        }
+      }
     },
     "Schritt 3 von 3: Mitteilungen (optional)" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Step 3 of 3: Notifications (optional)"
+          }
+        }
+      }
     },
     "Schwellung" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Swelling"
+          }
+        }
+      }
     },
     "schwer" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "severe"
+          }
+        }
+      }
     },
     "Schweregrad" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Severity"
+          }
+        }
+      }
     },
     "Schweregrad: %@" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Severity: %@"
+          }
+        }
+      }
     },
     "Schwitzen" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sweating"
+          }
+        }
+      }
     },
     "Sechs Monate" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Six months"
+          }
+        }
+      }
     },
     "seit %@" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "since %@"
+          }
+        }
+      }
     },
     "seit unbekannt" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "since unknown"
+          }
+        }
+      }
     },
     "Semikolon und Dezimalkomma, öffnet sich in Excel mit deutscher Einstellung direkt richtig. UTF-8, Datum im ISO-8601-Format." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Semicolon and decimal comma; opens correctly in Excel with German settings. UTF-8, dates in ISO 8601 format."
+          }
+        }
+      }
     },
     "Sichern" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Save"
+          }
+        }
+      }
     },
     "Skizze: Der Brustumfang wird direkt hinter dem Widerrist rund um den Körper gemessen, die Körperlänge vom Buggelenk bis zum Sitzbeinhöcker." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sketch: the heart girth is measured around the body directly behind the withers, the body length from the point of the shoulder to the point of the buttock."
+          }
+        }
+      }
     },
     "sonstige" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "other"
+          }
+        }
+      }
     },
     "Sonstige" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Other"
+          }
+        }
+      }
     },
     "Sonstiges" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Other"
+          }
+        }
+      }
+    },
+    "Spanne %@ bis %@" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Spanne %1$@ bis %2$@"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Range %1$@ to %2$@"
+          }
+        }
+      }
     },
     "Spannigkeit" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Muscle stiffness"
+          }
+        }
+      }
     },
     "Später" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Later"
+          }
+        }
+      }
+    },
+    "Springen" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Jumping"
+          }
+        }
+      }
     },
     "Stall" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stable"
+          }
+        }
+      }
     },
     "Stall anlegen" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Add stable"
+          }
+        }
+      }
     },
     "Stall bearbeiten" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Edit stable"
+          }
+        }
+      }
     },
     "Stall hinterlegen, um die Lufttemperatur zu sehen." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Set a stable to see the air temperature."
+          }
+        }
+      }
     },
     "Stall hinterlegen, um Wetterdaten zu sehen." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Set a stable to see weather data."
+          }
+        }
+      }
     },
     "Stall hinzufügen" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Add stable"
+          }
+        }
+      }
     },
     "Stall löschen?" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Delete stable?"
+          }
+        }
+      }
     },
     "Stall ohne Standort" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stable without location"
+          }
+        }
+      }
     },
     "Stall zuordnen" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Assign stable"
+          }
+        }
+      }
     },
     "Ställe" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stables"
+          }
+        }
+      }
     },
     "Ställe bestimmen später den Ort für Wetterdaten." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stables determine the location for weather data."
+          }
+        }
+      }
     },
     "Stammdaten" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Basic data"
+          }
+        }
+      }
     },
     "Standard" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Standard"
+          }
+        }
+      }
     },
     "Standardeinheit" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Default unit"
+          }
+        }
+      }
     },
     "Standort entfernen" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Remove location"
+          }
+        }
+      }
     },
     "Standort für Wetterdaten" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Location for weather data"
+          }
+        }
+      }
     },
     "Standortzugriff ist nicht erlaubt. Suche den Ort stattdessen." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Location access is not allowed. Search for the place instead."
+          }
+        }
+      }
+    },
+    "Start" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Start"
+          }
+        }
+      }
     },
     "Status" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Status"
+          }
+        }
+      }
     },
     "Status laut Equidenpass. Bei Schlachttieren hebt die App Lebensmittel-Wartezeiten hervor." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Status per equine passport. For food-producing animals the app highlights food withdrawal periods."
+          }
+        }
+      }
     },
     "Stockmaß" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Height at withers"
+          }
+        }
+      }
     },
     "Stute" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mare"
+          }
+        }
+      }
     },
     "subkutan" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "subcutaneous"
+          }
+        }
+      }
     },
     "Suche" : {
       "localizations" : {
@@ -1731,61 +5900,205 @@
       }
     },
     "Suchen" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Search"
+          }
+        }
+      }
     },
     "Symptom" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Symptom"
+          }
+        }
+      }
     },
     "Symptom bearbeiten" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Edit symptom"
+          }
+        }
+      }
     },
     "Symptom erfassen" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Add symptom"
+          }
+        }
+      }
     },
     "Symptom jetzt beenden" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "End symptom now"
+          }
+        }
+      }
     },
     "Symptome" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Symptoms"
+          }
+        }
+      }
     },
     "Symptome und Krankheiten" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Symptoms and conditions"
+          }
+        }
+      }
     },
     "Symptome, Krankheiten und Behandlungen erscheinen hier chronologisch." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Symptoms, conditions and treatments appear here in chronological order."
+          }
+        }
+      }
     },
     "T" : {
-      "comment" : "Chart range: day"
+      "comment" : "Chart range: day",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "D"
+          }
+        }
+      }
     },
     "Tag" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Day"
+          }
+        }
+      }
     },
     "Tage" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Days"
+          }
+        }
+      }
     },
     "Tage ab letzter Gabe" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Days after last dose"
+          }
+        }
+      }
     },
     "Tagesmenge" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Daily amount"
+          }
+        }
+      }
     },
     "Tagesmengen" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Daily amounts"
+          }
+        }
+      }
     },
     "Tagesmengen im Verlauf" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Daily amounts over time"
+          }
+        }
+      }
     },
     "Tagesmittel und Spanne am Stall des jeweiligen Tages. %@" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Daily mean and range at the stable of each day. %@"
+          }
+        }
+      }
+    },
+    "Technische Details" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Technical details"
+          }
+        }
+      }
     },
     "Teilen" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Share"
+          }
+        }
+      }
     },
     "teils bewölkt" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "partly cloudy"
+          }
+        }
+      }
     },
     "Telefon" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Phone"
+          }
+        }
+      }
     },
     "Termine" : {
       "localizations" : {
@@ -1798,55 +6111,234 @@
       }
     },
     "Tetanus" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tetanus"
+          }
+        }
+      }
     },
     "Thermometer" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Thermometer"
+          }
+        }
+      }
     },
     "Tierarzt" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vet"
+          }
+        }
+      }
     },
     "Tierarzt gerufen" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vet called"
+          }
+        }
+      }
     },
     "Tierarztbesuch" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vet visit"
+          }
+        }
+      }
     },
     "Tippe auf eine Planposition, um sie für diesen Tag auszulassen oder eine andere Menge zu erfassen." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tap a plan item to leave it out for this day or record a different amount."
+          }
+        }
+      }
     },
     "Titel" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Title"
+          }
+        }
+      }
     },
     "Tollwut" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rabies"
+          }
+        }
+      }
+    },
+    "Trab" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Trot"
+          }
+        }
+      }
+    },
+    "Training" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Training"
+          }
+        }
+      }
+    },
+    "Training starten" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Start training"
+          }
+        }
+      }
     },
     "Trainingseinheiten" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Training sessions"
+          }
+        }
+      }
+    },
+    "Trainingsminuten pro Woche" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Training minutes per week"
+          }
+        }
+      }
     },
     "Tränenfluss" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tearing"
+          }
+        }
+      }
     },
     "trocken" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "dry"
+          }
+        }
+      }
     },
     "Turnier-Karenzzeit" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Competition withdrawal period"
+          }
+        }
+      }
+    },
+    "Typ" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Type"
+          }
+        }
+      }
     },
     "Über" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "About"
+          }
+        }
+      }
+    },
+    "Über %lld Werte: Punkt = Mittelwert, Balken = Spanne je Abschnitt" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld values: dot = mean, bar = range per section"
+          }
+        }
+      }
     },
     "Über den Stall ordnet die App später Wetterdaten zu. Du kannst ihn auch später festlegen." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The app uses the stable to assign weather data. You can also set it later."
+          }
+        }
+      }
     },
     "überfällig" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "overdue"
+          }
+        }
+      }
     },
     "Überfällig" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Overdue"
+          }
+        }
+      }
     },
     "Übernehmen" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Apply"
+          }
+        }
+      }
     },
     "Übersicht" : {
       "localizations" : {
@@ -1859,115 +6351,395 @@
       }
     },
     "Überspringen" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Skip"
+          }
+        }
+      }
     },
     "UELN" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "UELN"
+          }
+        }
+      }
     },
     "Uhrzeit" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Time"
+          }
+        }
+      }
     },
     "Umzug" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Move"
+          }
+        }
+      }
     },
     "Umzug erfassen" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Record move"
+          }
+        }
+      }
     },
     "unbekannt" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "unknown"
+          }
+        }
+      }
     },
     "Untergrenze" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lower limit"
+          }
+        }
+      }
     },
     "Verabreichung" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Administration"
+          }
+        }
+      }
     },
     "Verknüpft mit" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Linked to"
+          }
+        }
+      }
     },
     "Verknüpfungen" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Links"
+          }
+        }
+      }
     },
     "Version" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Version"
+          }
+        }
+      }
     },
     "Versionen" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Versions"
+          }
+        }
+      }
+    },
+    "Verteilung nach Gangart" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Distribution by gait"
+          }
+        }
+      }
     },
     "Von" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "From"
+          }
+        }
+      }
     },
     "Vor dem Wiederherstellen siehst du, was das Backup enthält, und wählst zwischen Zusammenführen und Ersetzen." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Before restoring you see what the backup contains and choose between merging and replacing."
+          }
+        }
+      }
     },
     "Vorheriger Tag" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Previous day"
+          }
+        }
+      }
     },
     "Vorlage" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Template"
+          }
+        }
+      }
     },
     "Vorlagen enthalten nur Startwerte. Passe Intervall und Vorlauf an dein Pferd an." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Templates only contain starting values. Adjust interval and lead time to your horse."
+          }
+        }
+      }
     },
     "Vorlaufzeit" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lead time"
+          }
+        }
+      }
     },
     "W" : {
-      "comment" : "Chart range: week"
+      "comment" : "Chart range: week",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "W"
+          }
+        }
+      }
     },
     "Waage" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Scales"
+          }
+        }
+      }
     },
     "Wallach" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gelding"
+          }
+        }
+      }
     },
     "Wälzen" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rolling"
+          }
+        }
+      }
     },
     "Warte- und Karenzzeiten" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Withdrawal periods"
+          }
+        }
+      }
     },
     "Wartezeit Lebensmittel" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Food withdrawal period"
+          }
+        }
+      }
+    },
+    "Was du tun kannst" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "What you can do"
+          }
+        }
+      }
     },
     "Was wurde gemacht?" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "What was done?"
+          }
+        }
+      }
     },
     "Wechselt das angezeigte Pferd" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Switches the displayed horse"
+          }
+        }
+      }
     },
     "Weiter" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Next"
+          }
+        }
+      }
     },
     "Weitere Angaben kannst du später im Pferdeprofil ergänzen." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You can add more details later in the horse profile."
+          }
+        }
+      }
     },
     "Wert" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Value"
+          }
+        }
+      }
     },
     "Werte aus Beipackzettel oder Tierarztangabe. Die App liefert keine eigenen Werte." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Values from the package leaflet or your vet. The app does not provide its own values."
+          }
+        }
+      }
     },
     "Wetter am Beginn und den 3 Tagen davor" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Weather at onset and the 3 days before"
+          }
+        }
+      }
     },
     "Wetter wird geladen …" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Loading weather …"
+          }
+        }
+      }
     },
     "Wetterdaten sind gerade nicht erreichbar." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Weather data is not available right now."
+          }
+        }
+      }
     },
     "Wetterdaten sind gerade nicht erreichbar. Angezeigt wird, was bereits gespeichert ist." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Weather data is not available right now. Showing what is already saved."
+          }
+        }
+      }
     },
     "Wetterdaten stammen aus den offenen Daten des Deutschen Wetterdienstes und werden über Bright Sky abgerufen. Dabei werden nur auf 2 Nachkommastellen gerundete Stall-Koordinaten übertragen." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Weather data comes from the open data of Deutscher Wetterdienst and is retrieved via Bright Sky. Only stable coordinates rounded to 2 decimal places are sent."
+          }
+        }
+      }
     },
     "Wetterdaten: Deutscher Wetterdienst, über Bright Sky" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Weather data: Deutscher Wetterdienst, via Bright Sky"
+          }
+        }
+      }
     },
     "Wie geplant" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "As planned"
+          }
+        }
+      }
     },
     "Wiederhergestellt: %lld Einträge neu, %lld bereits vorhanden." : {
       "localizations" : {
@@ -1976,68 +6748,234 @@
             "state" : "new",
             "value" : "Wiederhergestellt: %1$lld Einträge neu, %2$lld bereits vorhanden."
           }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Restored: %1$lld new entries, %2$lld already present."
+          }
         }
       }
     },
     "Wiederherstellen" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Restore"
+          }
+        }
+      }
     },
     "Wiederherstellen fehlgeschlagen. Es wurde nichts verändert." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Restoring failed. Nothing was changed."
+          }
+        }
+      }
     },
     "Willkommen" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Welcome"
+          }
+        }
+      }
     },
     "windig" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "windy"
+          }
+        }
+      }
+    },
+    "Wird geprüft …" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Checking …"
+          }
+        }
+      }
     },
     "Wird zusätzlich zum Plan gezählt. Eine Planposition auslassen oder ändern kannst du in „Fütterung an Tag X“ direkt an der Position." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Counted in addition to the plan. To leave out or change a plan item, use “Feeding on a given day” directly at the item."
+          }
+        }
+      }
     },
     "Wirkstoff" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Active ingredient"
+          }
+        }
+      }
     },
     "Woche" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Week"
+          }
+        }
+      }
     },
     "Wochen" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Weeks"
+          }
+        }
+      }
+    },
+    "Wochenmittel pro Tag aus Futterplan und Zusatzgaben. Nur Mengen in kg und g werden berücksichtigt." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Weekly mean per day from feeding plan and extra feedings. Only amounts in kg and g are included."
+          }
+        }
+      }
     },
     "Wurmkur" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Deworming"
+          }
+        }
+      }
     },
     "Zahnbehandlung" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dental treatment"
+          }
+        }
+      }
     },
     "Zahnkontrolle" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dental check"
+          }
+        }
+      }
     },
     "Zeitleiste" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Timeline"
+          }
+        }
+      }
     },
     "Zeitpunkt" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Time"
+          }
+        }
+      }
     },
     "Zeitraum" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Period"
+          }
+        }
+      }
     },
     "Zeitraum eingrenzen" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Limit period"
+          }
+        }
+      }
     },
     "Zusammenführen" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Merge"
+          }
+        }
+      }
     },
     "Zusammenführen ergänzt fehlende Einträge; vorhandene werden nicht doppelt angelegt. Ersetzen löscht zuerst alle Daten auf diesem Gerät." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Merge adds missing entries; existing ones are not duplicated. Replace first deletes all data on this device."
+          }
+        }
+      }
     },
     "Zusatzgabe bearbeiten" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Edit extra feeding"
+          }
+        }
+      }
     },
     "Zusatzgabe erfassen" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Add extra feeding"
+          }
+        }
+      }
     },
     "Zusatzgaben" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Extra feedings"
+          }
+        }
+      }
     }
   },
   "version" : "1.0"
