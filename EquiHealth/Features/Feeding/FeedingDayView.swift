@@ -161,21 +161,23 @@ struct FeedingDayEntryRow: View {
         .foregroundStyle(Color.categoryFeeding)
         .frame(width: 28)
         .accessibilityHidden(true)
-      VStack(alignment: .leading, spacing: 2) {
-        Text(item.feed?.name ?? String(localized: "Gelöschtes Futtermittel"))
-          .strikethrough(entry.isOmitted)
-        if entry.isOmitted {
-          Text("heute ausgelassen").font(.caption.weight(.semibold)).foregroundStyle(.secondary)
-        } else if entry.deviation != nil {
-          Text("Plan: \(item.unit.format(item.amount))").font(.caption).foregroundStyle(.secondary)
+      AdaptiveStack {
+        VStack(alignment: .leading, spacing: 2) {
+          Text(item.feed?.name ?? String(localized: "Gelöschtes Futtermittel"))
+            .strikethrough(entry.isOmitted)
+          if entry.isOmitted {
+            Text("heute ausgelassen").font(.caption.weight(.semibold)).foregroundStyle(.secondary)
+          } else if entry.deviation != nil {
+            Text("Plan: \(item.unit.format(item.amount))").font(.caption).foregroundStyle(.secondary)
+          }
         }
+        AdaptiveSpacer()
+        Text(entry.effectiveUnit.format(entry.effectiveAmount))
+          .monospacedDigit()
+          .strikethrough(entry.isOmitted)
+          .foregroundStyle(entry.deviation == nil ? .secondary : .primary)
+          .fontWeight(entry.deviation == nil ? .regular : .semibold)
       }
-      Spacer()
-      Text(entry.effectiveUnit.format(entry.effectiveAmount))
-        .monospacedDigit()
-        .strikethrough(entry.isOmitted)
-        .foregroundStyle(entry.deviation == nil ? .secondary : .primary)
-        .fontWeight(entry.deviation == nil ? .regular : .semibold)
     }
     .accessibilityElement(children: .combine)
   }

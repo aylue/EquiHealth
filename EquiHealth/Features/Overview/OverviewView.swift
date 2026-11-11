@@ -104,18 +104,18 @@ private struct PinnedMeasurementCard: View {
     let recent = all.filter { $0.timestamp >= since }.sorted { $0.timestamp < $1.timestamp }
 
     VStack(alignment: .leading, spacing: 8) {
-      HStack {
+      AdaptiveStack {
         Label(type.title, systemImage: type.systemImage)
           .font(.subheadline.weight(.semibold))
           .foregroundStyle(Color.categoryMeasurements)
-        Spacer()
+        AdaptiveSpacer()
         if let latest {
           Text(latest.timestamp.formatted(.relative(presentation: .named)))
             .font(.caption)
             .foregroundStyle(.secondary)
         }
       }
-      HStack(alignment: .bottom) {
+      AdaptiveStack(horizontalAlignment: .bottom) {
         if let latest {
           VStack(alignment: .leading) {
             Text(type.format(latest.value)).font(.title2.bold().monospacedDigit())
@@ -126,7 +126,7 @@ private struct PinnedMeasurementCard: View {
         } else {
           Text("Keine Daten").foregroundStyle(.secondary)
         }
-        Spacer()
+        AdaptiveSpacer()
         if recent.count > 1 {
           MeasurementSparkline(type: type, measurements: recent)
             .frame(width: 110, height: 40)

@@ -198,7 +198,7 @@ struct MeasurementRow: View {
 
   var body: some View {
     let isOutOfRange = referenceRange.map { !$0.contains(measurement.value) } ?? false
-    HStack {
+    AdaptiveStack {
       VStack(alignment: .leading, spacing: 2) {
         HStack(spacing: 6) {
           Text(type.format(measurement.value)).monospacedDigit()
@@ -217,7 +217,7 @@ struct MeasurementRow: View {
           Text(measurement.note).font(.caption).foregroundStyle(.secondary).lineLimit(2)
         }
       }
-      Spacer()
+      AdaptiveSpacer()
       if isOutOfRange {
         Image(systemName: "exclamationmark.triangle.fill")
           .foregroundStyle(.red)

@@ -332,26 +332,28 @@ struct ReminderRow: View {
         .foregroundStyle(Color.categoryTreatments)
         .frame(width: 28)
         .accessibilityHidden(true)
-      VStack(alignment: .leading, spacing: 2) {
-        Text(rule.title)
-        Text(subtitle(due: due)).font(.caption).foregroundStyle(.secondary)
-      }
-      Spacer()
-      if let due {
-        VStack(alignment: .trailing, spacing: 2) {
-          HStack(spacing: 4) {
-            if isOverdue {
-              Image(systemName: "exclamationmark.circle.fill").accessibilityHidden(true)
-            }
-            Text(due.formatted(date: .long, time: .omitted))
-          }
-          .font(.subheadline.weight(isOverdue ? .semibold : .regular))
-          Text(isOverdue ? String(localized: "überfällig") : relative(due))
-            .font(.caption)
+      AdaptiveStack {
+        VStack(alignment: .leading, spacing: 2) {
+          Text(rule.title)
+          Text(subtitle(due: due)).font(.caption).foregroundStyle(.secondary)
         }
-        .foregroundStyle(isOverdue ? Color.red : Color.primary)
-      } else {
-        Text("Kein Termin").font(.caption).foregroundStyle(.secondary)
+        AdaptiveSpacer()
+        if let due {
+          VStack(alignment: .trailing, spacing: 2) {
+            HStack(spacing: 4) {
+              if isOverdue {
+                Image(systemName: "exclamationmark.circle.fill").accessibilityHidden(true)
+              }
+              Text(due.formatted(date: .long, time: .omitted))
+            }
+            .font(.subheadline.weight(isOverdue ? .semibold : .regular))
+            Text(isOverdue ? String(localized: "überfällig") : relative(due))
+              .font(.caption)
+          }
+          .foregroundStyle(isOverdue ? Color.red : Color.primary)
+        } else {
+          Text("Kein Termin").font(.caption).foregroundStyle(.secondary)
+        }
       }
     }
     .accessibilityElement(children: .combine)

@@ -18,7 +18,11 @@ class EquiUITestCase: XCTestCase {
   /// asking for notification permission.
   func completeOnboarding(horseName: String) {
     let name = app.textFields["onboarding.horseName"]
-    XCTAssertTrue(name.waitForExistence(timeout: 30))
+    if !name.waitForExistence(timeout: 30) {
+      // Very large text sizes push the field below the visible part of the form.
+      scrollTo(name)
+    }
+    XCTAssertTrue(name.exists)
     enter(horseName, into: name)
     app.buttons["onboarding.next"].tap()
     app.buttons["onboarding.skip"].tap()

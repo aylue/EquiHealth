@@ -162,9 +162,9 @@ struct DisclaimerText: View {
       Text(
         "Die App ersetzt keine tierärztliche Beratung. Referenzbereiche und Wartezeiten sind deine eigenen Eingaben.")
     } icon: {
-      Image(systemName: "stethoscope")
+      Image(systemName: "stethoscope").foregroundStyle(.secondary)
     }
+    // NF-11: important notice, therefore primary colour for full contrast (NF-07).
     .font(.footnote)
-    .foregroundStyle(.secondary)
   }
 }

@@ -75,13 +75,13 @@ struct WeekSummaryView: View {
 
   var body: some View {
     VStack(alignment: .leading, spacing: 12) {
-      HStack(alignment: .firstTextBaseline) {
+      AdaptiveStack(horizontalAlignment: .firstTextBaseline) {
         metric(String(summary.sessionCount), title: String(localized: "Einheiten"))
-        Spacer()
+        AdaptiveSpacer()
         metric(TrainingFormat.duration(summary.totalDuration), title: String(localized: "Dauer"))
-        Spacer()
+        AdaptiveSpacer()
         metric(
-          summary.totalDistance > 0 ? TrainingFormat.distance(summary.totalDistance) : "–",
+          summary.totalDistance > 0 ? TrainingFormat.distance(summary.totalDistance) : String(localized: "keine"),
           title: String(localized: "Distanz"))
       }
       .accessibilityElement(children: .combine)
@@ -109,13 +109,6 @@ struct WeekSummaryView: View {
         Chart(gaits, id: \.gait) { item in
           BarMark(x: .value("Anteil", item.share), stacking: .normalized)
             .foregroundStyle(by: .value("Gangart", item.gait.title))
-            .annotation(position: .overlay) {
-              if item.share >= 0.12 {
-                Text(item.share.formatted(.percent.precision(.fractionLength(0))))
-                  .font(.caption2.bold())
-                  .foregroundStyle(.white)
-              }
-            }
         }
         .chartForegroundStyleScale([
           Gait.walk.title: Color.categoryTraining.opacity(0.45),
@@ -129,6 +122,14 @@ struct WeekSummaryView: View {
           Text(
             gaits.map { "\($0.gait.title) \($0.share.formatted(.percent.precision(.fractionLength(0))))" }
               .joined(separator: ", ")))
+        // Percentages as text, not inside the bars: readable in both modes (NF-07).
+        Text(
+          gaits.map { "\($0.gait.title) \($0.share.formatted(.percent.precision(.fractionLength(0))))" }
+            .joined(separator: " · ")
+        )
+        .font(.caption)
+        .foregroundStyle(.secondary)
+        .accessibilityHidden(true)
       }
     }
     .padding(.vertical, 4)
@@ -184,17 +185,19 @@ struct TrainingSessionRow: View {
         .foregroundStyle(Color.categoryTraining)
         .frame(width: 28)
         .accessibilityHidden(true)
-      VStack(alignment: .leading, spacing: 2) {
-        Text(session.type.title)
-        Text(session.start.formatted(date: .abbreviated, time: .shortened))
-          .font(.caption)
-          .foregroundStyle(.secondary)
-      }
-      Spacer()
-      VStack(alignment: .trailing, spacing: 2) {
-        Text(TrainingFormat.duration(session.duration)).monospacedDigit()
-        if let distance = session.distance {
-          Text(TrainingFormat.distance(distance)).font(.caption).foregroundStyle(.secondary)
+      AdaptiveStack {
+        VStack(alignment: .leading, spacing: 2) {
+          Text(session.type.title)
+          Text(session.start.formatted(date: .abbreviated, time: .shortened))
+            .font(.caption)
+            .foregroundStyle(.secondary)
+        }
+        AdaptiveSpacer()
+        VStack(alignment: .trailing, spacing: 2) {
+          Text(TrainingFormat.duration(session.duration)).monospacedDigit()
+          if let distance = session.distance {
+            Text(TrainingFormat.distance(distance)).font(.caption).foregroundStyle(.secondary)
+          }
         }
       }
     }
