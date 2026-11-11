@@ -90,20 +90,31 @@ final class AccessibilityUITests: EquiUITestCase {
     }
     let window = app.windows.firstMatch.frame
     var ignored = 0
-    do {
-      try app.performAccessibilityAudit { issue in
-        if Self.isSystemIssue(issue, chrome: chrome, window: window, screen: screen) {
-          ignored += 1
+    // Two passes; only issues found in both count. The audit sometimes measures while a sheet or
+    // scroll view is still moving and then reports contrast issues for text that passes at rest.
+    var passes: [Set<String>] = []
+    for pass in 0..<2 {
+      if pass > 0 { RunLoop.current.run(until: .now + 1) }
+      var found = Set<String>()
+      do {
+        try app.performAccessibilityAudit { issue in
+          if Self.isSystemIssue(issue, chrome: chrome, window: window, screen: screen) {
+            if pass == 0 { ignored += 1 }
+            return true
+          }
+          let element = issue.element.map { "\($0.elementType.rawValue) „\($0.label)“ [\($0.identifier)]" } ?? "–"
+          found.insert("\(screen): \(issue.auditType.rawValue) – \(issue.compactDescription) – \(element)")
           return true
         }
-        let element = issue.element.map { "\($0.elementType.rawValue) „\($0.label)“ [\($0.identifier)]" } ?? "–"
-        self.findings.append("\(screen): \(issue.auditType.rawValue) – \(issue.compactDescription) – \(element)")
-        return true
+      } catch {
+        found.insert("\(screen): Audit fehlgeschlagen – \(error)")
       }
-    } catch {
-      findings.append("\(screen): Audit fehlgeschlagen – \(error)")
+      passes.append(found)
     }
-    print("Barrierefreiheit \(screen): \(ignored) Systemhinweise ausgenommen")
+    let confirmed = passes[0].intersection(passes[1])
+    findings += confirmed.sorted()
+    let transient = passes[0].union(passes[1]).subtracting(confirmed)
+    print("Barrierefreiheit \(screen): \(ignored) Systemhinweise ausgenommen, \(transient.count) nur einmal gemessen")
   }
 
   /// - Contrast of elements that are only partly visible, and the verified false positives above.

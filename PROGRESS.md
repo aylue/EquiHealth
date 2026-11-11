@@ -4,7 +4,7 @@ Stand: 11. November 2026 · Toolchain: Xcode 27.2, Swift 6.4.2, Deployment-Targe
 
 ## Aktuelle Phase
 
-**Phase 8 – Trainings-Schnittstelle: abgeschlossen, wartet auf Freigabe.**
+**Phase 9 – Feinschliff: abgeschlossen, wartet auf Freigabe. Damit sind alle Phasen aus SPEC 7 umgesetzt.**
 
 ## Erledigt
 
@@ -84,7 +84,7 @@ Xcode-Projekt, Swift Package `EquiCore` mit SwiftData-Schema V1 (CloudKit-konfor
   - „Pferd teilen“ im Pferdeprofil erscheint nur mit `sharingEnabled` (F-TEIL-04, Q-056). `createdBy`/`lastModifiedBy` gab es schon (F-TEIL-02).
 - **`ENABLE_CLOUDKIT.md`:** vollständige Anleitung mit Backup vorab, Kennungen, Xcode-Capabilities, Flag, Liste der dann anzupassenden Tests, Schema anlegen und nach Production übertragen, erster Abgleich mit vorhandenen Daten, Prüfliste F-SYNC-01 bis -04, die übrigen Flags (Trainings-Container, Teilen, Widgets) und der Weg zurück.
 
-### Phase 8 – Trainings-Schnittstelle
+### Phase 8 – Trainings-Schnittstelle ✅ (freigegeben)
 
 - **Schnittstelle in EquiCore (4.11):**
   - `TrainingInterface` mit Version, URL-Schemata, Bundle-IDs und Feldlisten. Ein Test gleicht die Feldliste mit dem Modell ab (F-TRAIN-03).
@@ -103,29 +103,53 @@ Xcode-Projekt, Swift Package `EquiCore` mit SwiftData-Schema V1 (CloudKit-konfor
   - der spätere gemeinsame Container mit App Group und Umzug (F-TRAIN-01), Versionierung.
 - **Behoben während der Abnahme:** Leere Fläche in der Zeile „Art“ im Detail, Rasterlinie durch die Beschriftung im Art-Diagramm, wechselnde Farben je Trainingsart.
 
-## Prüfergebnisse Phase 8 (iPhone 13 mini, iOS 27.2)
+### Phase 9 – Feinschliff
+
+- **Barrierefreiheit (F-UI-07, NF-07):**
+  - Audit-Test der Hauptansichten mit `performAccessibilityAudit()` (Q-067) und ein Test in größter Schrift (AX5).
+  - Akzentfarbe abgedunkelt: Kontrast 6:1 statt 4,45:1.
+  - Zeilen stehen bei Bedienungshilfen-Schriftgrößen untereinander (`AdaptiveStack`).
+  - Prozentzahlen der Gangarten stehen als Text, der Haftungshinweis in voller Kontrastfarbe.
+- **Englisch (NF-08):** alle Texte inklusive Info.plist (Q-068). Ein UI-Test prüft den App-Start auf Englisch.
+- **App-Icon-Platzhalter:** Reiter-Symbol mit Herz auf Akzentfarbe.
+- **Volltextsuche (Q-029, Q-064):** Tab „Suche“ über alle Pferde, gruppiert nach Art; Treffer öffnen die Detailansicht.
+- **Fehleransicht statt Absturz,** wenn die Datenbank nicht geöffnet werden kann (Q-010).
+- **Leistung (NF-04):**
+  - Testdaten-Generator im Entwickler-Menü (≈ 52.000 Einträge, Q-065).
+  - Gefunden und behoben:
+    - Temperatur „Alle“ 28,8 s → 2,9 s, weil lange Reihen jetzt zusammengefasst werden (Q-066).
+    - Tagesmengen über ein Jahr 2,2 s → 63 ms.
+    - CSV-Export 16 s → 6 s.
+    - Fütterungshistorie „1 Jahr“ als Wochenmittel.
+    - Wetter in der Zeitleiste lädt seitenweise, statt für zehn Jahre über hundert Anfragen zu stellen.
+  - Der Wetter-Cache fasst verstreute Tage innerhalb von 31 Tagen zu einer Anfrage zusammen.
+- **Weiter vorgemerkt:** Widgets (F-UI-08), App Intents (F-UI-09), App-Store-Vorbereitung.
+
+## Prüfergebnisse Phase 9 (iPhone 13 mini, iOS 27.2)
 
 | Prüfung | Ergebnis |
 | --- | --- |
 | Build iPhone (13 mini) | ✅ ohne Compiler-Warnungen |
-| Build iPad | ⏸ ausgesetzt (Q-014, Q-057) |
-| `swift test --package-path EquiCore` | ✅ 88 Tests grün (u. a. Deep Links, Feldliste = Modell, Routen-Kodierung, Wochenübersicht mit leeren Wochen und Wochengrenze, reproduzierbare Beispiel-Einheiten) |
+| Build iPad | ⏸ ausgesetzt (Q-014, Q-057, Q-069) |
+| `swift test --package-path EquiCore` | ✅ 97 Tests grün (u. a. Volltextsuche, Diagramm-Verdichtung, Wochenmittel, Leistungstest mit 52.205 Einträgen) |
 | App-Unit-Tests | ✅ 15 Tests grün |
-| UI-Test Abnahme Phase 8: Beispiel-Einheiten aus dem Entwickler-Menü → Wochenübersicht, 8-Wochen-Diagramm, Detail mit Karte und Gangarten, „Letzte Trainingseinheit“ in der Übersicht | ✅ |
-| UI-Tests Phase 0–7 | ✅ |
-| Ansichten visuell geprüft (Screenshots aus dem UI-Test) | ✅ |
-| `INTERFACE.md` vollständig | ✅ |
+| UI-Test Abnahme Phase 9: Barrierefreiheits-Audit der Hauptansichten (Übersicht, Durchsuchen, Messwerte und Detail, Zeitleiste, Training, Termine, Suche, Pferdeprofil, Einstellungen, Formular) ohne Befund | ✅ (zweimal in Folge) |
+| UI-Test größte Schrift (AX5) | ✅ |
+| UI-Test Englisch | ✅ |
+| UI-Tests Suche, Datenbankfehler, Leistung NF-04 (Öffnen ≤ 3 s inkl. Test-Overhead) | ✅ |
+| UI-Tests Phase 0–8 | ✅ |
+| Accessibility Inspector in Xcode von Hand | ⏳ nicht durchgeführt; das automatische Audit nutzt dieselben Prüfungen |
 | `swift format lint` | ✅ |
 
 ## Nächster Schritt
 
-Phase 9 – Feinschliff: Barrierefreiheits-Durchgang, Englisch-Lokalisierung, App-Icon-Platzhalter. Dazu die vorgemerkten Punkte Volltextsuche (Q-029) und Fehleransicht beim Öffnen der Datenbank (Q-010).
+Alle Phasen aus SPEC 7 sind umgesetzt. Offen sind deine Entscheidungen in `OPEN_QUESTIONS.md` (u. a. Gerätetest Q-012, iPad Q-014/Q-069, CSV-Werte Q-048, Excel-Test Q-053, „Training starten“ Q-059) und die vorgemerkten Funktionen, die ein Entwicklerkonto brauchen (`ENABLE_CLOUDKIT.md`).
 
 ## Bekannte Probleme
 
 - Im Gesamtlauf blieb ein UI-Test einmal beim ersten Antippen hängen. Es gab keine fehlgeschlagene Prüfung, und das Ergebnispaket war unvollständig („result: unknown“). Bei der Wiederholung war er grün. Ursache ist die Simulator-Infrastruktur, nicht die App. Abhilfe: betroffene Testklasse mit `-only-testing:` wiederholen.
 - Der erste App-Start nach dem Kaltstart eines Simulators dauert sehr lange. Ein Testlauf direkt danach kann mit „Test crashed with signal kill before establishing connection“ scheitern. Abhilfe: Simulator vorher booten (`xcrun simctl boot "iPhone 18 Pro"`) oder den Lauf wiederholen.
-- Die UI-Tests dauern zusammen rund 18 bis 25 Minuten.
+- Die UI-Tests dauern zusammen rund 30 Minuten (der Leistungstest allein etwa 3,5 Minuten). Der EquiCore-Leistungstest mit 52.000 Einträgen dauert rund 2 Minuten.
 - Simulator ist seit 10.11.2026 „iPhone 13 mini“ (Q-057). In `project.pbxproj` liegt eine lokale, nicht committete Team-Einstellung (Q-058).
 - CSV-Beispieldateien für eine Prüfung in Excel/Numbers erzeugt `EQUI_CSV_SAMPLE_DIR=build/csv-samples swift test --package-path EquiCore --filter CSVSampleFiles`.
 - UI-Tests nutzen nie das Netz: Mit `-uiTesting` liefert ein fester Test-Anbieter das Wetter, mit `-weatherOffline` scheitert er absichtlich (Q-047).
