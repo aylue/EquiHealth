@@ -130,7 +130,7 @@ Xcode-Projekt, Swift Package `EquiCore` mit SwiftData-Schema V1 (CloudKit-konfor
 | Prüfung | Ergebnis |
 | --- | --- |
 | Build iPhone (13 mini) | ✅ ohne Compiler-Warnungen |
-| Build iPad | ⏸ ausgesetzt (Q-014, Q-057, Q-069) |
+| Build iPad | – nur iPhone (Entscheidung 11.11.2026, Q-069) |
 | `swift test --package-path EquiCore` | ✅ 97 Tests grün (u. a. Volltextsuche, Diagramm-Verdichtung, Wochenmittel, Leistungstest mit 52.205 Einträgen) |
 | App-Unit-Tests | ✅ 15 Tests grün |
 | UI-Test Abnahme Phase 9: Barrierefreiheits-Audit der Hauptansichten (Übersicht, Durchsuchen, Messwerte und Detail, Zeitleiste, Training, Termine, Suche, Pferdeprofil, Einstellungen, Formular) ohne Befund | ✅ (zweimal in Folge) |
@@ -143,7 +143,7 @@ Xcode-Projekt, Swift Package `EquiCore` mit SwiftData-Schema V1 (CloudKit-konfor
 
 ## Nächster Schritt
 
-Alle Phasen aus SPEC 7 sind umgesetzt. Offen sind deine Entscheidungen in `OPEN_QUESTIONS.md` (u. a. Gerätetest Q-012, iPad Q-014/Q-069, CSV-Werte Q-048, Excel-Test Q-053, „Training starten“ Q-059) und die vorgemerkten Funktionen, die ein Entwicklerkonto brauchen (`ENABLE_CLOUDKIT.md`).
+Alle Phasen aus SPEC 7 sind umgesetzt. Offen sind deine Entscheidungen in `OPEN_QUESTIONS.md` (u. a. Gerätetest Q-012, CSV-Werte Q-048, Excel-Test Q-053, „Training starten“ Q-059) und die vorgemerkten Funktionen, die ein Entwicklerkonto brauchen (`ENABLE_CLOUDKIT.md`).
 
 ## Bekannte Probleme
 
@@ -151,6 +151,7 @@ Alle Phasen aus SPEC 7 sind umgesetzt. Offen sind deine Entscheidungen in `OPEN_
 - Der erste App-Start nach dem Kaltstart eines Simulators dauert sehr lange. Ein Testlauf direkt danach kann mit „Test crashed with signal kill before establishing connection“ scheitern. Abhilfe: Simulator vorher booten (`xcrun simctl boot "iPhone 18 Pro"`) oder den Lauf wiederholen.
 - Die UI-Tests dauern zusammen rund 30 Minuten (der Leistungstest allein etwa 3,5 Minuten). Der EquiCore-Leistungstest mit 52.000 Einträgen dauert rund 2 Minuten.
 - Simulator ist seit 10.11.2026 „iPhone 13 mini“ (Q-057). In `project.pbxproj` liegt eine lokale, nicht committete Team-Einstellung (Q-058).
+- Die App ist seit 11.11.2026 nur für das iPhone eingestellt (Q-069); das weicht von SPEC 2 ab.
 - CSV-Beispieldateien für eine Prüfung in Excel/Numbers erzeugt `EQUI_CSV_SAMPLE_DIR=build/csv-samples swift test --package-path EquiCore --filter CSVSampleFiles`.
 - UI-Tests nutzen nie das Netz: Mit `-uiTesting` liefert ein fester Test-Anbieter das Wetter, mit `-weatherOffline` scheitert er absichtlich (Q-047).
 - Der Erinnerungs-Test braucht die Mitteilungsfreigabe im Simulator. Beim ersten Lauf bestätigt er den Systemdialog selbst; danach bleibt die Freigabe im Simulator gespeichert. Texteingaben warten auf den Tastaturfokus, Schalter werden nach dem Umlegen geprüft.

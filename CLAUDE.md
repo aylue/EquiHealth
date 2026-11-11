@@ -13,7 +13,7 @@ Native iPhone-/iPad-App (SwiftUI, SwiftData) zum Erfassen von Gesundheitsdaten v
 
 - Arbeite die Phasen aus SPEC.md, Abschnitt 7, der Reihe nach ab. Immer nur eine Phase pro Durchgang.
 - Am Ende jeder Phase:
-  1. Build für iPhone **und** iPad ohne Warnungen.
+  1. Build für iPhone ohne Warnungen (iPad vorerst nicht, Q-069).
   2. Alle Tests ausführen, alle grün.
   3. Abnahmekriterien der Phase prüfen.
   4. `PROGRESS.md` aktualisieren: erledigt, nächster Schritt, bekannte Probleme.
@@ -48,14 +48,11 @@ Native iPhone-/iPad-App (SwiftUI, SwiftData) zum Erfassen von Gesundheitsdaten v
 
 ## Befehle
 
-Scheme `EquiHealth`, Xcode 27.2 / Swift 6.4.2, Simulatoren iOS 27.2. iPad-Build vorerst ausgesetzt (Nutzerentscheidung 9.11.2026). Seit 10.11.2026 ist nur noch der Simulator „iPhone 13 mini“ vorhanden (Q-057):
+Scheme `EquiHealth`, Xcode 27.2 / Swift 6.4.2, Simulatoren iOS 27.2. Die App läuft vorerst nur auf dem iPhone (Nutzerentscheidung 11.11.2026, Q-069); kein iPad-Build. Seit 10.11.2026 ist nur noch der Simulator „iPhone 13 mini“ vorhanden (Q-057):
 
 ```bash
 # Build iPhone
 xcodebuild -scheme EquiHealth -destination 'platform=iOS Simulator,name=iPhone 13 mini' -derivedDataPath build/DerivedData build
-
-# Build iPad
-xcodebuild -scheme EquiHealth -destination 'platform=iOS Simulator,name=iPad Pro 11-inch (M5)' -derivedDataPath build/DerivedData build
 
 # Tests (App und EquiCore)
 xcodebuild -scheme EquiHealth -destination 'platform=iOS Simulator,name=iPhone 13 mini' -derivedDataPath build/DerivedData test
