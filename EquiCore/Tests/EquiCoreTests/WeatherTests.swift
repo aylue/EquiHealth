@@ -78,6 +78,19 @@ struct WeatherTests {
     #expect(items["tz"] == "Europe/Berlin")
   }
 
+  @Test("F-WETTER-01: Zeitzonen-Offset wird in der Anfrage kodiert")
+  func brightSkyRequestEncodesOffset() throws {
+    let request = BrightSkyProvider().request(
+      latitude: 51.96, longitude: 7.63, from: date(2025, 11, 12), to: date(2025, 11, 16),
+      timeZone: calendar.timeZone)
+    let query = try #require(request.url?.query(percentEncoded: true))
+    #expect(!query.contains("+"))
+    #expect(query.contains("date=2025-11-12T00:00:00%2B01:00"))
+    #expect(query.contains("last_date=2025-11-16T00:00:00%2B01:00"))
+    let items = URLComponents(url: try #require(request.url), resolvingAgainstBaseURL: false)?.queryItems ?? []
+    #expect(items.first { $0.name == "date" }?.value == "2025-11-12T00:00:00+01:00")
+  }
+
   @Test("F-WETTER-01: Bright-Sky-JSON wird gelesen und zu Tageswerten verdichtet")
   func decodeAndAggregate() throws {
     let json = """

@@ -17,7 +17,9 @@ public struct BrightSkyProvider: WeatherProvider {
     latitude: Double, longitude: Double, from start: Date, to end: Date, timeZone: TimeZone
   ) -> URLRequest {
     let formatter = ISO8601DateFormatter()
-    formatter.formatOptions = [.withFullDate, .withTime, .withColonSeparatorInTime, .withTimeZone]
+    formatter.formatOptions = [
+      .withFullDate, .withTime, .withColonSeparatorInTime, .withTimeZone, .withColonSeparatorInTimeZone,
+    ]
     formatter.timeZone = timeZone
     var components = URLComponents(url: baseURL.appending(path: "weather"), resolvingAgainstBaseURL: false)!
     components.queryItems = [
@@ -27,6 +29,10 @@ public struct BrightSkyProvider: WeatherProvider {
       URLQueryItem(name: "last_date", value: formatter.string(from: end)),
       URLQueryItem(name: "tz", value: timeZone.identifier),
     ]
+    // URLComponents leaves "+" unencoded in queries; the server reads it as a space and rejects
+    // offsets like "+01:00" with HTTP 422.
+    components.percentEncodedQuery = components.percentEncodedQuery?
+      .replacingOccurrences(of: "+", with: "%2B")
     var request = URLRequest(url: components.url!)
     request.timeoutInterval = 20
     request.setValue("application/json", forHTTPHeaderField: "Accept")

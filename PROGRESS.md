@@ -63,6 +63,7 @@ Xcode-Projekt, Swift Package `EquiCore` mit SwiftData-Schema V1 (CloudKit-konfor
 - **Quellenangabe:** „Wetterdaten: Deutscher Wetterdienst, über Bright Sky“ an jeder Wetteranzeige und unter Einstellungen › Impressum und Quellen (F-WETTER-05).
 - **Offline/Fehler:** Es werden zwischengespeicherte Daten gezeigt, sonst ein dezenter Hinweis. Kein Dialog, kein Absturz (F-WETTER-06).
 - **Nicht umgesetzt:** zweiter Anbieter (F-WETTER-07, KANN, Q-046).
+- **Nachträglich behoben (13.11.2026):** Bright Sky lehnte jede Anfrage mit HTTP 422 ab. `URLComponents` kodiert das „+“ im Zeitzonen-Offset von `date` und `last_date` nicht, und der Server las es als Leerzeichen. Der Offset wird jetzt als `%2B01:00` gesendet, ein Test prüft die kodierte URL.
 
 ### Phase 6 – Export und Backup ✅ (freigegeben)
 
